@@ -33,9 +33,9 @@ TEXT=/blob/v-shenkai/code/tts/fs2_fromyc/mm_lm_nat/raw_data/LJSpeech-1.1   # not
 # DATA_DIR=/blob/v-zeqianju/code/tts/fs2_fromyc/mm_lm_nat/data-bin/product_1000_discrete_res16hop200_vqemb_44w_fixcode_fixbug
 # DATA_DIR=/blob/v-yuancwang/TTS_Data/mls_wmeta
 # DATA_DIR=/blob/v-yuancwang/TTS_Data/11lab_process
-DATA_DIR=/blob/v-zeqianju/code/tts/fs2_fromyc/mm_lm_nat/data-bin/mls_wmeta
+# DATA_DIR=/blob/v-zeqianju/code/tts/fs2_fromyc/mm_lm_nat/data-bin/mls_wmeta
 # DATA_DIR=/blob/v-yuancwang/ns2/data-bin/11lab_process
-# DATA_DIR=~/mls_wmeta
+DATA_DIR=~/mls_wmeta
 
 use_new_refenc=True
 use_pitch_embed=True
