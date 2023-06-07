@@ -3,7 +3,7 @@ import json
 import torch
 
 # chanpin_phone_dict = TokenTextEncoder(None, vocab_list=json.load(open("/blob/v-zeqianju/code/tts/fs2_fromyc/mm_lm_nat/data-bin/phone_set_chanpin_librilight.json")))
-chanpin_phone_dict = TokenTextEncoder(None, vocab_list=json.load(open("/home/v-yuancwang/naturalspeech2/phone_set_chanpin_librilight.json")))
+chanpin_phone_dict = TokenTextEncoder(None, vocab_list=json.load(open("phone_set_chanpin_librilight.json")))
 
 
 def calculate_dur_from_mel2ph(mel2ph, max_phones=None):
