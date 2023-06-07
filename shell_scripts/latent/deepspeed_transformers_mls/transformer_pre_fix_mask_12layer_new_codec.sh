@@ -98,8 +98,8 @@ python -m usr_dir.tasks.latent_diffusion_pl2 --config configs/tts/product/latent
                                             strategy=ddp,precision=16-mixed,accumulate_grad_batches=4,num_nodes=1,warmup_updates=30000,\
                                             lr=4e-4,max_frames=3000,max_input_tokens=600,use_random_segment_as_ref=True,\
                                             noise_factor=${noise_factor},load_opt=${load_opt},\
-                                            vq_ckpt=/blob/v-yuancwang/new_rvq_generator/rvq_hop200.pt,\
-                                            vocoder_ckpt=/blob/v-yuancwang/new_rvq_generator/generator_hop200.pt,\
+                                            vq_ckpt=/blob/v-shenkai/checkpoints/tts/codec/chanpin_5w/v5/lambda_disc_1_commit_weight_0.25/infered_lj_2324000/rvq_hop200.pt,\
+                                            vocoder_ckpt=/blob/v-shenkai/checkpoints/tts/codec/chanpin_5w/v5/lambda_disc_1_commit_weight_0.25/infered_lj_2324000/generator_hop200.pt,\
                                             predictor_type=transformer_pre_fix_mask,\
                                             ref_left_pad=${ref_left_pad},\
                                             transformer_esitimator_arch=${transformer_esitimator_arch}, dec_ffn_kernel_size=3, transformer_hidden=512,\
