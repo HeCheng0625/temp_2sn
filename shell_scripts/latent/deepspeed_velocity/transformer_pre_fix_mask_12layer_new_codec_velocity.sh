@@ -33,10 +33,10 @@ TEXT=/blob/v-shenkai/code/tts/fs2_fromyc/mm_lm_nat/raw_data/LJSpeech-1.1   # not
 # DATA_DIR=/blob/v-zeqianju/code/tts/fs2_fromyc/mm_lm_nat/data-bin/product_full_discrete_res16hop200_vqemb_44w_fixcode_fixbug_wmeta_wof0s
 # DATA_DIR=~/product_full_discrete_res16hop200_vqemb_44w_fixcode_fixbug_wmeta_wof0s
 # DATA_DIR=/blob/v-zeqianju/code/tts/fs2_fromyc/mm_lm_nat/data-bin/product_1000_discrete_res16hop200_vqemb_44w_fixcode_fixbug
-DATA_DIR=/blob/v-yuancwang/TTS_Data/mls_wmeta
+# DATA_DIR=/blob/v-yuancwang/TTS_Data/mls_wmeta
 # DATA_DIR=/blob/v-yuancwang/TTS_Data/11lab_process
 # DATA_DIR=/blob/v-zeqianju/code/tts/fs2_fromyc/mm_lm_nat/data-bin/mls_wmeta
-# DATA_DIR=/blob/v-yuancwang/ns2/data-bin/11lab_process
+DATA_DIR=/blob/v-yuancwang/ns2/data-bin/11lab_process
 
 use_new_refenc=True
 use_pitch_embed=True
@@ -79,7 +79,8 @@ transformer_esitimator_arch='13 13 13 13 13 13 13 13 13 13 13 13'
 
 # SAVE_DIR=/blob/v-zeqianju/code/tts/fs2_fromyc/mm_lm_nat/checkpoints/kai_srfixbug/${save_prefix}_refenc_dmu_${detach_mu}_dwn_${detach_wavenet}_dmelw_${diffusion_mel_weight}_dnoisew_${diff_loss_noise_weight}_vqweight_${vq_quantizer_weight}_vq_dist_weight_${vq_dist_weight}_dila_${dilation_cycle_length}_pe_scale_${pe_scale}_ref_query_tokens${ref_query_tokens}
 # SAVE_DIR=/blob/v-zeqianju/code/tts/fs2_fromyc/mm_lm_nat/checkpoints/kai_srfixbug/debug
-SAVE_DIR=/blob/v-yuancwang/LATENT_TTS/transformer_pre_fix_mask_12layer_new_codec_velocity
+# SAVE_DIR=/blob/v-yuancwang/LATENT_TTS/transformer_pre_fix_mask_12layer_new_codec_velocity
+SAVE_DIR=/blob/v-yuancwang/ns2/checkpoints/transformers/transformer_pre_fix_mask_12layer_new_codec_velocity
 # /bin/rm -rf ${SAVE_DIR}
 
 mkdir -p ${SAVE_DIR}
