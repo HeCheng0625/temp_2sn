@@ -255,11 +255,10 @@ class LatentDiff(pl.LightningModule):
         else:
             require_dist_loss = False
 
-        if hparams["vq_dist_weight"] > 0 or hparams["vq_quantizer_weight"] > 0:
-            codebook_bp_loss, logging_info = self.codebook_loss(x=diff_out["diff_x0_pred"].transpose(1, 2), discrete_y=target.transpose(1, 2), latent_y=target_latent.transpose(1, 2), y_mask=y_mask, name="posterior", require_dist_loss=require_dist_loss)
+        codebook_bp_loss, logging_info = self.codebook_loss(x=diff_out["diff_x0_pred"].transpose(1, 2), discrete_y=target.transpose(1, 2), latent_y=target_latent.transpose(1, 2), y_mask=y_mask, name="posterior", require_dist_loss=require_dist_loss)
         
-            losses.update(codebook_bp_loss)
-            ret_logging_info.update(logging_info)
+        losses.update(codebook_bp_loss)
+        ret_logging_info.update(logging_info)
         
         
         if not return_output:
