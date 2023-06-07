@@ -90,7 +90,8 @@ export NCCL_NSOCKS_PERTHREAD=20
 export NCCL_SOCKET_NTHREADS=10
 # configs/tts/product/latent_diffusion_5wdata.yaml
 
-/opt/conda/envs/control/bin/python -m usr_dir.tasks.latent_diffusion_pl2 --config configs/tts/product/latent_diffusion_5wdata.yaml --exp_name ${SAVE_DIR} --reset --hparams "data_dir=${DATA_DIR},\
+#/opt/conda/envs/control/bin/python
+python -m usr_dir.tasks.latent_diffusion_pl2 --config configs/tts/product/latent_diffusion_5wdata.yaml --exp_name ${SAVE_DIR} --reset --hparams "data_dir=${DATA_DIR},\
                                             raw_data_dir=${TEXT},max_tokens=4800,detach_mu=${detach_mu},detach_wavenet=${detach_wavenet},\
                                             diffusion_mel_weight=${diffusion_mel_weight},diff_loss_noise_weight=${diff_loss_noise_weight},\
                                             vq_quantizer_weight=${vq_quantizer_weight},vq_dist_weight=${vq_dist_weight},dilation_cycle_length=${dilation_cycle_length},\
