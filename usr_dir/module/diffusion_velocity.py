@@ -95,7 +95,7 @@ class Diffusion(BaseModule):
             xt, z, v_gt = self.forward_diffusion(x0, 0, t)
 
         v_predict = self.estimator(spec=xt, x_mask=x_mask, cond=mu, diffusion_step=t, spk=spk, prompt=prompt, prompt_mask=prompt_mask)
-        x0_predict = torch.cos(0.5*math.pi*t.unsqueeze(-1).unsqueeze(-1)) * z  - torch.sin(0.5*math.pi*t.unsqueeze(-1).unsqueeze(-1)) * v_predict
+        x0_predict = torch.cos(0.5*math.pi*t.unsqueeze(-1).unsqueeze(-1)) * xt  - torch.sin(0.5*math.pi*t.unsqueeze(-1).unsqueeze(-1)) * v_predict
 
         return v_predict, v_gt, z, x0_predict
     
