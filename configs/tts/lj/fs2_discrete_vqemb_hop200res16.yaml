@@ -1,0 +1,33 @@
+base_config: configs/tts/fs2.yaml
+data_dir: 'data/ljspeech_discrete'
+raw_data_dir: 'data/raw/LJSpeech-1.1'
+token_filename: 'kai/codec_decode_vq2id_res16_tmp.txt'
+
+# model
+dropout: 0.2
+max_tokens: 50000
+val_check_interval: 1000
+lambda_energy: 0.0
+
+max_frames: 1000
+max_input_tokens: 200
+audio_num_mel_bins: 16
+audio_sample_rate: 16000
+hop_size: 200  # For 22050Hz, 275 ~= 12.5 ms (0.0125 * sample_rate)
+win_size:  1024  # For 22050Hz, 1100 ~= 50 ms (If None, win_size: n_fft) (0.05 * sample_rate)
+fmin: 80  # Set this to 55 if your speaker is male! if female, 95 should help taking off noise. (To test depending on dataset. Pitch info: male~[65, 260], female~[100, 525])
+fmax: 7600  # To be increased/reduced depending on data.
+n_fft: 1024  # Extra window size is filled with 0 paddings to match this parameter
+
+predict_first_ndim: 3
+codebook_size: 1024
+parallel_predict: false
+vqemb_predict: true
+vqemb_size: 256
+vq_ckpt: '/blob/v-shenkai/checkpoints/tts/codec/chanpin_5w/v5/lambda_disc_1_commit_weight_0.25/infered_lj_440000/rvq_hop200.pt'
+
+pred_pitch_after: -1
+log_interval: 500
+use_amp: true
+
+noise_factor: 1.0

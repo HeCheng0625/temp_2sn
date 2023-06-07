@@ -1,0 +1,2 @@
+python -m datasets.tts.product.gen_fs2_product_full_from_meta_singing --hparams "f0_use_product=True" --config configs/tts/product/fs2_discrete_vqemb_hop200res16.yaml
+# check /home/v-yuancwang/fast_speech2/datasets/tts/product/gen_fs2_product_full_from_meta_singing.py

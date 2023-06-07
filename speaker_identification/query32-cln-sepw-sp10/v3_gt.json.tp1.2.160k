@@ -1,0 +1,471 @@
+{
+    "dataset": "v3_gt",
+    "test_cases": [
+        {
+            "reference_wav_path": "/blob/v-zeqianju/dataset/tts/v3_gt/00011.wav",
+            "synthesized_wav_paths": [
+                "/blob/v-zeqianju/code/tts/fs2_fromyc/mm_lm_nat/checkpoints/kai_srfixbug/product_5w_v1.1big_segnoref_query32_small-cln_refnorm_sepw_refenc_dmu_0_dwn_0_dmelw_1_dnoisew_1_vqweight_0.1_vq_dist_weight_0_dila_2_pe_scale_1_ref_query_tokens32/generated_0__v7_tp1.2//denoised_sp0_00011.wav",
+                "/blob/v-zeqianju/code/tts/fs2_fromyc/mm_lm_nat/checkpoints/kai_srfixbug/product_5w_v1.1big_segnoref_query32_small-cln_refnorm_sepw_refenc_dmu_0_dwn_0_dmelw_1_dnoisew_1_vqweight_0.1_vq_dist_weight_0_dila_2_pe_scale_1_ref_query_tokens32/generated_0__v7_tp1.2//denoised_sp1_00011.wav",
+                "/blob/v-zeqianju/code/tts/fs2_fromyc/mm_lm_nat/checkpoints/kai_srfixbug/product_5w_v1.1big_segnoref_query32_small-cln_refnorm_sepw_refenc_dmu_0_dwn_0_dmelw_1_dnoisew_1_vqweight_0.1_vq_dist_weight_0_dila_2_pe_scale_1_ref_query_tokens32/generated_0__v7_tp1.2//denoised_sp2_00011.wav",
+                "/blob/v-zeqianju/code/tts/fs2_fromyc/mm_lm_nat/checkpoints/kai_srfixbug/product_5w_v1.1big_segnoref_query32_small-cln_refnorm_sepw_refenc_dmu_0_dwn_0_dmelw_1_dnoisew_1_vqweight_0.1_vq_dist_weight_0_dila_2_pe_scale_1_ref_query_tokens32/generated_0__v7_tp1.2//denoised_sp3_00011.wav",
+                "/blob/v-zeqianju/code/tts/fs2_fromyc/mm_lm_nat/checkpoints/kai_srfixbug/product_5w_v1.1big_segnoref_query32_small-cln_refnorm_sepw_refenc_dmu_0_dwn_0_dmelw_1_dnoisew_1_vqweight_0.1_vq_dist_weight_0_dila_2_pe_scale_1_ref_query_tokens32/generated_0__v7_tp1.2//denoised_sp4_00011.wav",
+                "/blob/v-zeqianju/code/tts/fs2_fromyc/mm_lm_nat/checkpoints/kai_srfixbug/product_5w_v1.1big_segnoref_query32_small-cln_refnorm_sepw_refenc_dmu_0_dwn_0_dmelw_1_dnoisew_1_vqweight_0.1_vq_dist_weight_0_dila_2_pe_scale_1_ref_query_tokens32/generated_0__v7_tp1.2//denoised_sp5_00011.wav",
+                "/blob/v-zeqianju/code/tts/fs2_fromyc/mm_lm_nat/checkpoints/kai_srfixbug/product_5w_v1.1big_segnoref_query32_small-cln_refnorm_sepw_refenc_dmu_0_dwn_0_dmelw_1_dnoisew_1_vqweight_0.1_vq_dist_weight_0_dila_2_pe_scale_1_ref_query_tokens32/generated_0__v7_tp1.2//denoised_sp6_00011.wav",
+                "/blob/v-zeqianju/code/tts/fs2_fromyc/mm_lm_nat/checkpoints/kai_srfixbug/product_5w_v1.1big_segnoref_query32_small-cln_refnorm_sepw_refenc_dmu_0_dwn_0_dmelw_1_dnoisew_1_vqweight_0.1_vq_dist_weight_0_dila_2_pe_scale_1_ref_query_tokens32/generated_0__v7_tp1.2//denoised_sp7_00011.wav",
+                "/blob/v-zeqianju/code/tts/fs2_fromyc/mm_lm_nat/checkpoints/kai_srfixbug/product_5w_v1.1big_segnoref_query32_small-cln_refnorm_sepw_refenc_dmu_0_dwn_0_dmelw_1_dnoisew_1_vqweight_0.1_vq_dist_weight_0_dila_2_pe_scale_1_ref_query_tokens32/generated_0__v7_tp1.2//denoised_sp8_00011.wav",
+                "/blob/v-zeqianju/code/tts/fs2_fromyc/mm_lm_nat/checkpoints/kai_srfixbug/product_5w_v1.1big_segnoref_query32_small-cln_refnorm_sepw_refenc_dmu_0_dwn_0_dmelw_1_dnoisew_1_vqweight_0.1_vq_dist_weight_0_dila_2_pe_scale_1_ref_query_tokens32/generated_0__v7_tp1.2//denoised_sp9_00011.wav"
+            ],
+            "synthesize_phoneme_seq": [],
+            "speaker_verification_score": [
+                0.37073421478271484,
+                0.3948139250278473,
+                0.3458274304866791,
+                0.4293404817581177,
+                0.29433098435401917,
+                0.2946360111236572,
+                0.45807087421417236,
+                0.3911818563938141,
+                0.3214172124862671,
+                0.40116551518440247
+            ],
+            "speaker_verification_score_rerank": 0.45807087421417236
+        },
+        {
+            "reference_wav_path": "/blob/v-zeqianju/dataset/tts/v3_gt/00010.wav",
+            "synthesized_wav_paths": [
+                "/blob/v-zeqianju/code/tts/fs2_fromyc/mm_lm_nat/checkpoints/kai_srfixbug/product_5w_v1.1big_segnoref_query32_small-cln_refnorm_sepw_refenc_dmu_0_dwn_0_dmelw_1_dnoisew_1_vqweight_0.1_vq_dist_weight_0_dila_2_pe_scale_1_ref_query_tokens32/generated_0__v7_tp1.2//denoised_sp0_00010.wav",
+                "/blob/v-zeqianju/code/tts/fs2_fromyc/mm_lm_nat/checkpoints/kai_srfixbug/product_5w_v1.1big_segnoref_query32_small-cln_refnorm_sepw_refenc_dmu_0_dwn_0_dmelw_1_dnoisew_1_vqweight_0.1_vq_dist_weight_0_dila_2_pe_scale_1_ref_query_tokens32/generated_0__v7_tp1.2//denoised_sp1_00010.wav",
+                "/blob/v-zeqianju/code/tts/fs2_fromyc/mm_lm_nat/checkpoints/kai_srfixbug/product_5w_v1.1big_segnoref_query32_small-cln_refnorm_sepw_refenc_dmu_0_dwn_0_dmelw_1_dnoisew_1_vqweight_0.1_vq_dist_weight_0_dila_2_pe_scale_1_ref_query_tokens32/generated_0__v7_tp1.2//denoised_sp2_00010.wav",
+                "/blob/v-zeqianju/code/tts/fs2_fromyc/mm_lm_nat/checkpoints/kai_srfixbug/product_5w_v1.1big_segnoref_query32_small-cln_refnorm_sepw_refenc_dmu_0_dwn_0_dmelw_1_dnoisew_1_vqweight_0.1_vq_dist_weight_0_dila_2_pe_scale_1_ref_query_tokens32/generated_0__v7_tp1.2//denoised_sp3_00010.wav",
+                "/blob/v-zeqianju/code/tts/fs2_fromyc/mm_lm_nat/checkpoints/kai_srfixbug/product_5w_v1.1big_segnoref_query32_small-cln_refnorm_sepw_refenc_dmu_0_dwn_0_dmelw_1_dnoisew_1_vqweight_0.1_vq_dist_weight_0_dila_2_pe_scale_1_ref_query_tokens32/generated_0__v7_tp1.2//denoised_sp4_00010.wav",
+                "/blob/v-zeqianju/code/tts/fs2_fromyc/mm_lm_nat/checkpoints/kai_srfixbug/product_5w_v1.1big_segnoref_query32_small-cln_refnorm_sepw_refenc_dmu_0_dwn_0_dmelw_1_dnoisew_1_vqweight_0.1_vq_dist_weight_0_dila_2_pe_scale_1_ref_query_tokens32/generated_0__v7_tp1.2//denoised_sp5_00010.wav",
+                "/blob/v-zeqianju/code/tts/fs2_fromyc/mm_lm_nat/checkpoints/kai_srfixbug/product_5w_v1.1big_segnoref_query32_small-cln_refnorm_sepw_refenc_dmu_0_dwn_0_dmelw_1_dnoisew_1_vqweight_0.1_vq_dist_weight_0_dila_2_pe_scale_1_ref_query_tokens32/generated_0__v7_tp1.2//denoised_sp6_00010.wav",
+                "/blob/v-zeqianju/code/tts/fs2_fromyc/mm_lm_nat/checkpoints/kai_srfixbug/product_5w_v1.1big_segnoref_query32_small-cln_refnorm_sepw_refenc_dmu_0_dwn_0_dmelw_1_dnoisew_1_vqweight_0.1_vq_dist_weight_0_dila_2_pe_scale_1_ref_query_tokens32/generated_0__v7_tp1.2//denoised_sp7_00010.wav",
+                "/blob/v-zeqianju/code/tts/fs2_fromyc/mm_lm_nat/checkpoints/kai_srfixbug/product_5w_v1.1big_segnoref_query32_small-cln_refnorm_sepw_refenc_dmu_0_dwn_0_dmelw_1_dnoisew_1_vqweight_0.1_vq_dist_weight_0_dila_2_pe_scale_1_ref_query_tokens32/generated_0__v7_tp1.2//denoised_sp8_00010.wav",
+                "/blob/v-zeqianju/code/tts/fs2_fromyc/mm_lm_nat/checkpoints/kai_srfixbug/product_5w_v1.1big_segnoref_query32_small-cln_refnorm_sepw_refenc_dmu_0_dwn_0_dmelw_1_dnoisew_1_vqweight_0.1_vq_dist_weight_0_dila_2_pe_scale_1_ref_query_tokens32/generated_0__v7_tp1.2//denoised_sp9_00010.wav"
+            ],
+            "synthesize_phoneme_seq": [],
+            "speaker_verification_score": [
+                0.2681114673614502,
+                0.3183897137641907,
+                0.3868028521537781,
+                0.36509865522384644,
+                0.37632566690444946,
+                0.2468084990978241,
+                0.35171496868133545,
+                0.23858806490898132,
+                0.42708995938301086,
+                0.2447933554649353
+            ],
+            "speaker_verification_score_rerank": 0.42708995938301086
+        },
+        {
+            "reference_wav_path": "/blob/v-zeqianju/dataset/tts/v3_gt/00001.wav",
+            "synthesized_wav_paths": [
+                "/blob/v-zeqianju/code/tts/fs2_fromyc/mm_lm_nat/checkpoints/kai_srfixbug/product_5w_v1.1big_segnoref_query32_small-cln_refnorm_sepw_refenc_dmu_0_dwn_0_dmelw_1_dnoisew_1_vqweight_0.1_vq_dist_weight_0_dila_2_pe_scale_1_ref_query_tokens32/generated_0__v7_tp1.2//denoised_sp0_00001.wav",
+                "/blob/v-zeqianju/code/tts/fs2_fromyc/mm_lm_nat/checkpoints/kai_srfixbug/product_5w_v1.1big_segnoref_query32_small-cln_refnorm_sepw_refenc_dmu_0_dwn_0_dmelw_1_dnoisew_1_vqweight_0.1_vq_dist_weight_0_dila_2_pe_scale_1_ref_query_tokens32/generated_0__v7_tp1.2//denoised_sp1_00001.wav",
+                "/blob/v-zeqianju/code/tts/fs2_fromyc/mm_lm_nat/checkpoints/kai_srfixbug/product_5w_v1.1big_segnoref_query32_small-cln_refnorm_sepw_refenc_dmu_0_dwn_0_dmelw_1_dnoisew_1_vqweight_0.1_vq_dist_weight_0_dila_2_pe_scale_1_ref_query_tokens32/generated_0__v7_tp1.2//denoised_sp2_00001.wav",
+                "/blob/v-zeqianju/code/tts/fs2_fromyc/mm_lm_nat/checkpoints/kai_srfixbug/product_5w_v1.1big_segnoref_query32_small-cln_refnorm_sepw_refenc_dmu_0_dwn_0_dmelw_1_dnoisew_1_vqweight_0.1_vq_dist_weight_0_dila_2_pe_scale_1_ref_query_tokens32/generated_0__v7_tp1.2//denoised_sp3_00001.wav",
+                "/blob/v-zeqianju/code/tts/fs2_fromyc/mm_lm_nat/checkpoints/kai_srfixbug/product_5w_v1.1big_segnoref_query32_small-cln_refnorm_sepw_refenc_dmu_0_dwn_0_dmelw_1_dnoisew_1_vqweight_0.1_vq_dist_weight_0_dila_2_pe_scale_1_ref_query_tokens32/generated_0__v7_tp1.2//denoised_sp4_00001.wav",
+                "/blob/v-zeqianju/code/tts/fs2_fromyc/mm_lm_nat/checkpoints/kai_srfixbug/product_5w_v1.1big_segnoref_query32_small-cln_refnorm_sepw_refenc_dmu_0_dwn_0_dmelw_1_dnoisew_1_vqweight_0.1_vq_dist_weight_0_dila_2_pe_scale_1_ref_query_tokens32/generated_0__v7_tp1.2//denoised_sp5_00001.wav",
+                "/blob/v-zeqianju/code/tts/fs2_fromyc/mm_lm_nat/checkpoints/kai_srfixbug/product_5w_v1.1big_segnoref_query32_small-cln_refnorm_sepw_refenc_dmu_0_dwn_0_dmelw_1_dnoisew_1_vqweight_0.1_vq_dist_weight_0_dila_2_pe_scale_1_ref_query_tokens32/generated_0__v7_tp1.2//denoised_sp6_00001.wav",
+                "/blob/v-zeqianju/code/tts/fs2_fromyc/mm_lm_nat/checkpoints/kai_srfixbug/product_5w_v1.1big_segnoref_query32_small-cln_refnorm_sepw_refenc_dmu_0_dwn_0_dmelw_1_dnoisew_1_vqweight_0.1_vq_dist_weight_0_dila_2_pe_scale_1_ref_query_tokens32/generated_0__v7_tp1.2//denoised_sp7_00001.wav",
+                "/blob/v-zeqianju/code/tts/fs2_fromyc/mm_lm_nat/checkpoints/kai_srfixbug/product_5w_v1.1big_segnoref_query32_small-cln_refnorm_sepw_refenc_dmu_0_dwn_0_dmelw_1_dnoisew_1_vqweight_0.1_vq_dist_weight_0_dila_2_pe_scale_1_ref_query_tokens32/generated_0__v7_tp1.2//denoised_sp8_00001.wav",
+                "/blob/v-zeqianju/code/tts/fs2_fromyc/mm_lm_nat/checkpoints/kai_srfixbug/product_5w_v1.1big_segnoref_query32_small-cln_refnorm_sepw_refenc_dmu_0_dwn_0_dmelw_1_dnoisew_1_vqweight_0.1_vq_dist_weight_0_dila_2_pe_scale_1_ref_query_tokens32/generated_0__v7_tp1.2//denoised_sp9_00001.wav"
+            ],
+            "synthesize_phoneme_seq": [],
+            "speaker_verification_score": [
+                0.5401458740234375,
+                0.5923643112182617,
+                0.6084057092666626,
+                0.5786561965942383,
+                0.5017073750495911,
+                0.46639499068260193,
+                0.5797446966171265,
+                0.4567488133907318,
+                0.6451809406280518,
+                0.5626834630966187
+            ],
+            "speaker_verification_score_rerank": 0.6451809406280518
+        },
+        {
+            "reference_wav_path": "/blob/v-zeqianju/dataset/tts/v3_gt/00002.wav",
+            "synthesized_wav_paths": [
+                "/blob/v-zeqianju/code/tts/fs2_fromyc/mm_lm_nat/checkpoints/kai_srfixbug/product_5w_v1.1big_segnoref_query32_small-cln_refnorm_sepw_refenc_dmu_0_dwn_0_dmelw_1_dnoisew_1_vqweight_0.1_vq_dist_weight_0_dila_2_pe_scale_1_ref_query_tokens32/generated_0__v7_tp1.2//denoised_sp0_00002.wav",
+                "/blob/v-zeqianju/code/tts/fs2_fromyc/mm_lm_nat/checkpoints/kai_srfixbug/product_5w_v1.1big_segnoref_query32_small-cln_refnorm_sepw_refenc_dmu_0_dwn_0_dmelw_1_dnoisew_1_vqweight_0.1_vq_dist_weight_0_dila_2_pe_scale_1_ref_query_tokens32/generated_0__v7_tp1.2//denoised_sp1_00002.wav",
+                "/blob/v-zeqianju/code/tts/fs2_fromyc/mm_lm_nat/checkpoints/kai_srfixbug/product_5w_v1.1big_segnoref_query32_small-cln_refnorm_sepw_refenc_dmu_0_dwn_0_dmelw_1_dnoisew_1_vqweight_0.1_vq_dist_weight_0_dila_2_pe_scale_1_ref_query_tokens32/generated_0__v7_tp1.2//denoised_sp2_00002.wav",
+                "/blob/v-zeqianju/code/tts/fs2_fromyc/mm_lm_nat/checkpoints/kai_srfixbug/product_5w_v1.1big_segnoref_query32_small-cln_refnorm_sepw_refenc_dmu_0_dwn_0_dmelw_1_dnoisew_1_vqweight_0.1_vq_dist_weight_0_dila_2_pe_scale_1_ref_query_tokens32/generated_0__v7_tp1.2//denoised_sp3_00002.wav",
+                "/blob/v-zeqianju/code/tts/fs2_fromyc/mm_lm_nat/checkpoints/kai_srfixbug/product_5w_v1.1big_segnoref_query32_small-cln_refnorm_sepw_refenc_dmu_0_dwn_0_dmelw_1_dnoisew_1_vqweight_0.1_vq_dist_weight_0_dila_2_pe_scale_1_ref_query_tokens32/generated_0__v7_tp1.2//denoised_sp4_00002.wav",
+                "/blob/v-zeqianju/code/tts/fs2_fromyc/mm_lm_nat/checkpoints/kai_srfixbug/product_5w_v1.1big_segnoref_query32_small-cln_refnorm_sepw_refenc_dmu_0_dwn_0_dmelw_1_dnoisew_1_vqweight_0.1_vq_dist_weight_0_dila_2_pe_scale_1_ref_query_tokens32/generated_0__v7_tp1.2//denoised_sp5_00002.wav",
+                "/blob/v-zeqianju/code/tts/fs2_fromyc/mm_lm_nat/checkpoints/kai_srfixbug/product_5w_v1.1big_segnoref_query32_small-cln_refnorm_sepw_refenc_dmu_0_dwn_0_dmelw_1_dnoisew_1_vqweight_0.1_vq_dist_weight_0_dila_2_pe_scale_1_ref_query_tokens32/generated_0__v7_tp1.2//denoised_sp6_00002.wav",
+                "/blob/v-zeqianju/code/tts/fs2_fromyc/mm_lm_nat/checkpoints/kai_srfixbug/product_5w_v1.1big_segnoref_query32_small-cln_refnorm_sepw_refenc_dmu_0_dwn_0_dmelw_1_dnoisew_1_vqweight_0.1_vq_dist_weight_0_dila_2_pe_scale_1_ref_query_tokens32/generated_0__v7_tp1.2//denoised_sp7_00002.wav",
+                "/blob/v-zeqianju/code/tts/fs2_fromyc/mm_lm_nat/checkpoints/kai_srfixbug/product_5w_v1.1big_segnoref_query32_small-cln_refnorm_sepw_refenc_dmu_0_dwn_0_dmelw_1_dnoisew_1_vqweight_0.1_vq_dist_weight_0_dila_2_pe_scale_1_ref_query_tokens32/generated_0__v7_tp1.2//denoised_sp8_00002.wav",
+                "/blob/v-zeqianju/code/tts/fs2_fromyc/mm_lm_nat/checkpoints/kai_srfixbug/product_5w_v1.1big_segnoref_query32_small-cln_refnorm_sepw_refenc_dmu_0_dwn_0_dmelw_1_dnoisew_1_vqweight_0.1_vq_dist_weight_0_dila_2_pe_scale_1_ref_query_tokens32/generated_0__v7_tp1.2//denoised_sp9_00002.wav"
+            ],
+            "synthesize_phoneme_seq": [],
+            "speaker_verification_score": [
+                0.38809600472450256,
+                0.33984267711639404,
+                0.2813440263271332,
+                0.3360663652420044,
+                0.3387848436832428,
+                0.3860853314399719,
+                0.296720027923584,
+                0.3338356018066406,
+                0.37664347887039185,
+                0.2468932867050171
+            ],
+            "speaker_verification_score_rerank": 0.38809600472450256
+        },
+        {
+            "reference_wav_path": "/blob/v-zeqianju/dataset/tts/v3_gt/00003.wav",
+            "synthesized_wav_paths": [
+                "/blob/v-zeqianju/code/tts/fs2_fromyc/mm_lm_nat/checkpoints/kai_srfixbug/product_5w_v1.1big_segnoref_query32_small-cln_refnorm_sepw_refenc_dmu_0_dwn_0_dmelw_1_dnoisew_1_vqweight_0.1_vq_dist_weight_0_dila_2_pe_scale_1_ref_query_tokens32/generated_0__v7_tp1.2//denoised_sp0_00003.wav",
+                "/blob/v-zeqianju/code/tts/fs2_fromyc/mm_lm_nat/checkpoints/kai_srfixbug/product_5w_v1.1big_segnoref_query32_small-cln_refnorm_sepw_refenc_dmu_0_dwn_0_dmelw_1_dnoisew_1_vqweight_0.1_vq_dist_weight_0_dila_2_pe_scale_1_ref_query_tokens32/generated_0__v7_tp1.2//denoised_sp1_00003.wav",
+                "/blob/v-zeqianju/code/tts/fs2_fromyc/mm_lm_nat/checkpoints/kai_srfixbug/product_5w_v1.1big_segnoref_query32_small-cln_refnorm_sepw_refenc_dmu_0_dwn_0_dmelw_1_dnoisew_1_vqweight_0.1_vq_dist_weight_0_dila_2_pe_scale_1_ref_query_tokens32/generated_0__v7_tp1.2//denoised_sp2_00003.wav",
+                "/blob/v-zeqianju/code/tts/fs2_fromyc/mm_lm_nat/checkpoints/kai_srfixbug/product_5w_v1.1big_segnoref_query32_small-cln_refnorm_sepw_refenc_dmu_0_dwn_0_dmelw_1_dnoisew_1_vqweight_0.1_vq_dist_weight_0_dila_2_pe_scale_1_ref_query_tokens32/generated_0__v7_tp1.2//denoised_sp3_00003.wav",
+                "/blob/v-zeqianju/code/tts/fs2_fromyc/mm_lm_nat/checkpoints/kai_srfixbug/product_5w_v1.1big_segnoref_query32_small-cln_refnorm_sepw_refenc_dmu_0_dwn_0_dmelw_1_dnoisew_1_vqweight_0.1_vq_dist_weight_0_dila_2_pe_scale_1_ref_query_tokens32/generated_0__v7_tp1.2//denoised_sp4_00003.wav",
+                "/blob/v-zeqianju/code/tts/fs2_fromyc/mm_lm_nat/checkpoints/kai_srfixbug/product_5w_v1.1big_segnoref_query32_small-cln_refnorm_sepw_refenc_dmu_0_dwn_0_dmelw_1_dnoisew_1_vqweight_0.1_vq_dist_weight_0_dila_2_pe_scale_1_ref_query_tokens32/generated_0__v7_tp1.2//denoised_sp5_00003.wav",
+                "/blob/v-zeqianju/code/tts/fs2_fromyc/mm_lm_nat/checkpoints/kai_srfixbug/product_5w_v1.1big_segnoref_query32_small-cln_refnorm_sepw_refenc_dmu_0_dwn_0_dmelw_1_dnoisew_1_vqweight_0.1_vq_dist_weight_0_dila_2_pe_scale_1_ref_query_tokens32/generated_0__v7_tp1.2//denoised_sp6_00003.wav",
+                "/blob/v-zeqianju/code/tts/fs2_fromyc/mm_lm_nat/checkpoints/kai_srfixbug/product_5w_v1.1big_segnoref_query32_small-cln_refnorm_sepw_refenc_dmu_0_dwn_0_dmelw_1_dnoisew_1_vqweight_0.1_vq_dist_weight_0_dila_2_pe_scale_1_ref_query_tokens32/generated_0__v7_tp1.2//denoised_sp7_00003.wav",
+                "/blob/v-zeqianju/code/tts/fs2_fromyc/mm_lm_nat/checkpoints/kai_srfixbug/product_5w_v1.1big_segnoref_query32_small-cln_refnorm_sepw_refenc_dmu_0_dwn_0_dmelw_1_dnoisew_1_vqweight_0.1_vq_dist_weight_0_dila_2_pe_scale_1_ref_query_tokens32/generated_0__v7_tp1.2//denoised_sp8_00003.wav",
+                "/blob/v-zeqianju/code/tts/fs2_fromyc/mm_lm_nat/checkpoints/kai_srfixbug/product_5w_v1.1big_segnoref_query32_small-cln_refnorm_sepw_refenc_dmu_0_dwn_0_dmelw_1_dnoisew_1_vqweight_0.1_vq_dist_weight_0_dila_2_pe_scale_1_ref_query_tokens32/generated_0__v7_tp1.2//denoised_sp9_00003.wav"
+            ],
+            "synthesize_phoneme_seq": [],
+            "speaker_verification_score": [
+                0.2761847972869873,
+                0.22814685106277466,
+                0.20489531755447388,
+                0.2610822021961212,
+                0.1470281183719635,
+                0.2220403403043747,
+                0.274323433637619,
+                0.238123819231987,
+                0.23733006417751312,
+                0.23298026621341705
+            ],
+            "speaker_verification_score_rerank": 0.2761847972869873
+        },
+        {
+            "reference_wav_path": "/blob/v-zeqianju/dataset/tts/v3_gt/00004.wav",
+            "synthesized_wav_paths": [
+                "/blob/v-zeqianju/code/tts/fs2_fromyc/mm_lm_nat/checkpoints/kai_srfixbug/product_5w_v1.1big_segnoref_query32_small-cln_refnorm_sepw_refenc_dmu_0_dwn_0_dmelw_1_dnoisew_1_vqweight_0.1_vq_dist_weight_0_dila_2_pe_scale_1_ref_query_tokens32/generated_0__v7_tp1.2//denoised_sp0_00004.wav",
+                "/blob/v-zeqianju/code/tts/fs2_fromyc/mm_lm_nat/checkpoints/kai_srfixbug/product_5w_v1.1big_segnoref_query32_small-cln_refnorm_sepw_refenc_dmu_0_dwn_0_dmelw_1_dnoisew_1_vqweight_0.1_vq_dist_weight_0_dila_2_pe_scale_1_ref_query_tokens32/generated_0__v7_tp1.2//denoised_sp1_00004.wav",
+                "/blob/v-zeqianju/code/tts/fs2_fromyc/mm_lm_nat/checkpoints/kai_srfixbug/product_5w_v1.1big_segnoref_query32_small-cln_refnorm_sepw_refenc_dmu_0_dwn_0_dmelw_1_dnoisew_1_vqweight_0.1_vq_dist_weight_0_dila_2_pe_scale_1_ref_query_tokens32/generated_0__v7_tp1.2//denoised_sp2_00004.wav",
+                "/blob/v-zeqianju/code/tts/fs2_fromyc/mm_lm_nat/checkpoints/kai_srfixbug/product_5w_v1.1big_segnoref_query32_small-cln_refnorm_sepw_refenc_dmu_0_dwn_0_dmelw_1_dnoisew_1_vqweight_0.1_vq_dist_weight_0_dila_2_pe_scale_1_ref_query_tokens32/generated_0__v7_tp1.2//denoised_sp3_00004.wav",
+                "/blob/v-zeqianju/code/tts/fs2_fromyc/mm_lm_nat/checkpoints/kai_srfixbug/product_5w_v1.1big_segnoref_query32_small-cln_refnorm_sepw_refenc_dmu_0_dwn_0_dmelw_1_dnoisew_1_vqweight_0.1_vq_dist_weight_0_dila_2_pe_scale_1_ref_query_tokens32/generated_0__v7_tp1.2//denoised_sp4_00004.wav",
+                "/blob/v-zeqianju/code/tts/fs2_fromyc/mm_lm_nat/checkpoints/kai_srfixbug/product_5w_v1.1big_segnoref_query32_small-cln_refnorm_sepw_refenc_dmu_0_dwn_0_dmelw_1_dnoisew_1_vqweight_0.1_vq_dist_weight_0_dila_2_pe_scale_1_ref_query_tokens32/generated_0__v7_tp1.2//denoised_sp5_00004.wav",
+                "/blob/v-zeqianju/code/tts/fs2_fromyc/mm_lm_nat/checkpoints/kai_srfixbug/product_5w_v1.1big_segnoref_query32_small-cln_refnorm_sepw_refenc_dmu_0_dwn_0_dmelw_1_dnoisew_1_vqweight_0.1_vq_dist_weight_0_dila_2_pe_scale_1_ref_query_tokens32/generated_0__v7_tp1.2//denoised_sp6_00004.wav",
+                "/blob/v-zeqianju/code/tts/fs2_fromyc/mm_lm_nat/checkpoints/kai_srfixbug/product_5w_v1.1big_segnoref_query32_small-cln_refnorm_sepw_refenc_dmu_0_dwn_0_dmelw_1_dnoisew_1_vqweight_0.1_vq_dist_weight_0_dila_2_pe_scale_1_ref_query_tokens32/generated_0__v7_tp1.2//denoised_sp7_00004.wav",
+                "/blob/v-zeqianju/code/tts/fs2_fromyc/mm_lm_nat/checkpoints/kai_srfixbug/product_5w_v1.1big_segnoref_query32_small-cln_refnorm_sepw_refenc_dmu_0_dwn_0_dmelw_1_dnoisew_1_vqweight_0.1_vq_dist_weight_0_dila_2_pe_scale_1_ref_query_tokens32/generated_0__v7_tp1.2//denoised_sp8_00004.wav",
+                "/blob/v-zeqianju/code/tts/fs2_fromyc/mm_lm_nat/checkpoints/kai_srfixbug/product_5w_v1.1big_segnoref_query32_small-cln_refnorm_sepw_refenc_dmu_0_dwn_0_dmelw_1_dnoisew_1_vqweight_0.1_vq_dist_weight_0_dila_2_pe_scale_1_ref_query_tokens32/generated_0__v7_tp1.2//denoised_sp9_00004.wav"
+            ],
+            "synthesize_phoneme_seq": [],
+            "speaker_verification_score": [
+                0.4055716097354889,
+                0.3643033802509308,
+                0.3721546530723572,
+                0.37941858172416687,
+                0.4446026682853699,
+                0.4351225793361664,
+                0.4146157503128052,
+                0.34318405389785767,
+                0.4468819499015808,
+                0.5264551639556885
+            ],
+            "speaker_verification_score_rerank": 0.5264551639556885
+        },
+        {
+            "reference_wav_path": "/blob/v-zeqianju/dataset/tts/v3_gt/00005.wav",
+            "synthesized_wav_paths": [
+                "/blob/v-zeqianju/code/tts/fs2_fromyc/mm_lm_nat/checkpoints/kai_srfixbug/product_5w_v1.1big_segnoref_query32_small-cln_refnorm_sepw_refenc_dmu_0_dwn_0_dmelw_1_dnoisew_1_vqweight_0.1_vq_dist_weight_0_dila_2_pe_scale_1_ref_query_tokens32/generated_0__v7_tp1.2//denoised_sp0_00005.wav",
+                "/blob/v-zeqianju/code/tts/fs2_fromyc/mm_lm_nat/checkpoints/kai_srfixbug/product_5w_v1.1big_segnoref_query32_small-cln_refnorm_sepw_refenc_dmu_0_dwn_0_dmelw_1_dnoisew_1_vqweight_0.1_vq_dist_weight_0_dila_2_pe_scale_1_ref_query_tokens32/generated_0__v7_tp1.2//denoised_sp1_00005.wav",
+                "/blob/v-zeqianju/code/tts/fs2_fromyc/mm_lm_nat/checkpoints/kai_srfixbug/product_5w_v1.1big_segnoref_query32_small-cln_refnorm_sepw_refenc_dmu_0_dwn_0_dmelw_1_dnoisew_1_vqweight_0.1_vq_dist_weight_0_dila_2_pe_scale_1_ref_query_tokens32/generated_0__v7_tp1.2//denoised_sp2_00005.wav",
+                "/blob/v-zeqianju/code/tts/fs2_fromyc/mm_lm_nat/checkpoints/kai_srfixbug/product_5w_v1.1big_segnoref_query32_small-cln_refnorm_sepw_refenc_dmu_0_dwn_0_dmelw_1_dnoisew_1_vqweight_0.1_vq_dist_weight_0_dila_2_pe_scale_1_ref_query_tokens32/generated_0__v7_tp1.2//denoised_sp3_00005.wav",
+                "/blob/v-zeqianju/code/tts/fs2_fromyc/mm_lm_nat/checkpoints/kai_srfixbug/product_5w_v1.1big_segnoref_query32_small-cln_refnorm_sepw_refenc_dmu_0_dwn_0_dmelw_1_dnoisew_1_vqweight_0.1_vq_dist_weight_0_dila_2_pe_scale_1_ref_query_tokens32/generated_0__v7_tp1.2//denoised_sp4_00005.wav",
+                "/blob/v-zeqianju/code/tts/fs2_fromyc/mm_lm_nat/checkpoints/kai_srfixbug/product_5w_v1.1big_segnoref_query32_small-cln_refnorm_sepw_refenc_dmu_0_dwn_0_dmelw_1_dnoisew_1_vqweight_0.1_vq_dist_weight_0_dila_2_pe_scale_1_ref_query_tokens32/generated_0__v7_tp1.2//denoised_sp5_00005.wav",
+                "/blob/v-zeqianju/code/tts/fs2_fromyc/mm_lm_nat/checkpoints/kai_srfixbug/product_5w_v1.1big_segnoref_query32_small-cln_refnorm_sepw_refenc_dmu_0_dwn_0_dmelw_1_dnoisew_1_vqweight_0.1_vq_dist_weight_0_dila_2_pe_scale_1_ref_query_tokens32/generated_0__v7_tp1.2//denoised_sp6_00005.wav",
+                "/blob/v-zeqianju/code/tts/fs2_fromyc/mm_lm_nat/checkpoints/kai_srfixbug/product_5w_v1.1big_segnoref_query32_small-cln_refnorm_sepw_refenc_dmu_0_dwn_0_dmelw_1_dnoisew_1_vqweight_0.1_vq_dist_weight_0_dila_2_pe_scale_1_ref_query_tokens32/generated_0__v7_tp1.2//denoised_sp7_00005.wav",
+                "/blob/v-zeqianju/code/tts/fs2_fromyc/mm_lm_nat/checkpoints/kai_srfixbug/product_5w_v1.1big_segnoref_query32_small-cln_refnorm_sepw_refenc_dmu_0_dwn_0_dmelw_1_dnoisew_1_vqweight_0.1_vq_dist_weight_0_dila_2_pe_scale_1_ref_query_tokens32/generated_0__v7_tp1.2//denoised_sp8_00005.wav",
+                "/blob/v-zeqianju/code/tts/fs2_fromyc/mm_lm_nat/checkpoints/kai_srfixbug/product_5w_v1.1big_segnoref_query32_small-cln_refnorm_sepw_refenc_dmu_0_dwn_0_dmelw_1_dnoisew_1_vqweight_0.1_vq_dist_weight_0_dila_2_pe_scale_1_ref_query_tokens32/generated_0__v7_tp1.2//denoised_sp9_00005.wav"
+            ],
+            "synthesize_phoneme_seq": [],
+            "speaker_verification_score": [
+                0.47320374846458435,
+                0.519581139087677,
+                0.5814164876937866,
+                0.45558348298072815,
+                0.5153001546859741,
+                0.47569385170936584,
+                0.47327858209609985,
+                0.47847336530685425,
+                0.5777695178985596,
+                0.4408130645751953
+            ],
+            "speaker_verification_score_rerank": 0.5814164876937866
+        },
+        {
+            "reference_wav_path": "/blob/v-zeqianju/dataset/tts/v3_gt/00006.wav",
+            "synthesized_wav_paths": [
+                "/blob/v-zeqianju/code/tts/fs2_fromyc/mm_lm_nat/checkpoints/kai_srfixbug/product_5w_v1.1big_segnoref_query32_small-cln_refnorm_sepw_refenc_dmu_0_dwn_0_dmelw_1_dnoisew_1_vqweight_0.1_vq_dist_weight_0_dila_2_pe_scale_1_ref_query_tokens32/generated_0__v7_tp1.2//denoised_sp0_00006.wav",
+                "/blob/v-zeqianju/code/tts/fs2_fromyc/mm_lm_nat/checkpoints/kai_srfixbug/product_5w_v1.1big_segnoref_query32_small-cln_refnorm_sepw_refenc_dmu_0_dwn_0_dmelw_1_dnoisew_1_vqweight_0.1_vq_dist_weight_0_dila_2_pe_scale_1_ref_query_tokens32/generated_0__v7_tp1.2//denoised_sp1_00006.wav",
+                "/blob/v-zeqianju/code/tts/fs2_fromyc/mm_lm_nat/checkpoints/kai_srfixbug/product_5w_v1.1big_segnoref_query32_small-cln_refnorm_sepw_refenc_dmu_0_dwn_0_dmelw_1_dnoisew_1_vqweight_0.1_vq_dist_weight_0_dila_2_pe_scale_1_ref_query_tokens32/generated_0__v7_tp1.2//denoised_sp2_00006.wav",
+                "/blob/v-zeqianju/code/tts/fs2_fromyc/mm_lm_nat/checkpoints/kai_srfixbug/product_5w_v1.1big_segnoref_query32_small-cln_refnorm_sepw_refenc_dmu_0_dwn_0_dmelw_1_dnoisew_1_vqweight_0.1_vq_dist_weight_0_dila_2_pe_scale_1_ref_query_tokens32/generated_0__v7_tp1.2//denoised_sp3_00006.wav",
+                "/blob/v-zeqianju/code/tts/fs2_fromyc/mm_lm_nat/checkpoints/kai_srfixbug/product_5w_v1.1big_segnoref_query32_small-cln_refnorm_sepw_refenc_dmu_0_dwn_0_dmelw_1_dnoisew_1_vqweight_0.1_vq_dist_weight_0_dila_2_pe_scale_1_ref_query_tokens32/generated_0__v7_tp1.2//denoised_sp4_00006.wav",
+                "/blob/v-zeqianju/code/tts/fs2_fromyc/mm_lm_nat/checkpoints/kai_srfixbug/product_5w_v1.1big_segnoref_query32_small-cln_refnorm_sepw_refenc_dmu_0_dwn_0_dmelw_1_dnoisew_1_vqweight_0.1_vq_dist_weight_0_dila_2_pe_scale_1_ref_query_tokens32/generated_0__v7_tp1.2//denoised_sp5_00006.wav",
+                "/blob/v-zeqianju/code/tts/fs2_fromyc/mm_lm_nat/checkpoints/kai_srfixbug/product_5w_v1.1big_segnoref_query32_small-cln_refnorm_sepw_refenc_dmu_0_dwn_0_dmelw_1_dnoisew_1_vqweight_0.1_vq_dist_weight_0_dila_2_pe_scale_1_ref_query_tokens32/generated_0__v7_tp1.2//denoised_sp6_00006.wav",
+                "/blob/v-zeqianju/code/tts/fs2_fromyc/mm_lm_nat/checkpoints/kai_srfixbug/product_5w_v1.1big_segnoref_query32_small-cln_refnorm_sepw_refenc_dmu_0_dwn_0_dmelw_1_dnoisew_1_vqweight_0.1_vq_dist_weight_0_dila_2_pe_scale_1_ref_query_tokens32/generated_0__v7_tp1.2//denoised_sp7_00006.wav",
+                "/blob/v-zeqianju/code/tts/fs2_fromyc/mm_lm_nat/checkpoints/kai_srfixbug/product_5w_v1.1big_segnoref_query32_small-cln_refnorm_sepw_refenc_dmu_0_dwn_0_dmelw_1_dnoisew_1_vqweight_0.1_vq_dist_weight_0_dila_2_pe_scale_1_ref_query_tokens32/generated_0__v7_tp1.2//denoised_sp8_00006.wav",
+                "/blob/v-zeqianju/code/tts/fs2_fromyc/mm_lm_nat/checkpoints/kai_srfixbug/product_5w_v1.1big_segnoref_query32_small-cln_refnorm_sepw_refenc_dmu_0_dwn_0_dmelw_1_dnoisew_1_vqweight_0.1_vq_dist_weight_0_dila_2_pe_scale_1_ref_query_tokens32/generated_0__v7_tp1.2//denoised_sp9_00006.wav"
+            ],
+            "synthesize_phoneme_seq": [],
+            "speaker_verification_score": [
+                0.4967527985572815,
+                0.49490514397621155,
+                0.5084296464920044,
+                0.3871445059776306,
+                0.5016682147979736,
+                0.5329530835151672,
+                0.45963695645332336,
+                0.5083021521568298,
+                0.5391486287117004,
+                0.5025883316993713
+            ],
+            "speaker_verification_score_rerank": 0.5391486287117004
+        },
+        {
+            "reference_wav_path": "/blob/v-zeqianju/dataset/tts/v3_gt/00007.wav",
+            "synthesized_wav_paths": [
+                "/blob/v-zeqianju/code/tts/fs2_fromyc/mm_lm_nat/checkpoints/kai_srfixbug/product_5w_v1.1big_segnoref_query32_small-cln_refnorm_sepw_refenc_dmu_0_dwn_0_dmelw_1_dnoisew_1_vqweight_0.1_vq_dist_weight_0_dila_2_pe_scale_1_ref_query_tokens32/generated_0__v7_tp1.2//denoised_sp0_00007.wav",
+                "/blob/v-zeqianju/code/tts/fs2_fromyc/mm_lm_nat/checkpoints/kai_srfixbug/product_5w_v1.1big_segnoref_query32_small-cln_refnorm_sepw_refenc_dmu_0_dwn_0_dmelw_1_dnoisew_1_vqweight_0.1_vq_dist_weight_0_dila_2_pe_scale_1_ref_query_tokens32/generated_0__v7_tp1.2//denoised_sp1_00007.wav",
+                "/blob/v-zeqianju/code/tts/fs2_fromyc/mm_lm_nat/checkpoints/kai_srfixbug/product_5w_v1.1big_segnoref_query32_small-cln_refnorm_sepw_refenc_dmu_0_dwn_0_dmelw_1_dnoisew_1_vqweight_0.1_vq_dist_weight_0_dila_2_pe_scale_1_ref_query_tokens32/generated_0__v7_tp1.2//denoised_sp2_00007.wav",
+                "/blob/v-zeqianju/code/tts/fs2_fromyc/mm_lm_nat/checkpoints/kai_srfixbug/product_5w_v1.1big_segnoref_query32_small-cln_refnorm_sepw_refenc_dmu_0_dwn_0_dmelw_1_dnoisew_1_vqweight_0.1_vq_dist_weight_0_dila_2_pe_scale_1_ref_query_tokens32/generated_0__v7_tp1.2//denoised_sp3_00007.wav",
+                "/blob/v-zeqianju/code/tts/fs2_fromyc/mm_lm_nat/checkpoints/kai_srfixbug/product_5w_v1.1big_segnoref_query32_small-cln_refnorm_sepw_refenc_dmu_0_dwn_0_dmelw_1_dnoisew_1_vqweight_0.1_vq_dist_weight_0_dila_2_pe_scale_1_ref_query_tokens32/generated_0__v7_tp1.2//denoised_sp4_00007.wav",
+                "/blob/v-zeqianju/code/tts/fs2_fromyc/mm_lm_nat/checkpoints/kai_srfixbug/product_5w_v1.1big_segnoref_query32_small-cln_refnorm_sepw_refenc_dmu_0_dwn_0_dmelw_1_dnoisew_1_vqweight_0.1_vq_dist_weight_0_dila_2_pe_scale_1_ref_query_tokens32/generated_0__v7_tp1.2//denoised_sp5_00007.wav",
+                "/blob/v-zeqianju/code/tts/fs2_fromyc/mm_lm_nat/checkpoints/kai_srfixbug/product_5w_v1.1big_segnoref_query32_small-cln_refnorm_sepw_refenc_dmu_0_dwn_0_dmelw_1_dnoisew_1_vqweight_0.1_vq_dist_weight_0_dila_2_pe_scale_1_ref_query_tokens32/generated_0__v7_tp1.2//denoised_sp6_00007.wav",
+                "/blob/v-zeqianju/code/tts/fs2_fromyc/mm_lm_nat/checkpoints/kai_srfixbug/product_5w_v1.1big_segnoref_query32_small-cln_refnorm_sepw_refenc_dmu_0_dwn_0_dmelw_1_dnoisew_1_vqweight_0.1_vq_dist_weight_0_dila_2_pe_scale_1_ref_query_tokens32/generated_0__v7_tp1.2//denoised_sp7_00007.wav",
+                "/blob/v-zeqianju/code/tts/fs2_fromyc/mm_lm_nat/checkpoints/kai_srfixbug/product_5w_v1.1big_segnoref_query32_small-cln_refnorm_sepw_refenc_dmu_0_dwn_0_dmelw_1_dnoisew_1_vqweight_0.1_vq_dist_weight_0_dila_2_pe_scale_1_ref_query_tokens32/generated_0__v7_tp1.2//denoised_sp8_00007.wav",
+                "/blob/v-zeqianju/code/tts/fs2_fromyc/mm_lm_nat/checkpoints/kai_srfixbug/product_5w_v1.1big_segnoref_query32_small-cln_refnorm_sepw_refenc_dmu_0_dwn_0_dmelw_1_dnoisew_1_vqweight_0.1_vq_dist_weight_0_dila_2_pe_scale_1_ref_query_tokens32/generated_0__v7_tp1.2//denoised_sp9_00007.wav"
+            ],
+            "synthesize_phoneme_seq": [],
+            "speaker_verification_score": [
+                0.5389712452888489,
+                0.46083158254623413,
+                0.43178725242614746,
+                0.4628216028213501,
+                0.4525933563709259,
+                0.46890750527381897,
+                0.5376523733139038,
+                0.4841519594192505,
+                0.40447595715522766,
+                0.4917794466018677
+            ],
+            "speaker_verification_score_rerank": 0.5389712452888489
+        },
+        {
+            "reference_wav_path": "/blob/v-zeqianju/dataset/tts/v3_gt/00008.wav",
+            "synthesized_wav_paths": [
+                "/blob/v-zeqianju/code/tts/fs2_fromyc/mm_lm_nat/checkpoints/kai_srfixbug/product_5w_v1.1big_segnoref_query32_small-cln_refnorm_sepw_refenc_dmu_0_dwn_0_dmelw_1_dnoisew_1_vqweight_0.1_vq_dist_weight_0_dila_2_pe_scale_1_ref_query_tokens32/generated_0__v7_tp1.2//denoised_sp0_00008.wav",
+                "/blob/v-zeqianju/code/tts/fs2_fromyc/mm_lm_nat/checkpoints/kai_srfixbug/product_5w_v1.1big_segnoref_query32_small-cln_refnorm_sepw_refenc_dmu_0_dwn_0_dmelw_1_dnoisew_1_vqweight_0.1_vq_dist_weight_0_dila_2_pe_scale_1_ref_query_tokens32/generated_0__v7_tp1.2//denoised_sp1_00008.wav",
+                "/blob/v-zeqianju/code/tts/fs2_fromyc/mm_lm_nat/checkpoints/kai_srfixbug/product_5w_v1.1big_segnoref_query32_small-cln_refnorm_sepw_refenc_dmu_0_dwn_0_dmelw_1_dnoisew_1_vqweight_0.1_vq_dist_weight_0_dila_2_pe_scale_1_ref_query_tokens32/generated_0__v7_tp1.2//denoised_sp2_00008.wav",
+                "/blob/v-zeqianju/code/tts/fs2_fromyc/mm_lm_nat/checkpoints/kai_srfixbug/product_5w_v1.1big_segnoref_query32_small-cln_refnorm_sepw_refenc_dmu_0_dwn_0_dmelw_1_dnoisew_1_vqweight_0.1_vq_dist_weight_0_dila_2_pe_scale_1_ref_query_tokens32/generated_0__v7_tp1.2//denoised_sp3_00008.wav",
+                "/blob/v-zeqianju/code/tts/fs2_fromyc/mm_lm_nat/checkpoints/kai_srfixbug/product_5w_v1.1big_segnoref_query32_small-cln_refnorm_sepw_refenc_dmu_0_dwn_0_dmelw_1_dnoisew_1_vqweight_0.1_vq_dist_weight_0_dila_2_pe_scale_1_ref_query_tokens32/generated_0__v7_tp1.2//denoised_sp4_00008.wav",
+                "/blob/v-zeqianju/code/tts/fs2_fromyc/mm_lm_nat/checkpoints/kai_srfixbug/product_5w_v1.1big_segnoref_query32_small-cln_refnorm_sepw_refenc_dmu_0_dwn_0_dmelw_1_dnoisew_1_vqweight_0.1_vq_dist_weight_0_dila_2_pe_scale_1_ref_query_tokens32/generated_0__v7_tp1.2//denoised_sp5_00008.wav",
+                "/blob/v-zeqianju/code/tts/fs2_fromyc/mm_lm_nat/checkpoints/kai_srfixbug/product_5w_v1.1big_segnoref_query32_small-cln_refnorm_sepw_refenc_dmu_0_dwn_0_dmelw_1_dnoisew_1_vqweight_0.1_vq_dist_weight_0_dila_2_pe_scale_1_ref_query_tokens32/generated_0__v7_tp1.2//denoised_sp6_00008.wav",
+                "/blob/v-zeqianju/code/tts/fs2_fromyc/mm_lm_nat/checkpoints/kai_srfixbug/product_5w_v1.1big_segnoref_query32_small-cln_refnorm_sepw_refenc_dmu_0_dwn_0_dmelw_1_dnoisew_1_vqweight_0.1_vq_dist_weight_0_dila_2_pe_scale_1_ref_query_tokens32/generated_0__v7_tp1.2//denoised_sp7_00008.wav",
+                "/blob/v-zeqianju/code/tts/fs2_fromyc/mm_lm_nat/checkpoints/kai_srfixbug/product_5w_v1.1big_segnoref_query32_small-cln_refnorm_sepw_refenc_dmu_0_dwn_0_dmelw_1_dnoisew_1_vqweight_0.1_vq_dist_weight_0_dila_2_pe_scale_1_ref_query_tokens32/generated_0__v7_tp1.2//denoised_sp8_00008.wav",
+                "/blob/v-zeqianju/code/tts/fs2_fromyc/mm_lm_nat/checkpoints/kai_srfixbug/product_5w_v1.1big_segnoref_query32_small-cln_refnorm_sepw_refenc_dmu_0_dwn_0_dmelw_1_dnoisew_1_vqweight_0.1_vq_dist_weight_0_dila_2_pe_scale_1_ref_query_tokens32/generated_0__v7_tp1.2//denoised_sp9_00008.wav"
+            ],
+            "synthesize_phoneme_seq": [],
+            "speaker_verification_score": [
+                0.5271654725074768,
+                0.5280194282531738,
+                0.5232823491096497,
+                0.5323367118835449,
+                0.3851068615913391,
+                0.506730318069458,
+                0.4234679341316223,
+                0.448972225189209,
+                0.5301684141159058,
+                0.5315808653831482
+            ],
+            "speaker_verification_score_rerank": 0.5323367118835449
+        },
+        {
+            "reference_wav_path": "/blob/v-zeqianju/dataset/tts/v3_gt/00009.wav",
+            "synthesized_wav_paths": [
+                "/blob/v-zeqianju/code/tts/fs2_fromyc/mm_lm_nat/checkpoints/kai_srfixbug/product_5w_v1.1big_segnoref_query32_small-cln_refnorm_sepw_refenc_dmu_0_dwn_0_dmelw_1_dnoisew_1_vqweight_0.1_vq_dist_weight_0_dila_2_pe_scale_1_ref_query_tokens32/generated_0__v7_tp1.2//denoised_sp0_00009.wav",
+                "/blob/v-zeqianju/code/tts/fs2_fromyc/mm_lm_nat/checkpoints/kai_srfixbug/product_5w_v1.1big_segnoref_query32_small-cln_refnorm_sepw_refenc_dmu_0_dwn_0_dmelw_1_dnoisew_1_vqweight_0.1_vq_dist_weight_0_dila_2_pe_scale_1_ref_query_tokens32/generated_0__v7_tp1.2//denoised_sp1_00009.wav",
+                "/blob/v-zeqianju/code/tts/fs2_fromyc/mm_lm_nat/checkpoints/kai_srfixbug/product_5w_v1.1big_segnoref_query32_small-cln_refnorm_sepw_refenc_dmu_0_dwn_0_dmelw_1_dnoisew_1_vqweight_0.1_vq_dist_weight_0_dila_2_pe_scale_1_ref_query_tokens32/generated_0__v7_tp1.2//denoised_sp2_00009.wav",
+                "/blob/v-zeqianju/code/tts/fs2_fromyc/mm_lm_nat/checkpoints/kai_srfixbug/product_5w_v1.1big_segnoref_query32_small-cln_refnorm_sepw_refenc_dmu_0_dwn_0_dmelw_1_dnoisew_1_vqweight_0.1_vq_dist_weight_0_dila_2_pe_scale_1_ref_query_tokens32/generated_0__v7_tp1.2//denoised_sp3_00009.wav",
+                "/blob/v-zeqianju/code/tts/fs2_fromyc/mm_lm_nat/checkpoints/kai_srfixbug/product_5w_v1.1big_segnoref_query32_small-cln_refnorm_sepw_refenc_dmu_0_dwn_0_dmelw_1_dnoisew_1_vqweight_0.1_vq_dist_weight_0_dila_2_pe_scale_1_ref_query_tokens32/generated_0__v7_tp1.2//denoised_sp4_00009.wav",
+                "/blob/v-zeqianju/code/tts/fs2_fromyc/mm_lm_nat/checkpoints/kai_srfixbug/product_5w_v1.1big_segnoref_query32_small-cln_refnorm_sepw_refenc_dmu_0_dwn_0_dmelw_1_dnoisew_1_vqweight_0.1_vq_dist_weight_0_dila_2_pe_scale_1_ref_query_tokens32/generated_0__v7_tp1.2//denoised_sp5_00009.wav",
+                "/blob/v-zeqianju/code/tts/fs2_fromyc/mm_lm_nat/checkpoints/kai_srfixbug/product_5w_v1.1big_segnoref_query32_small-cln_refnorm_sepw_refenc_dmu_0_dwn_0_dmelw_1_dnoisew_1_vqweight_0.1_vq_dist_weight_0_dila_2_pe_scale_1_ref_query_tokens32/generated_0__v7_tp1.2//denoised_sp6_00009.wav",
+                "/blob/v-zeqianju/code/tts/fs2_fromyc/mm_lm_nat/checkpoints/kai_srfixbug/product_5w_v1.1big_segnoref_query32_small-cln_refnorm_sepw_refenc_dmu_0_dwn_0_dmelw_1_dnoisew_1_vqweight_0.1_vq_dist_weight_0_dila_2_pe_scale_1_ref_query_tokens32/generated_0__v7_tp1.2//denoised_sp7_00009.wav",
+                "/blob/v-zeqianju/code/tts/fs2_fromyc/mm_lm_nat/checkpoints/kai_srfixbug/product_5w_v1.1big_segnoref_query32_small-cln_refnorm_sepw_refenc_dmu_0_dwn_0_dmelw_1_dnoisew_1_vqweight_0.1_vq_dist_weight_0_dila_2_pe_scale_1_ref_query_tokens32/generated_0__v7_tp1.2//denoised_sp8_00009.wav",
+                "/blob/v-zeqianju/code/tts/fs2_fromyc/mm_lm_nat/checkpoints/kai_srfixbug/product_5w_v1.1big_segnoref_query32_small-cln_refnorm_sepw_refenc_dmu_0_dwn_0_dmelw_1_dnoisew_1_vqweight_0.1_vq_dist_weight_0_dila_2_pe_scale_1_ref_query_tokens32/generated_0__v7_tp1.2//denoised_sp9_00009.wav"
+            ],
+            "synthesize_phoneme_seq": [],
+            "speaker_verification_score": [
+                0.16954143345355988,
+                0.26880940794944763,
+                0.17218723893165588,
+                0.16462932527065277,
+                0.1740136444568634,
+                0.18486179411411285,
+                0.241721510887146,
+                0.3635929226875305,
+                0.1577601581811905,
+                0.27974289655685425
+            ],
+            "speaker_verification_score_rerank": 0.3635929226875305
+        },
+        {
+            "reference_wav_path": "/blob/v-zeqianju/dataset/tts/v3_gt/00012.wav",
+            "synthesized_wav_paths": [
+                "/blob/v-zeqianju/code/tts/fs2_fromyc/mm_lm_nat/checkpoints/kai_srfixbug/product_5w_v1.1big_segnoref_query32_small-cln_refnorm_sepw_refenc_dmu_0_dwn_0_dmelw_1_dnoisew_1_vqweight_0.1_vq_dist_weight_0_dila_2_pe_scale_1_ref_query_tokens32/generated_0__v7_tp1.2//denoised_sp0_00012.wav",
+                "/blob/v-zeqianju/code/tts/fs2_fromyc/mm_lm_nat/checkpoints/kai_srfixbug/product_5w_v1.1big_segnoref_query32_small-cln_refnorm_sepw_refenc_dmu_0_dwn_0_dmelw_1_dnoisew_1_vqweight_0.1_vq_dist_weight_0_dila_2_pe_scale_1_ref_query_tokens32/generated_0__v7_tp1.2//denoised_sp1_00012.wav",
+                "/blob/v-zeqianju/code/tts/fs2_fromyc/mm_lm_nat/checkpoints/kai_srfixbug/product_5w_v1.1big_segnoref_query32_small-cln_refnorm_sepw_refenc_dmu_0_dwn_0_dmelw_1_dnoisew_1_vqweight_0.1_vq_dist_weight_0_dila_2_pe_scale_1_ref_query_tokens32/generated_0__v7_tp1.2//denoised_sp2_00012.wav",
+                "/blob/v-zeqianju/code/tts/fs2_fromyc/mm_lm_nat/checkpoints/kai_srfixbug/product_5w_v1.1big_segnoref_query32_small-cln_refnorm_sepw_refenc_dmu_0_dwn_0_dmelw_1_dnoisew_1_vqweight_0.1_vq_dist_weight_0_dila_2_pe_scale_1_ref_query_tokens32/generated_0__v7_tp1.2//denoised_sp3_00012.wav",
+                "/blob/v-zeqianju/code/tts/fs2_fromyc/mm_lm_nat/checkpoints/kai_srfixbug/product_5w_v1.1big_segnoref_query32_small-cln_refnorm_sepw_refenc_dmu_0_dwn_0_dmelw_1_dnoisew_1_vqweight_0.1_vq_dist_weight_0_dila_2_pe_scale_1_ref_query_tokens32/generated_0__v7_tp1.2//denoised_sp4_00012.wav",
+                "/blob/v-zeqianju/code/tts/fs2_fromyc/mm_lm_nat/checkpoints/kai_srfixbug/product_5w_v1.1big_segnoref_query32_small-cln_refnorm_sepw_refenc_dmu_0_dwn_0_dmelw_1_dnoisew_1_vqweight_0.1_vq_dist_weight_0_dila_2_pe_scale_1_ref_query_tokens32/generated_0__v7_tp1.2//denoised_sp5_00012.wav",
+                "/blob/v-zeqianju/code/tts/fs2_fromyc/mm_lm_nat/checkpoints/kai_srfixbug/product_5w_v1.1big_segnoref_query32_small-cln_refnorm_sepw_refenc_dmu_0_dwn_0_dmelw_1_dnoisew_1_vqweight_0.1_vq_dist_weight_0_dila_2_pe_scale_1_ref_query_tokens32/generated_0__v7_tp1.2//denoised_sp6_00012.wav",
+                "/blob/v-zeqianju/code/tts/fs2_fromyc/mm_lm_nat/checkpoints/kai_srfixbug/product_5w_v1.1big_segnoref_query32_small-cln_refnorm_sepw_refenc_dmu_0_dwn_0_dmelw_1_dnoisew_1_vqweight_0.1_vq_dist_weight_0_dila_2_pe_scale_1_ref_query_tokens32/generated_0__v7_tp1.2//denoised_sp7_00012.wav",
+                "/blob/v-zeqianju/code/tts/fs2_fromyc/mm_lm_nat/checkpoints/kai_srfixbug/product_5w_v1.1big_segnoref_query32_small-cln_refnorm_sepw_refenc_dmu_0_dwn_0_dmelw_1_dnoisew_1_vqweight_0.1_vq_dist_weight_0_dila_2_pe_scale_1_ref_query_tokens32/generated_0__v7_tp1.2//denoised_sp8_00012.wav",
+                "/blob/v-zeqianju/code/tts/fs2_fromyc/mm_lm_nat/checkpoints/kai_srfixbug/product_5w_v1.1big_segnoref_query32_small-cln_refnorm_sepw_refenc_dmu_0_dwn_0_dmelw_1_dnoisew_1_vqweight_0.1_vq_dist_weight_0_dila_2_pe_scale_1_ref_query_tokens32/generated_0__v7_tp1.2//denoised_sp9_00012.wav"
+            ],
+            "synthesize_phoneme_seq": [],
+            "speaker_verification_score": [
+                0.25813648104667664,
+                0.2829846441745758,
+                0.3838648498058319,
+                0.22910340130329132,
+                0.18458813428878784,
+                0.2811509370803833,
+                0.17314034700393677,
+                0.18298371136188507,
+                0.29196876287460327,
+                0.22465622425079346
+            ],
+            "speaker_verification_score_rerank": 0.3838648498058319
+        },
+        {
+            "reference_wav_path": "/blob/v-zeqianju/dataset/tts/v3_gt/00013.wav",
+            "synthesized_wav_paths": [
+                "/blob/v-zeqianju/code/tts/fs2_fromyc/mm_lm_nat/checkpoints/kai_srfixbug/product_5w_v1.1big_segnoref_query32_small-cln_refnorm_sepw_refenc_dmu_0_dwn_0_dmelw_1_dnoisew_1_vqweight_0.1_vq_dist_weight_0_dila_2_pe_scale_1_ref_query_tokens32/generated_0__v7_tp1.2//denoised_sp0_00013.wav",
+                "/blob/v-zeqianju/code/tts/fs2_fromyc/mm_lm_nat/checkpoints/kai_srfixbug/product_5w_v1.1big_segnoref_query32_small-cln_refnorm_sepw_refenc_dmu_0_dwn_0_dmelw_1_dnoisew_1_vqweight_0.1_vq_dist_weight_0_dila_2_pe_scale_1_ref_query_tokens32/generated_0__v7_tp1.2//denoised_sp1_00013.wav",
+                "/blob/v-zeqianju/code/tts/fs2_fromyc/mm_lm_nat/checkpoints/kai_srfixbug/product_5w_v1.1big_segnoref_query32_small-cln_refnorm_sepw_refenc_dmu_0_dwn_0_dmelw_1_dnoisew_1_vqweight_0.1_vq_dist_weight_0_dila_2_pe_scale_1_ref_query_tokens32/generated_0__v7_tp1.2//denoised_sp2_00013.wav",
+                "/blob/v-zeqianju/code/tts/fs2_fromyc/mm_lm_nat/checkpoints/kai_srfixbug/product_5w_v1.1big_segnoref_query32_small-cln_refnorm_sepw_refenc_dmu_0_dwn_0_dmelw_1_dnoisew_1_vqweight_0.1_vq_dist_weight_0_dila_2_pe_scale_1_ref_query_tokens32/generated_0__v7_tp1.2//denoised_sp3_00013.wav",
+                "/blob/v-zeqianju/code/tts/fs2_fromyc/mm_lm_nat/checkpoints/kai_srfixbug/product_5w_v1.1big_segnoref_query32_small-cln_refnorm_sepw_refenc_dmu_0_dwn_0_dmelw_1_dnoisew_1_vqweight_0.1_vq_dist_weight_0_dila_2_pe_scale_1_ref_query_tokens32/generated_0__v7_tp1.2//denoised_sp4_00013.wav",
+                "/blob/v-zeqianju/code/tts/fs2_fromyc/mm_lm_nat/checkpoints/kai_srfixbug/product_5w_v1.1big_segnoref_query32_small-cln_refnorm_sepw_refenc_dmu_0_dwn_0_dmelw_1_dnoisew_1_vqweight_0.1_vq_dist_weight_0_dila_2_pe_scale_1_ref_query_tokens32/generated_0__v7_tp1.2//denoised_sp5_00013.wav",
+                "/blob/v-zeqianju/code/tts/fs2_fromyc/mm_lm_nat/checkpoints/kai_srfixbug/product_5w_v1.1big_segnoref_query32_small-cln_refnorm_sepw_refenc_dmu_0_dwn_0_dmelw_1_dnoisew_1_vqweight_0.1_vq_dist_weight_0_dila_2_pe_scale_1_ref_query_tokens32/generated_0__v7_tp1.2//denoised_sp6_00013.wav",
+                "/blob/v-zeqianju/code/tts/fs2_fromyc/mm_lm_nat/checkpoints/kai_srfixbug/product_5w_v1.1big_segnoref_query32_small-cln_refnorm_sepw_refenc_dmu_0_dwn_0_dmelw_1_dnoisew_1_vqweight_0.1_vq_dist_weight_0_dila_2_pe_scale_1_ref_query_tokens32/generated_0__v7_tp1.2//denoised_sp7_00013.wav",
+                "/blob/v-zeqianju/code/tts/fs2_fromyc/mm_lm_nat/checkpoints/kai_srfixbug/product_5w_v1.1big_segnoref_query32_small-cln_refnorm_sepw_refenc_dmu_0_dwn_0_dmelw_1_dnoisew_1_vqweight_0.1_vq_dist_weight_0_dila_2_pe_scale_1_ref_query_tokens32/generated_0__v7_tp1.2//denoised_sp8_00013.wav",
+                "/blob/v-zeqianju/code/tts/fs2_fromyc/mm_lm_nat/checkpoints/kai_srfixbug/product_5w_v1.1big_segnoref_query32_small-cln_refnorm_sepw_refenc_dmu_0_dwn_0_dmelw_1_dnoisew_1_vqweight_0.1_vq_dist_weight_0_dila_2_pe_scale_1_ref_query_tokens32/generated_0__v7_tp1.2//denoised_sp9_00013.wav"
+            ],
+            "synthesize_phoneme_seq": [],
+            "speaker_verification_score": [
+                0.2928869426250458,
+                0.33681923151016235,
+                0.389600545167923,
+                0.3764556050300598,
+                0.38750267028808594,
+                0.29028987884521484,
+                0.35415905714035034,
+                0.3212239742279053,
+                0.32316678762435913,
+                0.39902764558792114
+            ],
+            "speaker_verification_score_rerank": 0.39902764558792114
+        },
+        {
+            "reference_wav_path": "/blob/v-zeqianju/dataset/tts/v3_gt/00014.wav",
+            "synthesized_wav_paths": [
+                "/blob/v-zeqianju/code/tts/fs2_fromyc/mm_lm_nat/checkpoints/kai_srfixbug/product_5w_v1.1big_segnoref_query32_small-cln_refnorm_sepw_refenc_dmu_0_dwn_0_dmelw_1_dnoisew_1_vqweight_0.1_vq_dist_weight_0_dila_2_pe_scale_1_ref_query_tokens32/generated_0__v7_tp1.2//denoised_sp0_00014.wav",
+                "/blob/v-zeqianju/code/tts/fs2_fromyc/mm_lm_nat/checkpoints/kai_srfixbug/product_5w_v1.1big_segnoref_query32_small-cln_refnorm_sepw_refenc_dmu_0_dwn_0_dmelw_1_dnoisew_1_vqweight_0.1_vq_dist_weight_0_dila_2_pe_scale_1_ref_query_tokens32/generated_0__v7_tp1.2//denoised_sp1_00014.wav",
+                "/blob/v-zeqianju/code/tts/fs2_fromyc/mm_lm_nat/checkpoints/kai_srfixbug/product_5w_v1.1big_segnoref_query32_small-cln_refnorm_sepw_refenc_dmu_0_dwn_0_dmelw_1_dnoisew_1_vqweight_0.1_vq_dist_weight_0_dila_2_pe_scale_1_ref_query_tokens32/generated_0__v7_tp1.2//denoised_sp2_00014.wav",
+                "/blob/v-zeqianju/code/tts/fs2_fromyc/mm_lm_nat/checkpoints/kai_srfixbug/product_5w_v1.1big_segnoref_query32_small-cln_refnorm_sepw_refenc_dmu_0_dwn_0_dmelw_1_dnoisew_1_vqweight_0.1_vq_dist_weight_0_dila_2_pe_scale_1_ref_query_tokens32/generated_0__v7_tp1.2//denoised_sp3_00014.wav",
+                "/blob/v-zeqianju/code/tts/fs2_fromyc/mm_lm_nat/checkpoints/kai_srfixbug/product_5w_v1.1big_segnoref_query32_small-cln_refnorm_sepw_refenc_dmu_0_dwn_0_dmelw_1_dnoisew_1_vqweight_0.1_vq_dist_weight_0_dila_2_pe_scale_1_ref_query_tokens32/generated_0__v7_tp1.2//denoised_sp4_00014.wav",
+                "/blob/v-zeqianju/code/tts/fs2_fromyc/mm_lm_nat/checkpoints/kai_srfixbug/product_5w_v1.1big_segnoref_query32_small-cln_refnorm_sepw_refenc_dmu_0_dwn_0_dmelw_1_dnoisew_1_vqweight_0.1_vq_dist_weight_0_dila_2_pe_scale_1_ref_query_tokens32/generated_0__v7_tp1.2//denoised_sp5_00014.wav",
+                "/blob/v-zeqianju/code/tts/fs2_fromyc/mm_lm_nat/checkpoints/kai_srfixbug/product_5w_v1.1big_segnoref_query32_small-cln_refnorm_sepw_refenc_dmu_0_dwn_0_dmelw_1_dnoisew_1_vqweight_0.1_vq_dist_weight_0_dila_2_pe_scale_1_ref_query_tokens32/generated_0__v7_tp1.2//denoised_sp6_00014.wav",
+                "/blob/v-zeqianju/code/tts/fs2_fromyc/mm_lm_nat/checkpoints/kai_srfixbug/product_5w_v1.1big_segnoref_query32_small-cln_refnorm_sepw_refenc_dmu_0_dwn_0_dmelw_1_dnoisew_1_vqweight_0.1_vq_dist_weight_0_dila_2_pe_scale_1_ref_query_tokens32/generated_0__v7_tp1.2//denoised_sp7_00014.wav",
+                "/blob/v-zeqianju/code/tts/fs2_fromyc/mm_lm_nat/checkpoints/kai_srfixbug/product_5w_v1.1big_segnoref_query32_small-cln_refnorm_sepw_refenc_dmu_0_dwn_0_dmelw_1_dnoisew_1_vqweight_0.1_vq_dist_weight_0_dila_2_pe_scale_1_ref_query_tokens32/generated_0__v7_tp1.2//denoised_sp8_00014.wav",
+                "/blob/v-zeqianju/code/tts/fs2_fromyc/mm_lm_nat/checkpoints/kai_srfixbug/product_5w_v1.1big_segnoref_query32_small-cln_refnorm_sepw_refenc_dmu_0_dwn_0_dmelw_1_dnoisew_1_vqweight_0.1_vq_dist_weight_0_dila_2_pe_scale_1_ref_query_tokens32/generated_0__v7_tp1.2//denoised_sp9_00014.wav"
+            ],
+            "synthesize_phoneme_seq": [],
+            "speaker_verification_score": [
+                0.4471750855445862,
+                0.2950926423072815,
+                0.400597482919693,
+                0.4225200116634369,
+                0.41173315048217773,
+                0.41388213634490967,
+                0.4065439701080322,
+                0.29546916484832764,
+                0.4142855107784271,
+                0.4410756826400757
+            ],
+            "speaker_verification_score_rerank": 0.4471750855445862
+        },
+        {
+            "reference_wav_path": "/blob/v-zeqianju/dataset/tts/v3_gt/00015.wav",
+            "synthesized_wav_paths": [
+                "/blob/v-zeqianju/code/tts/fs2_fromyc/mm_lm_nat/checkpoints/kai_srfixbug/product_5w_v1.1big_segnoref_query32_small-cln_refnorm_sepw_refenc_dmu_0_dwn_0_dmelw_1_dnoisew_1_vqweight_0.1_vq_dist_weight_0_dila_2_pe_scale_1_ref_query_tokens32/generated_0__v7_tp1.2//denoised_sp0_00015.wav",
+                "/blob/v-zeqianju/code/tts/fs2_fromyc/mm_lm_nat/checkpoints/kai_srfixbug/product_5w_v1.1big_segnoref_query32_small-cln_refnorm_sepw_refenc_dmu_0_dwn_0_dmelw_1_dnoisew_1_vqweight_0.1_vq_dist_weight_0_dila_2_pe_scale_1_ref_query_tokens32/generated_0__v7_tp1.2//denoised_sp1_00015.wav",
+                "/blob/v-zeqianju/code/tts/fs2_fromyc/mm_lm_nat/checkpoints/kai_srfixbug/product_5w_v1.1big_segnoref_query32_small-cln_refnorm_sepw_refenc_dmu_0_dwn_0_dmelw_1_dnoisew_1_vqweight_0.1_vq_dist_weight_0_dila_2_pe_scale_1_ref_query_tokens32/generated_0__v7_tp1.2//denoised_sp2_00015.wav",
+                "/blob/v-zeqianju/code/tts/fs2_fromyc/mm_lm_nat/checkpoints/kai_srfixbug/product_5w_v1.1big_segnoref_query32_small-cln_refnorm_sepw_refenc_dmu_0_dwn_0_dmelw_1_dnoisew_1_vqweight_0.1_vq_dist_weight_0_dila_2_pe_scale_1_ref_query_tokens32/generated_0__v7_tp1.2//denoised_sp3_00015.wav",
+                "/blob/v-zeqianju/code/tts/fs2_fromyc/mm_lm_nat/checkpoints/kai_srfixbug/product_5w_v1.1big_segnoref_query32_small-cln_refnorm_sepw_refenc_dmu_0_dwn_0_dmelw_1_dnoisew_1_vqweight_0.1_vq_dist_weight_0_dila_2_pe_scale_1_ref_query_tokens32/generated_0__v7_tp1.2//denoised_sp4_00015.wav",
+                "/blob/v-zeqianju/code/tts/fs2_fromyc/mm_lm_nat/checkpoints/kai_srfixbug/product_5w_v1.1big_segnoref_query32_small-cln_refnorm_sepw_refenc_dmu_0_dwn_0_dmelw_1_dnoisew_1_vqweight_0.1_vq_dist_weight_0_dila_2_pe_scale_1_ref_query_tokens32/generated_0__v7_tp1.2//denoised_sp5_00015.wav",
+                "/blob/v-zeqianju/code/tts/fs2_fromyc/mm_lm_nat/checkpoints/kai_srfixbug/product_5w_v1.1big_segnoref_query32_small-cln_refnorm_sepw_refenc_dmu_0_dwn_0_dmelw_1_dnoisew_1_vqweight_0.1_vq_dist_weight_0_dila_2_pe_scale_1_ref_query_tokens32/generated_0__v7_tp1.2//denoised_sp6_00015.wav",
+                "/blob/v-zeqianju/code/tts/fs2_fromyc/mm_lm_nat/checkpoints/kai_srfixbug/product_5w_v1.1big_segnoref_query32_small-cln_refnorm_sepw_refenc_dmu_0_dwn_0_dmelw_1_dnoisew_1_vqweight_0.1_vq_dist_weight_0_dila_2_pe_scale_1_ref_query_tokens32/generated_0__v7_tp1.2//denoised_sp7_00015.wav",
+                "/blob/v-zeqianju/code/tts/fs2_fromyc/mm_lm_nat/checkpoints/kai_srfixbug/product_5w_v1.1big_segnoref_query32_small-cln_refnorm_sepw_refenc_dmu_0_dwn_0_dmelw_1_dnoisew_1_vqweight_0.1_vq_dist_weight_0_dila_2_pe_scale_1_ref_query_tokens32/generated_0__v7_tp1.2//denoised_sp8_00015.wav",
+                "/blob/v-zeqianju/code/tts/fs2_fromyc/mm_lm_nat/checkpoints/kai_srfixbug/product_5w_v1.1big_segnoref_query32_small-cln_refnorm_sepw_refenc_dmu_0_dwn_0_dmelw_1_dnoisew_1_vqweight_0.1_vq_dist_weight_0_dila_2_pe_scale_1_ref_query_tokens32/generated_0__v7_tp1.2//denoised_sp9_00015.wav"
+            ],
+            "synthesize_phoneme_seq": [],
+            "speaker_verification_score": [
+                0.36897146701812744,
+                0.3224765658378601,
+                0.3935771584510803,
+                0.3282586336135864,
+                0.3420366048812866,
+                0.3694263696670532,
+                0.3029084801673889,
+                0.19788971543312073,
+                0.3408384919166565,
+                0.312645822763443
+            ],
+            "speaker_verification_score_rerank": 0.3935771584510803
+        },
+        {
+            "reference_wav_path": "/blob/v-zeqianju/dataset/tts/v3_gt/00016.wav",
+            "synthesized_wav_paths": [
+                "/blob/v-zeqianju/code/tts/fs2_fromyc/mm_lm_nat/checkpoints/kai_srfixbug/product_5w_v1.1big_segnoref_query32_small-cln_refnorm_sepw_refenc_dmu_0_dwn_0_dmelw_1_dnoisew_1_vqweight_0.1_vq_dist_weight_0_dila_2_pe_scale_1_ref_query_tokens32/generated_0__v7_tp1.2//denoised_sp0_00016.wav",
+                "/blob/v-zeqianju/code/tts/fs2_fromyc/mm_lm_nat/checkpoints/kai_srfixbug/product_5w_v1.1big_segnoref_query32_small-cln_refnorm_sepw_refenc_dmu_0_dwn_0_dmelw_1_dnoisew_1_vqweight_0.1_vq_dist_weight_0_dila_2_pe_scale_1_ref_query_tokens32/generated_0__v7_tp1.2//denoised_sp1_00016.wav",
+                "/blob/v-zeqianju/code/tts/fs2_fromyc/mm_lm_nat/checkpoints/kai_srfixbug/product_5w_v1.1big_segnoref_query32_small-cln_refnorm_sepw_refenc_dmu_0_dwn_0_dmelw_1_dnoisew_1_vqweight_0.1_vq_dist_weight_0_dila_2_pe_scale_1_ref_query_tokens32/generated_0__v7_tp1.2//denoised_sp2_00016.wav",
+                "/blob/v-zeqianju/code/tts/fs2_fromyc/mm_lm_nat/checkpoints/kai_srfixbug/product_5w_v1.1big_segnoref_query32_small-cln_refnorm_sepw_refenc_dmu_0_dwn_0_dmelw_1_dnoisew_1_vqweight_0.1_vq_dist_weight_0_dila_2_pe_scale_1_ref_query_tokens32/generated_0__v7_tp1.2//denoised_sp3_00016.wav",
+                "/blob/v-zeqianju/code/tts/fs2_fromyc/mm_lm_nat/checkpoints/kai_srfixbug/product_5w_v1.1big_segnoref_query32_small-cln_refnorm_sepw_refenc_dmu_0_dwn_0_dmelw_1_dnoisew_1_vqweight_0.1_vq_dist_weight_0_dila_2_pe_scale_1_ref_query_tokens32/generated_0__v7_tp1.2//denoised_sp4_00016.wav",
+                "/blob/v-zeqianju/code/tts/fs2_fromyc/mm_lm_nat/checkpoints/kai_srfixbug/product_5w_v1.1big_segnoref_query32_small-cln_refnorm_sepw_refenc_dmu_0_dwn_0_dmelw_1_dnoisew_1_vqweight_0.1_vq_dist_weight_0_dila_2_pe_scale_1_ref_query_tokens32/generated_0__v7_tp1.2//denoised_sp5_00016.wav",
+                "/blob/v-zeqianju/code/tts/fs2_fromyc/mm_lm_nat/checkpoints/kai_srfixbug/product_5w_v1.1big_segnoref_query32_small-cln_refnorm_sepw_refenc_dmu_0_dwn_0_dmelw_1_dnoisew_1_vqweight_0.1_vq_dist_weight_0_dila_2_pe_scale_1_ref_query_tokens32/generated_0__v7_tp1.2//denoised_sp6_00016.wav",
+                "/blob/v-zeqianju/code/tts/fs2_fromyc/mm_lm_nat/checkpoints/kai_srfixbug/product_5w_v1.1big_segnoref_query32_small-cln_refnorm_sepw_refenc_dmu_0_dwn_0_dmelw_1_dnoisew_1_vqweight_0.1_vq_dist_weight_0_dila_2_pe_scale_1_ref_query_tokens32/generated_0__v7_tp1.2//denoised_sp7_00016.wav",
+                "/blob/v-zeqianju/code/tts/fs2_fromyc/mm_lm_nat/checkpoints/kai_srfixbug/product_5w_v1.1big_segnoref_query32_small-cln_refnorm_sepw_refenc_dmu_0_dwn_0_dmelw_1_dnoisew_1_vqweight_0.1_vq_dist_weight_0_dila_2_pe_scale_1_ref_query_tokens32/generated_0__v7_tp1.2//denoised_sp8_00016.wav",
+                "/blob/v-zeqianju/code/tts/fs2_fromyc/mm_lm_nat/checkpoints/kai_srfixbug/product_5w_v1.1big_segnoref_query32_small-cln_refnorm_sepw_refenc_dmu_0_dwn_0_dmelw_1_dnoisew_1_vqweight_0.1_vq_dist_weight_0_dila_2_pe_scale_1_ref_query_tokens32/generated_0__v7_tp1.2//denoised_sp9_00016.wav"
+            ],
+            "synthesize_phoneme_seq": [],
+            "speaker_verification_score": [
+                0.27584147453308105,
+                0.26012539863586426,
+                0.35548675060272217,
+                0.23991015553474426,
+                0.3698108196258545,
+                0.3926081955432892,
+                0.3929755687713623,
+                0.27462154626846313,
+                0.3819993734359741,
+                0.30564457178115845
+            ],
+            "speaker_verification_score_rerank": 0.3929755687713623
+        }
+    ],
+    "mean_speaker_verification_score": 0.3777904700487852,
+    "mean_speaker_verification_score_rerank": 0.4558227527886629
+}

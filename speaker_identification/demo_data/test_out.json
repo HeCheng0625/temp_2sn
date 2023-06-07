@@ -1,0 +1,14 @@
+{
+    "dataset": "demo",
+    "test_cases": [
+        {
+            "reference_wav_path": "demo_data/wav/david_faustino/hn8GyCJIfLM_0000012.wav",
+            "synthesized_wav_path": "demo_data/wav/david_faustino/xTOk1Jz-F_g_0000015.wav",
+            "synthesize_phoneme_seq": [
+                ""
+            ],
+            "speaker_verification_score": 0.5979229211807251
+        }
+    ],
+    "mean_speaker_verification_score": 0.5979229211807251
+}

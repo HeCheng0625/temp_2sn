@@ -1,0 +1,69 @@
+description: debug_manual_blob
+
+# target:
+#   service: amlk8s
+#   name: itplabrr1cl1
+#   vc: resrchvc
+
+target:
+  service: sing
+  name: msrresrchvc
+  workspace_name: msrresrchws
+
+environment:
+  registry: docker.io # docker.io
+  image: npuichigo/pytorch:pytorch1.8.1-py38-cuda11.1
+  setup:
+    # sleeping for 30 seconds to improve Philly stability
+    - sleep 30
+    # install rsync for log sync
+    - sudo apt-get update
+    - sudo apt-get install rsync -y
+    # install mpi4py for distributed training
+    - pip install --user mpi4py
+    # enabling IB in case it needs to be used
+    - export NCCL_IB_DISABLE=0
+    # maybe install the current package in develop mode
+    - pip install --user --no-deps -e .
+    # sometimes wait for other nodes to be ready
+    - sleep 10
+    # we can add any other additional set up here (e.g. exawatt preparation)
+storage:
+  blob:
+    storage_account_name: msramldl
+    container_name:  ml-dl
+    mount_dir: /blob_nouse
+
+search:
+  job_template:
+    name: exp_{experiment_name:s}_{auto:3s}
+    sku: 8C32
+    priority: high
+    submit_args:
+      constraints:
+        - tag: connectivityDomain
+          type: uniqueConstraint
+      container_args:
+        shm_size_per_gpu: 5000000000
+        shm_size: 256G
+      env:
+        MKL_THREADING_LAYER: GNU
+        SHARED_MEMORY_PERCENT: 0.5
+    command:
+      - sudo apt-get install git -y
+      - sudo chmod 777 -R /opt/conda
+      - cd /home/aiscuser # cd /home/aiscuser
+      - pwd
+      - sudo apt-get install blobfuse
+      - cp -r /blob_nouse/v-shenkai/envs/fuse_connection.cfg .
+      - sudo mkdir /blob
+      - sudo mkdir /mnt/teamdrive_tmp
+      - sudo chown aiscuser:aiscuser /mnt/teamdrive_tmp
+      - sudo chown aiscuser:aiscuser /blob
+      - blobfuse /blob --tmp-path=/mnt/teamdrive_tmp --config-file=/home/aiscuser/fuse_connection.cfg -o attr_timeout=240 -o entry_timeout=240 -o negative_timeout=120
+      - cp -r /blob/v-shenkai/envs/.bashrc .bashrc
+      - source .bashrc
+      - bash /blob/v-zeqianju/install_azcopy.sh
+      
+  type: grid
+  max_trials: 1000

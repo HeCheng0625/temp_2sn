@@ -1,0 +1,3 @@
+configs/tts/transformer_tts.yaml
+configs/tts/lj/fs2_latent.yaml
+configs/tts/product/latent_diffusion_5wdata.yaml

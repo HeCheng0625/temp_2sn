@@ -1,0 +1,324 @@
+{
+    "dataset": "v3",
+    "test_cases": [
+        {
+            "reference_wav_path": "/blob/v-zeqianju/dataset/tts/v3/00001.wav",
+            "synthesized_wav_path": "/blob/v-zeqianju/code/tts/fs2_fromyc/mm_lm_nat/checkpoints/kai_srfixbug/product_5w_v1.1big_segnoref_per4_new-clnpooling_refenc_dmu_0_dwn_0_dmelw_1_dnoisew_1_vqweight_0.1_vq_dist_weight_0_dila_2_pe_scale_1/generated_0__v6_tp1.0/denoised_00001.wav",
+            "synthesize_phoneme_seq": [],
+            "speaker_verification_score": 0.5767080187797546
+        },
+        {
+            "reference_wav_path": "/blob/v-zeqianju/dataset/tts/v3/00002.wav",
+            "synthesized_wav_path": "/blob/v-zeqianju/code/tts/fs2_fromyc/mm_lm_nat/checkpoints/kai_srfixbug/product_5w_v1.1big_segnoref_per4_new-clnpooling_refenc_dmu_0_dwn_0_dmelw_1_dnoisew_1_vqweight_0.1_vq_dist_weight_0_dila_2_pe_scale_1/generated_0__v6_tp1.0/denoised_00002.wav",
+            "synthesize_phoneme_seq": [],
+            "speaker_verification_score": 0.4367408752441406
+        },
+        {
+            "reference_wav_path": "/blob/v-zeqianju/dataset/tts/v3/00003.wav",
+            "synthesized_wav_path": "/blob/v-zeqianju/code/tts/fs2_fromyc/mm_lm_nat/checkpoints/kai_srfixbug/product_5w_v1.1big_segnoref_per4_new-clnpooling_refenc_dmu_0_dwn_0_dmelw_1_dnoisew_1_vqweight_0.1_vq_dist_weight_0_dila_2_pe_scale_1/generated_0__v6_tp1.0/denoised_00003.wav",
+            "synthesize_phoneme_seq": [],
+            "speaker_verification_score": 0.32977694272994995
+        },
+        {
+            "reference_wav_path": "/blob/v-zeqianju/dataset/tts/v3/00004.wav",
+            "synthesized_wav_path": "/blob/v-zeqianju/code/tts/fs2_fromyc/mm_lm_nat/checkpoints/kai_srfixbug/product_5w_v1.1big_segnoref_per4_new-clnpooling_refenc_dmu_0_dwn_0_dmelw_1_dnoisew_1_vqweight_0.1_vq_dist_weight_0_dila_2_pe_scale_1/generated_0__v6_tp1.0/denoised_00004.wav",
+            "synthesize_phoneme_seq": [],
+            "speaker_verification_score": 0.482794851064682
+        },
+        {
+            "reference_wav_path": "/blob/v-zeqianju/dataset/tts/v3/00005.wav",
+            "synthesized_wav_path": "/blob/v-zeqianju/code/tts/fs2_fromyc/mm_lm_nat/checkpoints/kai_srfixbug/product_5w_v1.1big_segnoref_per4_new-clnpooling_refenc_dmu_0_dwn_0_dmelw_1_dnoisew_1_vqweight_0.1_vq_dist_weight_0_dila_2_pe_scale_1/generated_0__v6_tp1.0/denoised_00005.wav",
+            "synthesize_phoneme_seq": [],
+            "speaker_verification_score": 0.5296971797943115
+        },
+        {
+            "reference_wav_path": "/blob/v-zeqianju/dataset/tts/v3/00006.wav",
+            "synthesized_wav_path": "/blob/v-zeqianju/code/tts/fs2_fromyc/mm_lm_nat/checkpoints/kai_srfixbug/product_5w_v1.1big_segnoref_per4_new-clnpooling_refenc_dmu_0_dwn_0_dmelw_1_dnoisew_1_vqweight_0.1_vq_dist_weight_0_dila_2_pe_scale_1/generated_0__v6_tp1.0/denoised_00006.wav",
+            "synthesize_phoneme_seq": [],
+            "speaker_verification_score": 0.562275230884552
+        },
+        {
+            "reference_wav_path": "/blob/v-zeqianju/dataset/tts/v3/00007.wav",
+            "synthesized_wav_path": "/blob/v-zeqianju/code/tts/fs2_fromyc/mm_lm_nat/checkpoints/kai_srfixbug/product_5w_v1.1big_segnoref_per4_new-clnpooling_refenc_dmu_0_dwn_0_dmelw_1_dnoisew_1_vqweight_0.1_vq_dist_weight_0_dila_2_pe_scale_1/generated_0__v6_tp1.0/denoised_00007.wav",
+            "synthesize_phoneme_seq": [],
+            "speaker_verification_score": 0.577359676361084
+        },
+        {
+            "reference_wav_path": "/blob/v-zeqianju/dataset/tts/v3/00008.wav",
+            "synthesized_wav_path": "/blob/v-zeqianju/code/tts/fs2_fromyc/mm_lm_nat/checkpoints/kai_srfixbug/product_5w_v1.1big_segnoref_per4_new-clnpooling_refenc_dmu_0_dwn_0_dmelw_1_dnoisew_1_vqweight_0.1_vq_dist_weight_0_dila_2_pe_scale_1/generated_0__v6_tp1.0/denoised_00008.wav",
+            "synthesize_phoneme_seq": [],
+            "speaker_verification_score": 0.5335410833358765
+        },
+        {
+            "reference_wav_path": "/blob/v-zeqianju/dataset/tts/v3/00009.wav",
+            "synthesized_wav_path": "/blob/v-zeqianju/code/tts/fs2_fromyc/mm_lm_nat/checkpoints/kai_srfixbug/product_5w_v1.1big_segnoref_per4_new-clnpooling_refenc_dmu_0_dwn_0_dmelw_1_dnoisew_1_vqweight_0.1_vq_dist_weight_0_dila_2_pe_scale_1/generated_0__v6_tp1.0/denoised_00009.wav",
+            "synthesize_phoneme_seq": [],
+            "speaker_verification_score": 0.0500415563583374
+        },
+        {
+            "reference_wav_path": "/blob/v-zeqianju/dataset/tts/v3/00010.wav",
+            "synthesized_wav_path": "/blob/v-zeqianju/code/tts/fs2_fromyc/mm_lm_nat/checkpoints/kai_srfixbug/product_5w_v1.1big_segnoref_per4_new-clnpooling_refenc_dmu_0_dwn_0_dmelw_1_dnoisew_1_vqweight_0.1_vq_dist_weight_0_dila_2_pe_scale_1/generated_0__v6_tp1.0/denoised_00010.wav",
+            "synthesize_phoneme_seq": [],
+            "speaker_verification_score": 0.2949199676513672
+        },
+        {
+            "reference_wav_path": "/blob/v-zeqianju/dataset/tts/v3/00011.wav",
+            "synthesized_wav_path": "/blob/v-zeqianju/code/tts/fs2_fromyc/mm_lm_nat/checkpoints/kai_srfixbug/product_5w_v1.1big_segnoref_per4_new-clnpooling_refenc_dmu_0_dwn_0_dmelw_1_dnoisew_1_vqweight_0.1_vq_dist_weight_0_dila_2_pe_scale_1/generated_0__v6_tp1.0/denoised_00011.wav",
+            "synthesize_phoneme_seq": [],
+            "speaker_verification_score": 0.42052358388900757
+        },
+        {
+            "reference_wav_path": "/blob/v-zeqianju/dataset/tts/v3/00012.wav",
+            "synthesized_wav_path": "/blob/v-zeqianju/code/tts/fs2_fromyc/mm_lm_nat/checkpoints/kai_srfixbug/product_5w_v1.1big_segnoref_per4_new-clnpooling_refenc_dmu_0_dwn_0_dmelw_1_dnoisew_1_vqweight_0.1_vq_dist_weight_0_dila_2_pe_scale_1/generated_0__v6_tp1.0/denoised_00012.wav",
+            "synthesize_phoneme_seq": [],
+            "speaker_verification_score": 0.3498688340187073
+        },
+        {
+            "reference_wav_path": "/blob/v-zeqianju/dataset/tts/v3/00013.wav",
+            "synthesized_wav_path": "/blob/v-zeqianju/code/tts/fs2_fromyc/mm_lm_nat/checkpoints/kai_srfixbug/product_5w_v1.1big_segnoref_per4_new-clnpooling_refenc_dmu_0_dwn_0_dmelw_1_dnoisew_1_vqweight_0.1_vq_dist_weight_0_dila_2_pe_scale_1/generated_0__v6_tp1.0/denoised_00013.wav",
+            "synthesize_phoneme_seq": [],
+            "speaker_verification_score": 0.354481041431427
+        },
+        {
+            "reference_wav_path": "/blob/v-zeqianju/dataset/tts/v3/00014.wav",
+            "synthesized_wav_path": "/blob/v-zeqianju/code/tts/fs2_fromyc/mm_lm_nat/checkpoints/kai_srfixbug/product_5w_v1.1big_segnoref_per4_new-clnpooling_refenc_dmu_0_dwn_0_dmelw_1_dnoisew_1_vqweight_0.1_vq_dist_weight_0_dila_2_pe_scale_1/generated_0__v6_tp1.0/denoised_00014.wav",
+            "synthesize_phoneme_seq": [],
+            "speaker_verification_score": 0.3570725917816162
+        },
+        {
+            "reference_wav_path": "/blob/v-zeqianju/dataset/tts/v3/00015.wav",
+            "synthesized_wav_path": "/blob/v-zeqianju/code/tts/fs2_fromyc/mm_lm_nat/checkpoints/kai_srfixbug/product_5w_v1.1big_segnoref_per4_new-clnpooling_refenc_dmu_0_dwn_0_dmelw_1_dnoisew_1_vqweight_0.1_vq_dist_weight_0_dila_2_pe_scale_1/generated_0__v6_tp1.0/denoised_00015.wav",
+            "synthesize_phoneme_seq": [],
+            "speaker_verification_score": 0.3104614019393921
+        },
+        {
+            "reference_wav_path": "/blob/v-zeqianju/dataset/tts/v3/00016.wav",
+            "synthesized_wav_path": "/blob/v-zeqianju/code/tts/fs2_fromyc/mm_lm_nat/checkpoints/kai_srfixbug/product_5w_v1.1big_segnoref_per4_new-clnpooling_refenc_dmu_0_dwn_0_dmelw_1_dnoisew_1_vqweight_0.1_vq_dist_weight_0_dila_2_pe_scale_1/generated_0__v6_tp1.0/denoised_00016.wav",
+            "synthesize_phoneme_seq": [],
+            "speaker_verification_score": 0.21257537603378296
+        },
+        {
+            "reference_wav_path": "/blob/v-zeqianju/dataset/tts/v3/00017.wav",
+            "synthesized_wav_path": "/blob/v-zeqianju/code/tts/fs2_fromyc/mm_lm_nat/checkpoints/kai_srfixbug/product_5w_v1.1big_segnoref_per4_new-clnpooling_refenc_dmu_0_dwn_0_dmelw_1_dnoisew_1_vqweight_0.1_vq_dist_weight_0_dila_2_pe_scale_1/generated_0__v6_tp1.0/denoised_00017.wav",
+            "synthesize_phoneme_seq": [],
+            "speaker_verification_score": 0.11710265278816223
+        },
+        {
+            "reference_wav_path": "/blob/v-zeqianju/dataset/tts/v3/00018.wav",
+            "synthesized_wav_path": "/blob/v-zeqianju/code/tts/fs2_fromyc/mm_lm_nat/checkpoints/kai_srfixbug/product_5w_v1.1big_segnoref_per4_new-clnpooling_refenc_dmu_0_dwn_0_dmelw_1_dnoisew_1_vqweight_0.1_vq_dist_weight_0_dila_2_pe_scale_1/generated_0__v6_tp1.0/denoised_00018.wav",
+            "synthesize_phoneme_seq": [],
+            "speaker_verification_score": 0.25789397954940796
+        },
+        {
+            "reference_wav_path": "/blob/v-zeqianju/dataset/tts/v3/00019.wav",
+            "synthesized_wav_path": "/blob/v-zeqianju/code/tts/fs2_fromyc/mm_lm_nat/checkpoints/kai_srfixbug/product_5w_v1.1big_segnoref_per4_new-clnpooling_refenc_dmu_0_dwn_0_dmelw_1_dnoisew_1_vqweight_0.1_vq_dist_weight_0_dila_2_pe_scale_1/generated_0__v6_tp1.0/denoised_00019.wav",
+            "synthesize_phoneme_seq": [],
+            "speaker_verification_score": -0.005618886090815067
+        },
+        {
+            "reference_wav_path": "/blob/v-zeqianju/dataset/tts/v3/00020.wav",
+            "synthesized_wav_path": "/blob/v-zeqianju/code/tts/fs2_fromyc/mm_lm_nat/checkpoints/kai_srfixbug/product_5w_v1.1big_segnoref_per4_new-clnpooling_refenc_dmu_0_dwn_0_dmelw_1_dnoisew_1_vqweight_0.1_vq_dist_weight_0_dila_2_pe_scale_1/generated_0__v6_tp1.0/denoised_00020.wav",
+            "synthesize_phoneme_seq": [],
+            "speaker_verification_score": 0.3533942401409149
+        },
+        {
+            "reference_wav_path": "/blob/v-zeqianju/dataset/tts/v3/00021.wav",
+            "synthesized_wav_path": "/blob/v-zeqianju/code/tts/fs2_fromyc/mm_lm_nat/checkpoints/kai_srfixbug/product_5w_v1.1big_segnoref_per4_new-clnpooling_refenc_dmu_0_dwn_0_dmelw_1_dnoisew_1_vqweight_0.1_vq_dist_weight_0_dila_2_pe_scale_1/generated_0__v6_tp1.0/denoised_00021.wav",
+            "synthesize_phoneme_seq": [],
+            "speaker_verification_score": 0.1352534294128418
+        },
+        {
+            "reference_wav_path": "/blob/v-zeqianju/dataset/tts/v3/00022.wav",
+            "synthesized_wav_path": "/blob/v-zeqianju/code/tts/fs2_fromyc/mm_lm_nat/checkpoints/kai_srfixbug/product_5w_v1.1big_segnoref_per4_new-clnpooling_refenc_dmu_0_dwn_0_dmelw_1_dnoisew_1_vqweight_0.1_vq_dist_weight_0_dila_2_pe_scale_1/generated_0__v6_tp1.0/denoised_00022.wav",
+            "synthesize_phoneme_seq": [],
+            "speaker_verification_score": 0.29932665824890137
+        },
+        {
+            "reference_wav_path": "/blob/v-zeqianju/dataset/tts/v3/00023.wav",
+            "synthesized_wav_path": "/blob/v-zeqianju/code/tts/fs2_fromyc/mm_lm_nat/checkpoints/kai_srfixbug/product_5w_v1.1big_segnoref_per4_new-clnpooling_refenc_dmu_0_dwn_0_dmelw_1_dnoisew_1_vqweight_0.1_vq_dist_weight_0_dila_2_pe_scale_1/generated_0__v6_tp1.0/denoised_00023.wav",
+            "synthesize_phoneme_seq": [],
+            "speaker_verification_score": 0.3497753143310547
+        },
+        {
+            "reference_wav_path": "/blob/v-zeqianju/dataset/tts/v3/00024.wav",
+            "synthesized_wav_path": "/blob/v-zeqianju/code/tts/fs2_fromyc/mm_lm_nat/checkpoints/kai_srfixbug/product_5w_v1.1big_segnoref_per4_new-clnpooling_refenc_dmu_0_dwn_0_dmelw_1_dnoisew_1_vqweight_0.1_vq_dist_weight_0_dila_2_pe_scale_1/generated_0__v6_tp1.0/denoised_00024.wav",
+            "synthesize_phoneme_seq": [],
+            "speaker_verification_score": 0.3282865583896637
+        },
+        {
+            "reference_wav_path": "/blob/v-zeqianju/dataset/tts/v3/00025.wav",
+            "synthesized_wav_path": "/blob/v-zeqianju/code/tts/fs2_fromyc/mm_lm_nat/checkpoints/kai_srfixbug/product_5w_v1.1big_segnoref_per4_new-clnpooling_refenc_dmu_0_dwn_0_dmelw_1_dnoisew_1_vqweight_0.1_vq_dist_weight_0_dila_2_pe_scale_1/generated_0__v6_tp1.0/denoised_00025.wav",
+            "synthesize_phoneme_seq": [],
+            "speaker_verification_score": 0.3076823353767395
+        },
+        {
+            "reference_wav_path": "/blob/v-zeqianju/dataset/tts/v3/00026.wav",
+            "synthesized_wav_path": "/blob/v-zeqianju/code/tts/fs2_fromyc/mm_lm_nat/checkpoints/kai_srfixbug/product_5w_v1.1big_segnoref_per4_new-clnpooling_refenc_dmu_0_dwn_0_dmelw_1_dnoisew_1_vqweight_0.1_vq_dist_weight_0_dila_2_pe_scale_1/generated_0__v6_tp1.0/denoised_00026.wav",
+            "synthesize_phoneme_seq": [],
+            "speaker_verification_score": 0.30560624599456787
+        },
+        {
+            "reference_wav_path": "/blob/v-zeqianju/dataset/tts/v3/00027.wav",
+            "synthesized_wav_path": "/blob/v-zeqianju/code/tts/fs2_fromyc/mm_lm_nat/checkpoints/kai_srfixbug/product_5w_v1.1big_segnoref_per4_new-clnpooling_refenc_dmu_0_dwn_0_dmelw_1_dnoisew_1_vqweight_0.1_vq_dist_weight_0_dila_2_pe_scale_1/generated_0__v6_tp1.0/denoised_00027.wav",
+            "synthesize_phoneme_seq": [],
+            "speaker_verification_score": 0.33441731333732605
+        },
+        {
+            "reference_wav_path": "/blob/v-zeqianju/dataset/tts/v3/00028.wav",
+            "synthesized_wav_path": "/blob/v-zeqianju/code/tts/fs2_fromyc/mm_lm_nat/checkpoints/kai_srfixbug/product_5w_v1.1big_segnoref_per4_new-clnpooling_refenc_dmu_0_dwn_0_dmelw_1_dnoisew_1_vqweight_0.1_vq_dist_weight_0_dila_2_pe_scale_1/generated_0__v6_tp1.0/denoised_00028.wav",
+            "synthesize_phoneme_seq": [],
+            "speaker_verification_score": 0.18838119506835938
+        },
+        {
+            "reference_wav_path": "/blob/v-zeqianju/dataset/tts/v3/00029.wav",
+            "synthesized_wav_path": "/blob/v-zeqianju/code/tts/fs2_fromyc/mm_lm_nat/checkpoints/kai_srfixbug/product_5w_v1.1big_segnoref_per4_new-clnpooling_refenc_dmu_0_dwn_0_dmelw_1_dnoisew_1_vqweight_0.1_vq_dist_weight_0_dila_2_pe_scale_1/generated_0__v6_tp1.0/denoised_00029.wav",
+            "synthesize_phoneme_seq": [],
+            "speaker_verification_score": 0.18226803839206696
+        },
+        {
+            "reference_wav_path": "/blob/v-zeqianju/dataset/tts/v3/00030.wav",
+            "synthesized_wav_path": "/blob/v-zeqianju/code/tts/fs2_fromyc/mm_lm_nat/checkpoints/kai_srfixbug/product_5w_v1.1big_segnoref_per4_new-clnpooling_refenc_dmu_0_dwn_0_dmelw_1_dnoisew_1_vqweight_0.1_vq_dist_weight_0_dila_2_pe_scale_1/generated_0__v6_tp1.0/denoised_00030.wav",
+            "synthesize_phoneme_seq": [],
+            "speaker_verification_score": 0.33586838841438293
+        },
+        {
+            "reference_wav_path": "/blob/v-zeqianju/dataset/tts/v3/00031.wav",
+            "synthesized_wav_path": "/blob/v-zeqianju/code/tts/fs2_fromyc/mm_lm_nat/checkpoints/kai_srfixbug/product_5w_v1.1big_segnoref_per4_new-clnpooling_refenc_dmu_0_dwn_0_dmelw_1_dnoisew_1_vqweight_0.1_vq_dist_weight_0_dila_2_pe_scale_1/generated_0__v6_tp1.0/denoised_00031.wav",
+            "synthesize_phoneme_seq": [],
+            "speaker_verification_score": 0.46104955673217773
+        },
+        {
+            "reference_wav_path": "/blob/v-zeqianju/dataset/tts/v3/00032.wav",
+            "synthesized_wav_path": "/blob/v-zeqianju/code/tts/fs2_fromyc/mm_lm_nat/checkpoints/kai_srfixbug/product_5w_v1.1big_segnoref_per4_new-clnpooling_refenc_dmu_0_dwn_0_dmelw_1_dnoisew_1_vqweight_0.1_vq_dist_weight_0_dila_2_pe_scale_1/generated_0__v6_tp1.0/denoised_00032.wav",
+            "synthesize_phoneme_seq": [],
+            "speaker_verification_score": 0.4264199137687683
+        },
+        {
+            "reference_wav_path": "/blob/v-zeqianju/dataset/tts/v3/00033.wav",
+            "synthesized_wav_path": "/blob/v-zeqianju/code/tts/fs2_fromyc/mm_lm_nat/checkpoints/kai_srfixbug/product_5w_v1.1big_segnoref_per4_new-clnpooling_refenc_dmu_0_dwn_0_dmelw_1_dnoisew_1_vqweight_0.1_vq_dist_weight_0_dila_2_pe_scale_1/generated_0__v6_tp1.0/denoised_00033.wav",
+            "synthesize_phoneme_seq": [],
+            "speaker_verification_score": 0.5038604736328125
+        },
+        {
+            "reference_wav_path": "/blob/v-zeqianju/dataset/tts/v3/00034.wav",
+            "synthesized_wav_path": "/blob/v-zeqianju/code/tts/fs2_fromyc/mm_lm_nat/checkpoints/kai_srfixbug/product_5w_v1.1big_segnoref_per4_new-clnpooling_refenc_dmu_0_dwn_0_dmelw_1_dnoisew_1_vqweight_0.1_vq_dist_weight_0_dila_2_pe_scale_1/generated_0__v6_tp1.0/denoised_00034.wav",
+            "synthesize_phoneme_seq": [],
+            "speaker_verification_score": 0.5913505554199219
+        },
+        {
+            "reference_wav_path": "/blob/v-zeqianju/dataset/tts/v3/00035.wav",
+            "synthesized_wav_path": "/blob/v-zeqianju/code/tts/fs2_fromyc/mm_lm_nat/checkpoints/kai_srfixbug/product_5w_v1.1big_segnoref_per4_new-clnpooling_refenc_dmu_0_dwn_0_dmelw_1_dnoisew_1_vqweight_0.1_vq_dist_weight_0_dila_2_pe_scale_1/generated_0__v6_tp1.0/denoised_00035.wav",
+            "synthesize_phoneme_seq": [],
+            "speaker_verification_score": 0.3261309266090393
+        },
+        {
+            "reference_wav_path": "/blob/v-zeqianju/dataset/tts/v3/00036.wav",
+            "synthesized_wav_path": "/blob/v-zeqianju/code/tts/fs2_fromyc/mm_lm_nat/checkpoints/kai_srfixbug/product_5w_v1.1big_segnoref_per4_new-clnpooling_refenc_dmu_0_dwn_0_dmelw_1_dnoisew_1_vqweight_0.1_vq_dist_weight_0_dila_2_pe_scale_1/generated_0__v6_tp1.0/denoised_00036.wav",
+            "synthesize_phoneme_seq": [],
+            "speaker_verification_score": 0.43865886330604553
+        },
+        {
+            "reference_wav_path": "/blob/v-zeqianju/dataset/tts/v3/00037.wav",
+            "synthesized_wav_path": "/blob/v-zeqianju/code/tts/fs2_fromyc/mm_lm_nat/checkpoints/kai_srfixbug/product_5w_v1.1big_segnoref_per4_new-clnpooling_refenc_dmu_0_dwn_0_dmelw_1_dnoisew_1_vqweight_0.1_vq_dist_weight_0_dila_2_pe_scale_1/generated_0__v6_tp1.0/denoised_00037.wav",
+            "synthesize_phoneme_seq": [],
+            "speaker_verification_score": 0.36103564500808716
+        },
+        {
+            "reference_wav_path": "/blob/v-zeqianju/dataset/tts/v3/00038.wav",
+            "synthesized_wav_path": "/blob/v-zeqianju/code/tts/fs2_fromyc/mm_lm_nat/checkpoints/kai_srfixbug/product_5w_v1.1big_segnoref_per4_new-clnpooling_refenc_dmu_0_dwn_0_dmelw_1_dnoisew_1_vqweight_0.1_vq_dist_weight_0_dila_2_pe_scale_1/generated_0__v6_tp1.0/denoised_00038.wav",
+            "synthesize_phoneme_seq": [],
+            "speaker_verification_score": 0.24394097924232483
+        },
+        {
+            "reference_wav_path": "/blob/v-zeqianju/dataset/tts/v3/00039.wav",
+            "synthesized_wav_path": "/blob/v-zeqianju/code/tts/fs2_fromyc/mm_lm_nat/checkpoints/kai_srfixbug/product_5w_v1.1big_segnoref_per4_new-clnpooling_refenc_dmu_0_dwn_0_dmelw_1_dnoisew_1_vqweight_0.1_vq_dist_weight_0_dila_2_pe_scale_1/generated_0__v6_tp1.0/denoised_00039.wav",
+            "synthesize_phoneme_seq": [],
+            "speaker_verification_score": 0.4844314455986023
+        },
+        {
+            "reference_wav_path": "/blob/v-zeqianju/dataset/tts/v3/00040.wav",
+            "synthesized_wav_path": "/blob/v-zeqianju/code/tts/fs2_fromyc/mm_lm_nat/checkpoints/kai_srfixbug/product_5w_v1.1big_segnoref_per4_new-clnpooling_refenc_dmu_0_dwn_0_dmelw_1_dnoisew_1_vqweight_0.1_vq_dist_weight_0_dila_2_pe_scale_1/generated_0__v6_tp1.0/denoised_00040.wav",
+            "synthesize_phoneme_seq": [],
+            "speaker_verification_score": 0.4019920825958252
+        },
+        {
+            "reference_wav_path": "/blob/v-zeqianju/dataset/tts/v3/00041.wav",
+            "synthesized_wav_path": "/blob/v-zeqianju/code/tts/fs2_fromyc/mm_lm_nat/checkpoints/kai_srfixbug/product_5w_v1.1big_segnoref_per4_new-clnpooling_refenc_dmu_0_dwn_0_dmelw_1_dnoisew_1_vqweight_0.1_vq_dist_weight_0_dila_2_pe_scale_1/generated_0__v6_tp1.0/denoised_00041.wav",
+            "synthesize_phoneme_seq": [],
+            "speaker_verification_score": 0.5328502655029297
+        },
+        {
+            "reference_wav_path": "/blob/v-zeqianju/dataset/tts/v3/00042.wav",
+            "synthesized_wav_path": "/blob/v-zeqianju/code/tts/fs2_fromyc/mm_lm_nat/checkpoints/kai_srfixbug/product_5w_v1.1big_segnoref_per4_new-clnpooling_refenc_dmu_0_dwn_0_dmelw_1_dnoisew_1_vqweight_0.1_vq_dist_weight_0_dila_2_pe_scale_1/generated_0__v6_tp1.0/denoised_00042.wav",
+            "synthesize_phoneme_seq": [],
+            "speaker_verification_score": 0.39947381615638733
+        },
+        {
+            "reference_wav_path": "/blob/v-zeqianju/dataset/tts/v3/00043.wav",
+            "synthesized_wav_path": "/blob/v-zeqianju/code/tts/fs2_fromyc/mm_lm_nat/checkpoints/kai_srfixbug/product_5w_v1.1big_segnoref_per4_new-clnpooling_refenc_dmu_0_dwn_0_dmelw_1_dnoisew_1_vqweight_0.1_vq_dist_weight_0_dila_2_pe_scale_1/generated_0__v6_tp1.0/denoised_00043.wav",
+            "synthesize_phoneme_seq": [],
+            "speaker_verification_score": 0.5067052841186523
+        },
+        {
+            "reference_wav_path": "/blob/v-zeqianju/dataset/tts/v3/00044.wav",
+            "synthesized_wav_path": "/blob/v-zeqianju/code/tts/fs2_fromyc/mm_lm_nat/checkpoints/kai_srfixbug/product_5w_v1.1big_segnoref_per4_new-clnpooling_refenc_dmu_0_dwn_0_dmelw_1_dnoisew_1_vqweight_0.1_vq_dist_weight_0_dila_2_pe_scale_1/generated_0__v6_tp1.0/denoised_00044.wav",
+            "synthesize_phoneme_seq": [],
+            "speaker_verification_score": 0.5506134033203125
+        },
+        {
+            "reference_wav_path": "/blob/v-zeqianju/dataset/tts/v3/00045.wav",
+            "synthesized_wav_path": "/blob/v-zeqianju/code/tts/fs2_fromyc/mm_lm_nat/checkpoints/kai_srfixbug/product_5w_v1.1big_segnoref_per4_new-clnpooling_refenc_dmu_0_dwn_0_dmelw_1_dnoisew_1_vqweight_0.1_vq_dist_weight_0_dila_2_pe_scale_1/generated_0__v6_tp1.0/denoised_00045.wav",
+            "synthesize_phoneme_seq": [],
+            "speaker_verification_score": 0.3833596110343933
+        },
+        {
+            "reference_wav_path": "/blob/v-zeqianju/dataset/tts/v3/00046.wav",
+            "synthesized_wav_path": "/blob/v-zeqianju/code/tts/fs2_fromyc/mm_lm_nat/checkpoints/kai_srfixbug/product_5w_v1.1big_segnoref_per4_new-clnpooling_refenc_dmu_0_dwn_0_dmelw_1_dnoisew_1_vqweight_0.1_vq_dist_weight_0_dila_2_pe_scale_1/generated_0__v6_tp1.0/denoised_00046.wav",
+            "synthesize_phoneme_seq": [],
+            "speaker_verification_score": 0.41007131338119507
+        },
+        {
+            "reference_wav_path": "/blob/v-zeqianju/dataset/tts/v3/00047.wav",
+            "synthesized_wav_path": "/blob/v-zeqianju/code/tts/fs2_fromyc/mm_lm_nat/checkpoints/kai_srfixbug/product_5w_v1.1big_segnoref_per4_new-clnpooling_refenc_dmu_0_dwn_0_dmelw_1_dnoisew_1_vqweight_0.1_vq_dist_weight_0_dila_2_pe_scale_1/generated_0__v6_tp1.0/denoised_00047.wav",
+            "synthesize_phoneme_seq": [],
+            "speaker_verification_score": 0.483866810798645
+        },
+        {
+            "reference_wav_path": "/blob/v-zeqianju/dataset/tts/v3/00048.wav",
+            "synthesized_wav_path": "/blob/v-zeqianju/code/tts/fs2_fromyc/mm_lm_nat/checkpoints/kai_srfixbug/product_5w_v1.1big_segnoref_per4_new-clnpooling_refenc_dmu_0_dwn_0_dmelw_1_dnoisew_1_vqweight_0.1_vq_dist_weight_0_dila_2_pe_scale_1/generated_0__v6_tp1.0/denoised_00048.wav",
+            "synthesize_phoneme_seq": [],
+            "speaker_verification_score": 0.19959193468093872
+        },
+        {
+            "reference_wav_path": "/blob/v-zeqianju/dataset/tts/v3/00049.wav",
+            "synthesized_wav_path": "/blob/v-zeqianju/code/tts/fs2_fromyc/mm_lm_nat/checkpoints/kai_srfixbug/product_5w_v1.1big_segnoref_per4_new-clnpooling_refenc_dmu_0_dwn_0_dmelw_1_dnoisew_1_vqweight_0.1_vq_dist_weight_0_dila_2_pe_scale_1/generated_0__v6_tp1.0/denoised_00049.wav",
+            "synthesize_phoneme_seq": [],
+            "speaker_verification_score": 0.47145989537239075
+        },
+        {
+            "reference_wav_path": "/blob/v-zeqianju/dataset/tts/v3/00050.wav",
+            "synthesized_wav_path": "/blob/v-zeqianju/code/tts/fs2_fromyc/mm_lm_nat/checkpoints/kai_srfixbug/product_5w_v1.1big_segnoref_per4_new-clnpooling_refenc_dmu_0_dwn_0_dmelw_1_dnoisew_1_vqweight_0.1_vq_dist_weight_0_dila_2_pe_scale_1/generated_0__v6_tp1.0/denoised_00050.wav",
+            "synthesize_phoneme_seq": [],
+            "speaker_verification_score": 0.4576731324195862
+        },
+        {
+            "reference_wav_path": "/blob/v-zeqianju/dataset/tts/v3/00051.wav",
+            "synthesized_wav_path": "/blob/v-zeqianju/code/tts/fs2_fromyc/mm_lm_nat/checkpoints/kai_srfixbug/product_5w_v1.1big_segnoref_per4_new-clnpooling_refenc_dmu_0_dwn_0_dmelw_1_dnoisew_1_vqweight_0.1_vq_dist_weight_0_dila_2_pe_scale_1/generated_0__v6_tp1.0/denoised_00051.wav",
+            "synthesize_phoneme_seq": [],
+            "speaker_verification_score": 0.40446797013282776
+        },
+        {
+            "reference_wav_path": "/blob/v-zeqianju/dataset/tts/v3/00052.wav",
+            "synthesized_wav_path": "/blob/v-zeqianju/code/tts/fs2_fromyc/mm_lm_nat/checkpoints/kai_srfixbug/product_5w_v1.1big_segnoref_per4_new-clnpooling_refenc_dmu_0_dwn_0_dmelw_1_dnoisew_1_vqweight_0.1_vq_dist_weight_0_dila_2_pe_scale_1/generated_0__v6_tp1.0/denoised_00052.wav",
+            "synthesize_phoneme_seq": [],
+            "speaker_verification_score": 0.6109813451766968
+        },
+        {
+            "reference_wav_path": "/blob/v-zeqianju/dataset/tts/v3/00053.wav",
+            "synthesized_wav_path": "/blob/v-zeqianju/code/tts/fs2_fromyc/mm_lm_nat/checkpoints/kai_srfixbug/product_5w_v1.1big_segnoref_per4_new-clnpooling_refenc_dmu_0_dwn_0_dmelw_1_dnoisew_1_vqweight_0.1_vq_dist_weight_0_dila_2_pe_scale_1/generated_0__v6_tp1.0/denoised_00053.wav",
+            "synthesize_phoneme_seq": [],
+            "speaker_verification_score": 0.4612710475921631
+        }
+    ],
+    "mean_speaker_verification_score": 0.3769760744575903
+}

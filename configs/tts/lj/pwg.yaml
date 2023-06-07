@@ -1,0 +1,5 @@
+base_config: configs/tts/pwg.yaml
+data_dir: 'data/ljspeech-pwg'
+dict_file: dict
+max_sentences: 5
+max_samples: 25600

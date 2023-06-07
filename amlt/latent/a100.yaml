@@ -1,0 +1,40 @@
+description: tts_exp
+
+# target:
+#   service: amlk8s
+#   name: itplabrr1cl1
+#   vc: resrchvc
+
+target:
+  service: sing
+  name: cogs-sing-shared-wu3
+
+environment:
+  image: chenfeikang/music:2022_7_7
+  username: chenfeikang
+
+storage:
+  blob:
+    storage_account_name: msramldl
+    container_name:  ml-dl
+    mount_dir: /blob
+
+jobs:
+  - name: tts_exp_multicard
+    sku: 2x80G8-A100-IB
+    process_count_per_node: 1
+    priority: high
+    command:
+      - sudo apt-get install git -y
+      - sudo chmod 777 -R /opt/conda
+      - cd /home/aiscuser # cd /home/aiscuser
+      - pwd
+      - cp -r /blob/v-shenkai/envs/.bashrc .bashrc
+      - source .bashrc
+      - cp -r /blob/v-shenkai/code/tts/fs2_fromyc/mm_lm_nat/fast_speech2 .
+      - cd fast_speech2
+      - git checkout ds-crossattn
+      - chmod 777 install_env.sh
+      - ./install_env.sh
+      - ./shell_scripts/latent/deepspeed/fs2diffusion_product_5wcln_nar_seg_noref_catref_phonepitch.sh
+      - sleep 1000000000;

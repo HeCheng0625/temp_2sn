@@ -1,0 +1,131 @@
+# default config
+base_config: configs/tts/fs2.yaml
+data_dir: 'data/ljspeech_discrete'
+raw_data_dir: 'data/raw/LJSpeech-1.1'
+token_filename: 'kai/codec_decode_vq2id_res16_tmp.txt'
+
+load_opt: true
+# model
+dropout: 0.2
+max_tokens: 50000
+val_check_interval: 1000
+lambda_energy: 0.0
+
+max_frames: 1000
+max_input_tokens: 200
+audio_num_mel_bins: 16
+audio_sample_rate: 16000
+hop_size: 200  # For 22050Hz, 275 ~= 12.5 ms (0.0125 * sample_rate)
+win_size:  1024  # For 22050Hz, 1100 ~= 50 ms (If None, win_size: n_fft) (0.05 * sample_rate)
+fmin: 80  # Set this to 55 if your speaker is male! if female, 95 should help taking off noise. (To test depending on dataset. Pitch info: male~[65, 260], female~[100, 525])
+fmax: 7600  # To be increased/reduced depending on data.
+n_fft: 1024  # Extra window size is filled with 0 paddings to match this parameter
+remove_bos: false
+remove_eos: false
+online_prepocess: false
+
+predict_first_ndim: 3
+codebook_size: 1024
+parallel_predict: false
+vqemb_predict: true
+vqemb_size: 256
+vq_ckpt: '/blob/v-yuancwang/rvq_hop200.pt'
+vocoder_ckpt: '/blob/v-yuancwang/generator_hop200.pt'
+
+pred_pitch_after: -1
+log_interval: 500
+use_amp: true
+
+
+
+
+use_random_segment_as_ref: false
+ref_left_pad: false
+
+
+
+# prior
+prior_use_cln: false
+
+duration_predictor_type: "conv" # "ar_transformer" #default: conv
+duration_layers: 2 #conv layers
+duration_transformer_arch: "14 14 14 14 14 14"
+
+pitch_predictor_type: "conv" # "ar_transformer" #default: conv
+pitch_layers: 5   #conv layer
+pitch_transformer_arch: "14 14 14 14 14 14"
+ref_random_clip: false
+ref_enc_arch: ""
+ref_query_tokens: 0
+ref_query_norm: false
+predictor_use_res: false
+predictor_use_cattention: false
+predictor_ca_per_layer: 1
+
+query_attn_type: "vanilla_mha"
+
+# wavnet
+diffusion_has_sattn: false
+diffusion_sa_per_layer: 1
+diffusion_ca_per_layer: 1
+diffusion_use_film: false
+residual_layers: 20
+residual_channels: 256
+dilation_cycle_length: 1
+use_spk_prompt: false
+
+# diffusion
+diffusion_type: "default"
+incontext: false
+apply_pitch_on_x0: false
+
+skip_decoder: 0
+prior_weight: 1.0
+
+detach_mu: 0
+detach_wavenet: 0
+diff_velocity_weight: 1.0
+diffusion_mel_weight: 1.0
+diff_loss_noise_weight: 1.0
+diffusion_loss_type: l1
+predictor_type: "wavnet"
+beta_min: 0.05
+beta_max: 20.0
+pe_scale: 1  # 1 for `grad-tts-old.pt` checkpoint
+
+vq_quantizer_weight: 1.0
+vq_dist_weight: 1.0
+
+num_sanity_val_steps: 0
+
+# transformer estimator
+transformer_esitimator_arch: '13 13 13 13 13 13' # no conv1d
+transformer_hidden: 256
+noise_factor: 1.0
+sigma: 1.0
+
+noise_std: true
+diff_attn_type: "default"
+
+
+
+#### for inference
+
+in_context_infer: false
+infer_laoban: false
+stoc: false
+temp: 1.8
+ref_norm: false
+
+phoneme_f0_min: 50.0
+phoneme_f0_max: 1110.0
+phoneme_f0_bin: 256
+
+phoneme_pitch_uv_shift_1: false
+n_samples: 0
+infer_style: "default"
+
+
+infer_timesteps: 150
+
+diff_transformer_num_head: 8

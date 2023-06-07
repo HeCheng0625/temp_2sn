@@ -1,0 +1,15 @@
+# task
+base_config: configs/tts/transformer_tts.yaml
+
+#############
+# dataset
+#############
+data_dir: 'data/ljspeech'
+raw_data_dir: 'data/raw/LJSpeech-1.1'
+loud_norm: false
+
+enc_ffn_kernel_size: 9
+dec_ffn_kernel_size: 9
+hidden_size: 256
+prenet_hidden_size: 256
+max_tokens: 20000

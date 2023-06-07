@@ -1,0 +1,324 @@
+{
+    "dataset": "v3",
+    "test_cases": [
+        {
+            "reference_wav_path": "/blob/v-zeqianju/dataset/tts/v3/00001.wav",
+            "synthesized_wav_path": "/blob/v-zeqianju/dataset/tts/v3_valle/00001.wav",
+            "synthesize_phoneme_seq": [],
+            "speaker_verification_score": 0.7240391969680786
+        },
+        {
+            "reference_wav_path": "/blob/v-zeqianju/dataset/tts/v3/00002.wav",
+            "synthesized_wav_path": "/blob/v-zeqianju/dataset/tts/v3_valle/00002.wav",
+            "synthesize_phoneme_seq": [],
+            "speaker_verification_score": 0.5468450784683228
+        },
+        {
+            "reference_wav_path": "/blob/v-zeqianju/dataset/tts/v3/00003.wav",
+            "synthesized_wav_path": "/blob/v-zeqianju/dataset/tts/v3_valle/00003.wav",
+            "synthesize_phoneme_seq": [],
+            "speaker_verification_score": 0.407905638217926
+        },
+        {
+            "reference_wav_path": "/blob/v-zeqianju/dataset/tts/v3/00004.wav",
+            "synthesized_wav_path": "/blob/v-zeqianju/dataset/tts/v3_valle/00004.wav",
+            "synthesize_phoneme_seq": [],
+            "speaker_verification_score": 0.4862929582595825
+        },
+        {
+            "reference_wav_path": "/blob/v-zeqianju/dataset/tts/v3/00005.wav",
+            "synthesized_wav_path": "/blob/v-zeqianju/dataset/tts/v3_valle/00005.wav",
+            "synthesize_phoneme_seq": [],
+            "speaker_verification_score": 0.6604912281036377
+        },
+        {
+            "reference_wav_path": "/blob/v-zeqianju/dataset/tts/v3/00006.wav",
+            "synthesized_wav_path": "/blob/v-zeqianju/dataset/tts/v3_valle/00006.wav",
+            "synthesize_phoneme_seq": [],
+            "speaker_verification_score": 0.6358970403671265
+        },
+        {
+            "reference_wav_path": "/blob/v-zeqianju/dataset/tts/v3/00007.wav",
+            "synthesized_wav_path": "/blob/v-zeqianju/dataset/tts/v3_valle/00007.wav",
+            "synthesize_phoneme_seq": [],
+            "speaker_verification_score": 0.730095386505127
+        },
+        {
+            "reference_wav_path": "/blob/v-zeqianju/dataset/tts/v3/00008.wav",
+            "synthesized_wav_path": "/blob/v-zeqianju/dataset/tts/v3_valle/00008.wav",
+            "synthesize_phoneme_seq": [],
+            "speaker_verification_score": 0.7233350276947021
+        },
+        {
+            "reference_wav_path": "/blob/v-zeqianju/dataset/tts/v3/00009.wav",
+            "synthesized_wav_path": "/blob/v-zeqianju/dataset/tts/v3_valle/00009.wav",
+            "synthesize_phoneme_seq": [],
+            "speaker_verification_score": 0.4221976697444916
+        },
+        {
+            "reference_wav_path": "/blob/v-zeqianju/dataset/tts/v3/00010.wav",
+            "synthesized_wav_path": "/blob/v-zeqianju/dataset/tts/v3_valle/00010.wav",
+            "synthesize_phoneme_seq": [],
+            "speaker_verification_score": 0.4378560483455658
+        },
+        {
+            "reference_wav_path": "/blob/v-zeqianju/dataset/tts/v3/00011.wav",
+            "synthesized_wav_path": "/blob/v-zeqianju/dataset/tts/v3_valle/00011.wav",
+            "synthesize_phoneme_seq": [],
+            "speaker_verification_score": 0.5302519798278809
+        },
+        {
+            "reference_wav_path": "/blob/v-zeqianju/dataset/tts/v3/00012.wav",
+            "synthesized_wav_path": "/blob/v-zeqianju/dataset/tts/v3_valle/00012.wav",
+            "synthesize_phoneme_seq": [],
+            "speaker_verification_score": 0.46593350172042847
+        },
+        {
+            "reference_wav_path": "/blob/v-zeqianju/dataset/tts/v3/00013.wav",
+            "synthesized_wav_path": "/blob/v-zeqianju/dataset/tts/v3_valle/00013.wav",
+            "synthesize_phoneme_seq": [],
+            "speaker_verification_score": 0.4570887088775635
+        },
+        {
+            "reference_wav_path": "/blob/v-zeqianju/dataset/tts/v3/00014.wav",
+            "synthesized_wav_path": "/blob/v-zeqianju/dataset/tts/v3_valle/00014.wav",
+            "synthesize_phoneme_seq": [],
+            "speaker_verification_score": 0.48109060525894165
+        },
+        {
+            "reference_wav_path": "/blob/v-zeqianju/dataset/tts/v3/00015.wav",
+            "synthesized_wav_path": "/blob/v-zeqianju/dataset/tts/v3_valle/00015.wav",
+            "synthesize_phoneme_seq": [],
+            "speaker_verification_score": 0.39977043867111206
+        },
+        {
+            "reference_wav_path": "/blob/v-zeqianju/dataset/tts/v3/00016.wav",
+            "synthesized_wav_path": "/blob/v-zeqianju/dataset/tts/v3_valle/00016.wav",
+            "synthesize_phoneme_seq": [],
+            "speaker_verification_score": 0.391681432723999
+        },
+        {
+            "reference_wav_path": "/blob/v-zeqianju/dataset/tts/v3/00017.wav",
+            "synthesized_wav_path": "/blob/v-zeqianju/dataset/tts/v3_valle/00017.wav",
+            "synthesize_phoneme_seq": [],
+            "speaker_verification_score": 0.32526475191116333
+        },
+        {
+            "reference_wav_path": "/blob/v-zeqianju/dataset/tts/v3/00018.wav",
+            "synthesized_wav_path": "/blob/v-zeqianju/dataset/tts/v3_valle/00018.wav",
+            "synthesize_phoneme_seq": [],
+            "speaker_verification_score": 0.38835757970809937
+        },
+        {
+            "reference_wav_path": "/blob/v-zeqianju/dataset/tts/v3/00019.wav",
+            "synthesized_wav_path": "/blob/v-zeqianju/dataset/tts/v3_valle/00019.wav",
+            "synthesize_phoneme_seq": [],
+            "speaker_verification_score": 0.2602783441543579
+        },
+        {
+            "reference_wav_path": "/blob/v-zeqianju/dataset/tts/v3/00020.wav",
+            "synthesized_wav_path": "/blob/v-zeqianju/dataset/tts/v3_valle/00020.wav",
+            "synthesize_phoneme_seq": [],
+            "speaker_verification_score": 0.5479965209960938
+        },
+        {
+            "reference_wav_path": "/blob/v-zeqianju/dataset/tts/v3/00021.wav",
+            "synthesized_wav_path": "/blob/v-zeqianju/dataset/tts/v3_valle/00021.wav",
+            "synthesize_phoneme_seq": [],
+            "speaker_verification_score": 0.21015383303165436
+        },
+        {
+            "reference_wav_path": "/blob/v-zeqianju/dataset/tts/v3/00022.wav",
+            "synthesized_wav_path": "/blob/v-zeqianju/dataset/tts/v3_valle/00022.wav",
+            "synthesize_phoneme_seq": [],
+            "speaker_verification_score": 0.5845685005187988
+        },
+        {
+            "reference_wav_path": "/blob/v-zeqianju/dataset/tts/v3/00023.wav",
+            "synthesized_wav_path": "/blob/v-zeqianju/dataset/tts/v3_valle/00023.wav",
+            "synthesize_phoneme_seq": [],
+            "speaker_verification_score": 0.6225598454475403
+        },
+        {
+            "reference_wav_path": "/blob/v-zeqianju/dataset/tts/v3/00024.wav",
+            "synthesized_wav_path": "/blob/v-zeqianju/dataset/tts/v3_valle/00024.wav",
+            "synthesize_phoneme_seq": [],
+            "speaker_verification_score": 0.2529114782810211
+        },
+        {
+            "reference_wav_path": "/blob/v-zeqianju/dataset/tts/v3/00025.wav",
+            "synthesized_wav_path": "/blob/v-zeqianju/dataset/tts/v3_valle/00025.wav",
+            "synthesize_phoneme_seq": [],
+            "speaker_verification_score": 0.39975816011428833
+        },
+        {
+            "reference_wav_path": "/blob/v-zeqianju/dataset/tts/v3/00026.wav",
+            "synthesized_wav_path": "/blob/v-zeqianju/dataset/tts/v3_valle/00026.wav",
+            "synthesize_phoneme_seq": [],
+            "speaker_verification_score": 0.33835649490356445
+        },
+        {
+            "reference_wav_path": "/blob/v-zeqianju/dataset/tts/v3/00027.wav",
+            "synthesized_wav_path": "/blob/v-zeqianju/dataset/tts/v3_valle/00027.wav",
+            "synthesize_phoneme_seq": [],
+            "speaker_verification_score": 0.49865207076072693
+        },
+        {
+            "reference_wav_path": "/blob/v-zeqianju/dataset/tts/v3/00028.wav",
+            "synthesized_wav_path": "/blob/v-zeqianju/dataset/tts/v3_valle/00028.wav",
+            "synthesize_phoneme_seq": [],
+            "speaker_verification_score": 0.4177268147468567
+        },
+        {
+            "reference_wav_path": "/blob/v-zeqianju/dataset/tts/v3/00029.wav",
+            "synthesized_wav_path": "/blob/v-zeqianju/dataset/tts/v3_valle/00029.wav",
+            "synthesize_phoneme_seq": [],
+            "speaker_verification_score": 0.3365263044834137
+        },
+        {
+            "reference_wav_path": "/blob/v-zeqianju/dataset/tts/v3/00030.wav",
+            "synthesized_wav_path": "/blob/v-zeqianju/dataset/tts/v3_valle/00030.wav",
+            "synthesize_phoneme_seq": [],
+            "speaker_verification_score": 0.63829505443573
+        },
+        {
+            "reference_wav_path": "/blob/v-zeqianju/dataset/tts/v3/00031.wav",
+            "synthesized_wav_path": "/blob/v-zeqianju/dataset/tts/v3_valle/00031.wav",
+            "synthesize_phoneme_seq": [],
+            "speaker_verification_score": 0.6897710561752319
+        },
+        {
+            "reference_wav_path": "/blob/v-zeqianju/dataset/tts/v3/00032.wav",
+            "synthesized_wav_path": "/blob/v-zeqianju/dataset/tts/v3_valle/00032.wav",
+            "synthesize_phoneme_seq": [],
+            "speaker_verification_score": 0.6949271559715271
+        },
+        {
+            "reference_wav_path": "/blob/v-zeqianju/dataset/tts/v3/00033.wav",
+            "synthesized_wav_path": "/blob/v-zeqianju/dataset/tts/v3_valle/00033.wav",
+            "synthesize_phoneme_seq": [],
+            "speaker_verification_score": 0.7726450562477112
+        },
+        {
+            "reference_wav_path": "/blob/v-zeqianju/dataset/tts/v3/00034.wav",
+            "synthesized_wav_path": "/blob/v-zeqianju/dataset/tts/v3_valle/00034.wav",
+            "synthesize_phoneme_seq": [],
+            "speaker_verification_score": 0.7136023640632629
+        },
+        {
+            "reference_wav_path": "/blob/v-zeqianju/dataset/tts/v3/00035.wav",
+            "synthesized_wav_path": "/blob/v-zeqianju/dataset/tts/v3_valle/00035.wav",
+            "synthesize_phoneme_seq": [],
+            "speaker_verification_score": 0.5931403636932373
+        },
+        {
+            "reference_wav_path": "/blob/v-zeqianju/dataset/tts/v3/00036.wav",
+            "synthesized_wav_path": "/blob/v-zeqianju/dataset/tts/v3_valle/00036.wav",
+            "synthesize_phoneme_seq": [],
+            "speaker_verification_score": 0.7461133003234863
+        },
+        {
+            "reference_wav_path": "/blob/v-zeqianju/dataset/tts/v3/00037.wav",
+            "synthesized_wav_path": "/blob/v-zeqianju/dataset/tts/v3_valle/00037.wav",
+            "synthesize_phoneme_seq": [],
+            "speaker_verification_score": 0.6864733099937439
+        },
+        {
+            "reference_wav_path": "/blob/v-zeqianju/dataset/tts/v3/00038.wav",
+            "synthesized_wav_path": "/blob/v-zeqianju/dataset/tts/v3_valle/00038.wav",
+            "synthesize_phoneme_seq": [],
+            "speaker_verification_score": 0.6178884506225586
+        },
+        {
+            "reference_wav_path": "/blob/v-zeqianju/dataset/tts/v3/00039.wav",
+            "synthesized_wav_path": "/blob/v-zeqianju/dataset/tts/v3_valle/00039.wav",
+            "synthesize_phoneme_seq": [],
+            "speaker_verification_score": 0.6774463653564453
+        },
+        {
+            "reference_wav_path": "/blob/v-zeqianju/dataset/tts/v3/00040.wav",
+            "synthesized_wav_path": "/blob/v-zeqianju/dataset/tts/v3_valle/00040.wav",
+            "synthesize_phoneme_seq": [],
+            "speaker_verification_score": 0.6450223922729492
+        },
+        {
+            "reference_wav_path": "/blob/v-zeqianju/dataset/tts/v3/00041.wav",
+            "synthesized_wav_path": "/blob/v-zeqianju/dataset/tts/v3_valle/00041.wav",
+            "synthesize_phoneme_seq": [],
+            "speaker_verification_score": 0.7128864526748657
+        },
+        {
+            "reference_wav_path": "/blob/v-zeqianju/dataset/tts/v3/00042.wav",
+            "synthesized_wav_path": "/blob/v-zeqianju/dataset/tts/v3_valle/00042.wav",
+            "synthesize_phoneme_seq": [],
+            "speaker_verification_score": 0.649857759475708
+        },
+        {
+            "reference_wav_path": "/blob/v-zeqianju/dataset/tts/v3/00043.wav",
+            "synthesized_wav_path": "/blob/v-zeqianju/dataset/tts/v3_valle/00043.wav",
+            "synthesize_phoneme_seq": [],
+            "speaker_verification_score": 0.6313531398773193
+        },
+        {
+            "reference_wav_path": "/blob/v-zeqianju/dataset/tts/v3/00044.wav",
+            "synthesized_wav_path": "/blob/v-zeqianju/dataset/tts/v3_valle/00044.wav",
+            "synthesize_phoneme_seq": [],
+            "speaker_verification_score": 0.6794071793556213
+        },
+        {
+            "reference_wav_path": "/blob/v-zeqianju/dataset/tts/v3/00045.wav",
+            "synthesized_wav_path": "/blob/v-zeqianju/dataset/tts/v3_valle/00045.wav",
+            "synthesize_phoneme_seq": [],
+            "speaker_verification_score": 0.6928818225860596
+        },
+        {
+            "reference_wav_path": "/blob/v-zeqianju/dataset/tts/v3/00046.wav",
+            "synthesized_wav_path": "/blob/v-zeqianju/dataset/tts/v3_valle/00046.wav",
+            "synthesize_phoneme_seq": [],
+            "speaker_verification_score": 0.5901317596435547
+        },
+        {
+            "reference_wav_path": "/blob/v-zeqianju/dataset/tts/v3/00047.wav",
+            "synthesized_wav_path": "/blob/v-zeqianju/dataset/tts/v3_valle/00047.wav",
+            "synthesize_phoneme_seq": [],
+            "speaker_verification_score": 0.7281246185302734
+        },
+        {
+            "reference_wav_path": "/blob/v-zeqianju/dataset/tts/v3/00048.wav",
+            "synthesized_wav_path": "/blob/v-zeqianju/dataset/tts/v3_valle/00048.wav",
+            "synthesize_phoneme_seq": [],
+            "speaker_verification_score": 0.6588512659072876
+        },
+        {
+            "reference_wav_path": "/blob/v-zeqianju/dataset/tts/v3/00049.wav",
+            "synthesized_wav_path": "/blob/v-zeqianju/dataset/tts/v3_valle/00049.wav",
+            "synthesize_phoneme_seq": [],
+            "speaker_verification_score": 0.5986232757568359
+        },
+        {
+            "reference_wav_path": "/blob/v-zeqianju/dataset/tts/v3/00050.wav",
+            "synthesized_wav_path": "/blob/v-zeqianju/dataset/tts/v3_valle/00050.wav",
+            "synthesize_phoneme_seq": [],
+            "speaker_verification_score": 0.6053333282470703
+        },
+        {
+            "reference_wav_path": "/blob/v-zeqianju/dataset/tts/v3/00051.wav",
+            "synthesized_wav_path": "/blob/v-zeqianju/dataset/tts/v3_valle/00051.wav",
+            "synthesize_phoneme_seq": [],
+            "speaker_verification_score": 0.6995213031768799
+        },
+        {
+            "reference_wav_path": "/blob/v-zeqianju/dataset/tts/v3/00052.wav",
+            "synthesized_wav_path": "/blob/v-zeqianju/dataset/tts/v3_valle/00052.wav",
+            "synthesize_phoneme_seq": [],
+            "speaker_verification_score": 0.733613133430481
+        },
+        {
+            "reference_wav_path": "/blob/v-zeqianju/dataset/tts/v3/00053.wav",
+            "synthesized_wav_path": "/blob/v-zeqianju/dataset/tts/v3_valle/00053.wav",
+            "synthesize_phoneme_seq": [],
+            "speaker_verification_score": 0.6426105499267578
+        }
+    ],
+    "mean_speaker_verification_score": 0.5619321338972956
+}

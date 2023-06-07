@@ -1,0 +1,16 @@
+# default config
+base_config: configs/tts/lj/fs2_latent.yaml
+
+test_set_name: non-zero_shot_test
+### f0 statistics
+
+f0_mean: 162.89923018912228
+f0_std: 62.00352534800326
+
+max_frames: 3000
+max_input_tokens: 600
+
+dur_cln: true
+pitch_cln: true
+
+

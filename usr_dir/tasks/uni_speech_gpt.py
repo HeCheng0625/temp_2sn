@@ -1,0 +1,1003 @@
+import matplotlib
+
+matplotlib.use('Agg')
+from utils.pl_utils import data_loader
+import os
+from multiprocessing.pool import Pool
+from tqdm import tqdm
+
+from modules.tts_modules import DurationPredictorLoss
+from utils.hparams import hparams
+
+from utils.plot import plot_to_figure
+from utils.world_utils import restore_pitch, process_f0
+
+import numpy as np
+
+
+from usr_dir.module.diffusion_tts import DiffusionTTS
+from tasks.transformer_tts import TransformerTtsTask
+from usr_dir.datasets.latent_dataset import FastSpeechDataset
+
+
+import torch
+import torch.optim
+import torch.utils.data
+import torch.nn.functional as F
+import utils
+
+from usr_dir.codec.codec_decoder import CodecDecoder
+import soundfile as sf
+from usr_dir.utils.tensor_utils import sequence_mask
+
+import logging
+
+logger = logging.getLogger(__name__)
+
+
+class FastSpeech2Task(TransformerTtsTask):
+    def __init__(self):
+        super(FastSpeech2Task, self).__init__()
+        self.dur_loss_fn = DurationPredictorLoss()
+        self.mse_loss_fn = torch.nn.MSELoss()
+
+    @data_loader
+    def train_dataloader(self):
+        train_dataset = FastSpeechDataset(hparams['data_dir'], self.phone_encoder,
+                                          hparams['train_set_name'], hparams, shuffle=True)
+        return self.build_dataloader(train_dataset, True, self.max_tokens, self.max_sentences,
+                                     endless=hparams['endless_ds'])
+
+    @data_loader
+    def val_dataloader(self):
+        valid_dataset = FastSpeechDataset(hparams['data_dir'], self.phone_encoder,
+                                          hparams['valid_set_name'], hparams,
+                                          shuffle=False)
+        return self.build_dataloader(valid_dataset, False, self.max_eval_tokens, self.max_eval_sentences)
+
+    @data_loader
+    def test_dataloader(self):
+        test_dataset = FastSpeechDataset(hparams['data_dir'], self.phone_encoder,
+                                         hparams['test_set_name'], hparams, shuffle=False)
+        return self.build_dataloader(test_dataset, False, self.max_eval_tokens, self.max_eval_sentences)
+
+    def build_model(self):
+        from ..module.gpt_tts import TTSLatentGPT
+        
+        model = TTSLatentGPT()
+        
+ 
+        # prior_params_count = self.get_model_stats(fs2_model)
+        full_params_count = self.get_model_stats(model)
+        
+        # logger.info(f"Prior model params count: {prior_params_count}")
+        # logger.info(f"Diffusion model params count: {full_params_count - prior_params_count}")
+        logger.info(f"Full model params count: {full_params_count / 1000000} M")
+        # logger.info(f"duration model params count: {self.get_model_stats(fs2_model.dur_predictor)}")
+        # logger.info(f"pitch model params count: {self.get_model_stats(fs2_model.pitch_predictor)}")
+        # exit()
+        return model
+    
+    def get_model_stats(self, model):
+        trainable_parameter_count = sum(p.numel() for p in model.parameters() if p.requires_grad)
+        return trainable_parameter_count
+
+    def _training_step(self, sample, batch_idx, _):
+        input = sample['src_tokens']  # [B, T_t]
+        target = sample['targets']  # [B, T_s, 80]
+        target_len = sample["target_lengths"]
+        mel2ph = sample['mel2ph']  # [B, T_s]
+        pitch = sample['pitch']
+        #energy = sample['energy']
+        energy = None
+        uv = sample['uv']
+
+        spk_embed = sample.get('spk_embed') if not hparams['use_spk_id'] else sample.get('spk_ids')
+        
+            
+        loss_output, output, logging_info = self.run_model(self.model, input, mel2ph, spk_embed, target,
+                                             pitch=pitch, uv=uv, energy=energy,
+                                             target_len=target_len,
+                                             return_output=True)
+        
+        total_loss = sum([v for v in loss_output.values() if v.requires_grad])
+        loss_output['batch_size'] = target.size()[0]
+        if "mel_acc" in output:
+            loss_output["mel_acc"] = output["mel_acc"]
+            
+        loss_output.update(logging_info)
+
+        return total_loss, loss_output
+
+    def validation_step(self, sample, batch_idx):
+        input = sample['src_tokens']
+        target = sample['targets']
+        target_len = sample["target_lengths"]
+        mel2ph = sample['mel2ph']
+        pitch = sample['pitch']
+        #energy = sample['energy']
+        energy = None
+        uv = sample['uv']
+        #for k in sample.keys():
+        #    if hasattr(sample[k], "shape"):
+        #        print(k, sample[k].shape)
+        
+
+        spk_embed = sample.get('spk_embed') if not hparams['use_spk_id'] else sample.get('spk_ids')
+        outputs = {}
+        outputs['losses'] = {}
+        outputs['losses'], model_out, logging_info = self.run_model(self.model, input, mel2ph, spk_embed, target,
+                                                      pitch=pitch, uv=uv,
+                                                      energy=energy,
+                                                      target_len=target_len,
+                                                      return_output=True)
+        outputs['total_loss'] = outputs['losses']['mel']
+        outputs['nmels'] = sample['nmels']
+        outputs['nsamples'] = sample['nsamples']
+        if "mel_acc" in model_out:
+            outputs['losses']["mel_acc"] = model_out["mel_acc"]
+            
+        outputs['losses'].update(logging_info)
+        
+        outputs = utils.tensors_to_scalars(outputs)
+        
+        outputs.update(logging_info)
+        
+        if batch_idx < 10:
+            if 'pitch_logits' in model_out:
+                pitch[uv > 0] = -4
+                pitch_pred = model_out['pitch_logits'][:, :, 0]
+                pitch_pred[model_out['pitch_logits'][:, :, 1] > 0] = -4
+                self.logger.experiment.add_figure(f'pitch_{batch_idx}', plot_to_figure({
+                    'gt': pitch[0].detach().cpu().numpy(),
+                    'pred': pitch_pred[0].detach().cpu().numpy()
+                }), self.global_step)
+        return outputs
+
+    def _validation_end(self, outputs):
+        all_losses_meter = {
+            'total_loss': utils.AvgrageMeter(),
+        }
+        for output in outputs:
+            n = output['nsamples']
+            for k, v in output['losses'].items():
+                if k not in all_losses_meter:
+                    all_losses_meter[k] = utils.AvgrageMeter()
+                all_losses_meter[k].update(v, n)
+            all_losses_meter['total_loss'].update(output['total_loss'], n)
+        return {k: round(v.avg, 4) for k, v in all_losses_meter.items()}
+
+    def run_model(self, model, input, mel2ph, spk_embed, target,
+                  return_output=False, ref_mel='tgt', pitch=None, uv=None, energy=None, target_len=None):
+        hparams['global_steps'] = self.global_step
+        
+        y_mask = sequence_mask(target_len, target.size(-1)).unsqueeze(1).to(input.device)
+        
+        with torch.no_grad():
+            target_latent = self.model.convert_code_to_latent(target)
+        
+        losses = {}
+        ret_logging_info = {}
+            
+        pred_latent, stop_logits = self.model(src_tokens=input.long(), speech_latent=target_latent, speech_length=target_len)
+
+        losses['mel'] = self.l1_loss(pred_latent, target_latent, y_mask) * hparams['loss_latent_weight']
+        
+        # stop token loss
+        # uv_loss = (F.binary_cross_entropy_with_logits(
+        #         p_pred[:, :, 1].reshape(-1), uv.reshape(-1), reduction='none') * nonpadding).sum() \
+        #               / nonpadding.sum() * hparams['lambda_uv']
+        target_stop = F.one_hot(target_len - 1, num_classes=target_latent.shape[1])          
+
+        target_stop_weights = target_stop * hparams["stop_token_weight"]
+        target_stop_weights[target_stop_weights == 0] = 1
+
+        losses["stop_token"] = (F.binary_cross_entropy_with_logits(
+            stop_logits, target_stop.float(), reduction="none", weight=target_stop_weights
+        ) * y_mask.squeeze(1)).sum() / y_mask.sum() * hparams["loss_stop_weight"]
+
+
+        
+        codebook_bp_loss, logging_info = self.codebook_loss(x=pred_latent.transpose(1, 2), discrete_y=target.transpose(1, 2), latent_y=target_latent.transpose(1, 2), y_mask=y_mask, name="posterior", require_dist_loss=False)
+        
+        losses.update(codebook_bp_loss)
+        ret_logging_info.update(logging_info)
+
+        
+        
+        if not return_output:
+            return losses, ret_logging_info
+        else:
+            return losses, {}, ret_logging_info
+        
+    def codebook_loss(self, x, discrete_y, latent_y, y_mask, name="", require_dist_loss=False):
+        
+        bp_loss = {}
+        
+        loss_summary = {}
+        
+        # print(x.shape, discrete_y.shape, latent_y.shape, y_mask.shape)
+        # exit(0)
+        
+        
+        quantized_out, all_indices, commit_loss, discrete_pred_loss, discrete_dist_loss = self.model.quantizer.calculate_loss(x=x, discrete_y=discrete_y, latent_y=latent_y, y_mask=y_mask, require_dist_loss=require_dist_loss)
+        
+        
+        # diff_loss += discrete_pred_loss.mean() * self.cust_opt.vq_pred_weight
+        
+        bp_loss["x0-quantized-cls"] = discrete_pred_loss.mean() * hparams["vq_quantizer_weight"]
+        
+        # loss_summary["{}_x0-quantinizer-loss".format(name)] = discrete_pred_loss.mean().item()
+        
+        if require_dist_loss:
+            bp_loss["x0-dist"] = discrete_dist_loss.mean() * hparams["vq_dist_weight"] # share the same weight 
+        # loss_summary["{}_x0-dist-loss".format(name)] = discrete_dist_loss.mean().item()
+        # all_indices = all_indices.transpose(0, 1)
+        
+        # print(all_indices.shape, discrete_y.shape, "-------", y_mask.shape)
+        # exit(0)
+  
+        discrete_y = discrete_y.transpose(0, 1)
+        
+        
+        correct = (all_indices == discrete_y).float()
+        
+        correct_mask = y_mask.transpose(0, 1).expand(all_indices.shape[0], -1, -1)
+        
+        for layer_idx in range(correct.shape[0]):
+            
+            correct_layer = correct[layer_idx].view(-1)
+            correct_mask_layer = correct_mask[layer_idx].view(-1)
+            
+            correct_scores = correct_layer[correct_mask_layer.bool()]
+            loss_summary["{}_acc_{}".format(name, layer_idx)] = correct_scores.mean().item()
+        
+        return bp_loss, loss_summary
+        
+        
+        pass
+
+    def l1_loss(self, decoder_output, target, mask):
+        # decoder_output : B x T x n_mel
+        # target : B x T x n_mel
+        
+        
+        
+        
+        l1_loss = F.l1_loss(decoder_output, target, reduction='none')
+        weights = self.weights_nonzero_speech(target)
+        l1_loss = (l1_loss * weights).sum() / weights.sum()
+        return l1_loss
+    
+    
+        # l1_loss = F.l1_loss(decoder_output, target, reduction='none')
+        
+        # mask = mask.transpose(1, 2)
+        
+        # weights_pr = mask.float().sum() * l1_loss.size(-1)
+
+        # l1_loss = (l1_loss * mask.float()).sum() / weights_pr.sum()
+        # return l1_loss
+
+    def mse_loss(self, decoder_output, target, target_len):
+        # decoder_output : B x T x n_mel
+        # target : B x T x n_mel
+        mse_loss = F.mse_loss(decoder_output, target, reduction='none')
+        weights_pr = target_len.sum() * target.size(-1)
+        mse_loss = mse_loss.sum() / weights_pr.sum()
+        return mse_loss
+
+    def ce_loss(self, decoder_output, target, padding_idx=None):
+        # decoder_output : B x T x n_mel
+        # target : B x T x n_mel
+        #assert target.shape[-1] * target.shape[-2] == decoder_output.shape[1]
+        #assert (target >= 0 ).all()
+        #assert (target < 1025).all()
+        #assert decoder_output.shape[-1] == 1025
+        
+        if padding_idx is None:
+            padding_idx = self.padding_idx
+        
+        ce_loss = F.cross_entropy(decoder_output.reshape(-1, decoder_output.shape[-1]), target.reshape(-1), reduction='none', ignore_index=padding_idx)
+
+        weights = (target != padding_idx).long().reshape(-1)
+
+        is_acc = (decoder_output.max(-1)[1].reshape(-1) == target.reshape(-1)).float()
+        acc = (is_acc * weights).sum() / weights.sum() * 100
+
+        ce_loss = (ce_loss * weights).sum() / weights.sum()
+        return ce_loss, acc 
+
+    def dur_loss(self, dur_pred, mel2ph, input, split_pause=False, sent_dur_loss=False):
+        B, T_t = input.shape
+        dur_gt = mel2ph.new_zeros(B, T_t + 1).scatter_add(1, mel2ph, torch.ones_like(mel2ph))
+        dur_gt = dur_gt[:, 1:]
+        nonpadding = (input != 0).float()
+        if split_pause:
+            is_pause = (input == self.phone_encoder.seg()) | (input == self.phone_encoder.unk()) | (
+                    input == self.phone_encoder.eos())
+            is_pause = is_pause.float()
+            phone_loss = self.dur_loss_fn(dur_pred, dur_gt, (1 - is_pause) * nonpadding) \
+                         * hparams['lambda_dur']
+            seg_loss = self.dur_loss_fn(dur_pred, dur_gt, is_pause) \
+                       * hparams['lambda_dur']
+            return phone_loss, seg_loss
+        
+        ph_dur_loss = self.dur_loss_fn(dur_pred, dur_gt, nonpadding) * hparams['lambda_dur']
+        if not sent_dur_loss:
+            return ph_dur_loss
+        else:
+            dur_pred = (dur_pred.exp() - 1).clamp(min=0) * nonpadding
+            dur_gt = dur_gt.float() * nonpadding
+            sent_dur_loss = F.l1_loss(dur_pred.sum(-1), dur_gt.sum(-1), reduction='none') / dur_gt.sum(-1)
+            sent_dur_loss = sent_dur_loss.mean()
+            return ph_dur_loss, sent_dur_loss
+
+    def pitch_loss(self, p_pred, pitch, uv):
+        assert p_pred[..., 0].shape == pitch.shape
+        assert p_pred[..., 0].shape == uv.shape
+        nonpadding = (pitch != -200).float().reshape(-1)
+        if hparams['use_uv']:
+            uv_loss = (F.binary_cross_entropy_with_logits(
+                p_pred[:, :, 1].reshape(-1), uv.reshape(-1), reduction='none') * nonpadding).sum() \
+                      / nonpadding.sum() * hparams['lambda_uv']
+            nonpadding = (pitch != -200).float() * (uv == 0).float()
+            nonpadding = nonpadding.reshape(-1)
+        else:
+            pitch[uv > 0] = -4
+            uv_loss = None
+
+        pitch_loss_fn = F.l1_loss if hparams['pitch_loss'] == 'l1' else F.mse_loss
+        pitch_loss = (pitch_loss_fn(
+            p_pred[:, :, 0].reshape(-1), pitch.reshape(-1), reduction='none') * nonpadding).sum() \
+                     / nonpadding.sum() * hparams['lambda_pitch']
+        return uv_loss, pitch_loss
+
+    def energy_loss(self, energy_pred, energy):
+        nonpadding = (energy != 0).float()
+        loss = (F.mse_loss(energy_pred, energy, reduction='none') * nonpadding).sum() / nonpadding.sum()
+        loss = loss * hparams['lambda_energy']
+        return loss
+    
+    def test_step(self, sample, batch_idx):
+        if sample['id'][0]!= 6:
+            # print(sample['id'][0])
+            return
+        # else:
+        #     exit()
+        if hparams["in_context_infer"]:
+            return self.in_context_inference(sample, batch_idx)
+        else:
+            return self.conventional_inference(sample, batch_idx)
+        
+    
+    def conventional_inference(self, sample, batch_idx):
+         
+        self.model.quantizer.eval()
+        spk_embed = sample.get('spk_embed') if not hparams['use_spk_id'] else sample.get('spk_ids')
+        input = sample['src_tokens']
+        utt_id = sample['utt_id']
+        device = input.device
+        if hparams['profile_infer']:
+            if batch_idx % 10 == 0:
+                torch.cuda.empty_cache()
+            mel2ph = sample['mel2ph']
+            pitch = sample['pitch']
+            uv = sample['uv']
+        else:
+            mel2ph = None
+            pitch = None
+            uv = None
+            
+        # mel2ph = sample['mel2ph']
+ 
+        if hparams["infer_laoban"]:
+            import librosa
+            from usr_dir.codec.codec_encoder import CodecEncoder
+            
+            input_dir = '/blob/v-zeqianju/dataset/tts/Product_ZeroShot_V2_infer_text'
+            ref_dir = '/blob/v-zeqianju/dataset/tts/Product_ZeroShot_V2'
+            old_sample = sample
+            for idx, ref_name in enumerate(os.listdir(ref_dir)):
+                if os.path.isdir(f'{ref_dir}/{ref_name}'):
+                    continue
+                if idx >=10:
+                    exit()
+                import pickle
+                from utils.text_encoder import NUM_RESERVED_TOKENS, UNK_ID, EOS_ID
+                ref_id = ref_name.replace('.wav','')
+                try:
+                    with open(f'{input_dir}/text_raw/{ref_id}.phone_id', 'rb') as f:
+                        phone_id = torch.from_numpy(pickle.load(f))
+                except:
+                    print(f'load error {ref_id}, skip it')
+                    continue
+                # if ref_id=='00001': # insert silence mannually
+                #     # br3 punc. sil br0 4150 132 4153 4147
+                #     phone_id = [4152, 4147, 1554, 2073,  829,  633, 1901, 2279,  671, 4148,  813,  649,
+                #                 1554, 4148, 2923,  671,  649,  822, 4148, 1554,  649,  633, 3323, 2020,
+                #                 4148, 3945, 2218, 4148, 3056,  686,  633,  813, 3787, 2522, 4148,  652,
+                #                 1554, 4148, 1810,  486, 4150,  4153, 4147, 3400, 3333, 3715, 4148, 1554,  271,  813,
+                #                 4148, 1929, 2073, 2218,  633, 1901, 2279, 1554, 3715, 4150,  132, 4148,
+                #                 4153, 4147,    4]
+                #     phone_id = [i-3 for i in phone_id]
+                #     print(phone_id)
+                
+                phone_encoded = []
+                phone_encoded.append(UNK_ID)
+                for i in phone_id:
+                    phone_encoded.append(NUM_RESERVED_TOKENS + i)
+                phone_encoded.append(EOS_ID)
+                
+                input = torch.LongTensor(phone_encoded).to(device)
+                if hparams["remove_bos"]:
+                    input = input[1:] 
+                print(input-NUM_RESERVED_TOKENS)
+                # exit()
+                input = input[None, ...]
+                ref_name = f'{ref_id}.wav'
+                ref_fn = os.path.join(ref_dir, ref_name)
+                wav_data, sr = librosa.load(ref_fn, sr=16000)
+                wav_data = np.pad(wav_data, (0, 200-len(wav_data) % 200))
+                
+                codec_enc = CodecEncoder()
+                codec_dec = CodecDecoder()
+                ckpt_path = '/blob/v-shenkai/checkpoints/tts/codec/chanpin_5w/v5/lambda_disc_1_commit_weight_0.25/checkpoint-440000.pt'
+                checkpoint = torch.load(ckpt_path, map_location='cpu')
+                codec_enc.load_state_dict(checkpoint["model"]['CodecEnc'])
+                codec_enc = codec_enc.eval().to(device)
+                codec_dec.load_state_dict(checkpoint["model"]['generator'])
+                codec_dec = codec_dec.eval().to(device)
+                wav_tensor = torch.from_numpy(wav_data).to(device)  
+                vq_emb = codec_enc(wav_tensor[None, None, :])
+                ref_mel, _, _ = codec_dec(vq_emb, None, 1000000, vq=True)
+                # print(ref_mel.shape) torch.Size([1, 256, 3192])
+                ref_mel = ref_mel.transpose(1, 2)
+                # ref_mel = ref_mel[:, :1000, :]
+                
+                utt_id = [ref_id]
+
+                try:
+                    with open(f'{ref_dir}/data/{ref_id}.mel2ph', 'rb') as f:
+                        ref_mel2ph = torch.from_numpy(pickle.load(f)).to(device)
+                    with open(f'{ref_dir}/data/{ref_id}.phone_id', 'rb') as f:
+                        ref_phone_id = torch.from_numpy(pickle.load(f))
+                    with open(f'{ref_dir}/data/{ref_id}.f0', 'rb') as f:
+                        ref_f0 = pickle.load(f)
+                except:
+                    continue
+                # ref_mel2ph = torch.LongTensor(ref_mel2ph[:used]).to(device)
+                max_phone = max(ref_mel2ph.max().item(), hparams['max_input_tokens'])
+                phone_encoded = []
+                phone_encoded.append(UNK_ID)
+                for i in ref_phone_id:
+                    phone_encoded.append(NUM_RESERVED_TOKENS + i)
+                phone_encoded.append(EOS_ID)
+                ref_input = torch.LongTensor(phone_encoded[:max_phone]).to(device)
+                if hparams["remove_bos"]:
+                    ref_input = ref_input[1:]     
+                ref_input = ref_input[None, ...]
+                ref_mel2ph = ref_mel2ph[None, ...]   
+                
+                ref_pitch, ref_uv = process_f0(ref_f0, hparams)
+                ref_pitch = ref_pitch[None, ...].to(device)
+                ref_uv = ref_uv[None, ...].to(device)
+                # B = 1
+                # ref_tokens = ref_input.shape[1]
+                # dur_gt = ref_mel2ph.new_zeros(B, ref_tokens-1 + 1).scatter_add(1, ref_mel2ph, torch.ones_like(ref_mel2ph))
+                # dur_gt = dur_gt[:, 1:]
+                # mask_gt = (dur_gt > 0) 
+                # dur_gt[dur_gt > 20] = 20
+            
+                
+                with utils.Timer('fs', print_time=hparams['profile_infer']):
+                    prior_outputs, spk_embed = self.model.infer_fs2(input, mel2ph=mel2ph, spk_embed=spk_embed, ref_mels=ref_mel, pitch=pitch, uv=uv)
+                    
+                with utils.Timer('diffusion', print_time=hparams['profile_infer']):
+                    mel_denoised = self.model.infer_diffusion(mu=prior_outputs["mel_out"], n_timesteps=150, spk=spk_embed, temperature=hparams['temp'])
+                    
+                self.preprare_vocoder(hparams)
+                # prior
+                prior_quant, _, _ = self.vocoder(prior_outputs['mel_out'].transpose(1, 2), None, 100000, vq=True, early_stop=-1)
+                prior_audio, _ = self.vocoder.inference(prior_quant)
+                sample['prior_audio'] = prior_audio
+            
+                # diffusion
+                denoised_quant, _, _ = self.vocoder(mel_denoised.transpose(1, 2), None, 100000, vq=True, early_stop=-1)
+                
+                
+                denoised_audio, _ = self.vocoder.inference(denoised_quant)
+                sample['denoised_audio'] = denoised_audio
+                
+                
+                # reference
+                ref_audio, _ = self.vocoder.inference(ref_mel.transpose(1, 2))
+                sample["ref_audio"] = ref_audio
+                
+                
+                sample['outputs'] = prior_outputs['mel_out']
+                # sample['pitch_pred'] = prior_outputs.get('pitch')
+                # sample['pitch'] = restore_pitch(sample['pitch'], uv if hparams['use_uv'] else None, hparams)
+                sample['utt_id'] = utt_id
+                self.after_infer(sample)
+            exit()
+            
+            ref_name = 'sydney.wav'
+            ref_fn = os.path.join(ref_dir, ref_name)
+            wav_data, sr = librosa.load(ref_fn, sr=16000)
+            wav_data = np.pad(wav_data, (0, 200-len(wav_data) % 200))
+            
+            codec_enc = CodecEncoder()
+            codec_dec = CodecDecoder()
+            ckpt_path = '/blob/v-shenkai/checkpoints/tts/codec/chanpin_5w/v5/lambda_disc_1_commit_weight_0.25/checkpoint-440000.pt'
+            checkpoint = torch.load(ckpt_path, map_location='cpu')
+            codec_enc.load_state_dict(checkpoint["model"]['CodecEnc'])
+            codec_enc = codec_enc.eval().to(device)
+            codec_dec.load_state_dict(checkpoint["model"]['generator'])
+            codec_dec = codec_dec.eval().to(device)
+            wav_tensor = torch.from_numpy(wav_data).to(device)  
+            vq_emb = codec_enc(wav_tensor[None, None, :])
+            ref_mel, _, _ = codec_dec(vq_emb, None, 1000000, vq=True)
+            # print(ref_mel.shape) torch.Size([1, 256, 3192])
+            ref_mel = ref_mel.transpose(1, 2)
+            # ref_mel = ref_mel[:, :1000, :]
+           
+            print(ref_mel.shape)
+            
+            utt_id = [ref_name + "_" + utt_id[0]]
+            
+        else:
+            refs = sample['refs'][0]
+            print(refs)
+            
+            if refs and refs[0]['utt_id'] != utt_id[0]:
+                ref = refs[0]
+                ref_utt_id = ref['utt_id']
+                used = min(hparams['max_frames'], 1200)
+                utt_id = [f'{used}_' + str(ref['spk_id'])]
+                
+                print('ref spk id:', ref['spk_id'], 'utt_id:', ref['utt_id'])
+                code_dir = '/blob/v-zeqianju/dataset/tts/product_5w/full_code'
+                ref_code = torch.load(f'{code_dir}/{ref_utt_id}.code', map_location=device)
+                ref_code = ref_code.permute(1, 2, 0)  # C B T  -> B T C
+                ref_mel = self.model.convert_code_to_latent(ref_code)
+                ref_mel = ref_mel[:, :used, :]
+                # ref_mel = ref_mel[:, :1000, :]
+                # print(ref_code.shape, ref_mel.shape)
+                # exit()
+            else:
+                test_dataset = FastSpeechDataset(hparams['data_dir'], self.phone_encoder,
+                                                hparams['test_set_name'], hparams, shuffle=False)
+                print(len(test_dataset))
+
+                ref_sample = test_dataset.collater([test_dataset[9]])
+                # print(ref_sample)
+                ref_mel = self.model.convert_code_to_latent(ref_sample['targets'].to(device))
+                # for i in range(100):
+                #     ref_sample = test_dataset.collater([test_dataset[i]])
+                #     ref_mel = self.model.convert_code_to_latent(ref_sample['targets'].to(device))
+                #     spk_embed = self.model.ref_enc(ref_mel.contiguous())
+                #     torch.save(spk_embed, f'spk_emb/zero-shot/{i}.pt')
+                # exit()
+
+            
+        with utils.Timer('fs', print_time=hparams['profile_infer']):
+            prior_outputs, spk_embed = self.model.infer_fs2(input, mel2ph=mel2ph, spk_embed=spk_embed, ref_mels=ref_mel, pitch=pitch, uv=uv)
+            
+        with utils.Timer('diffusion', print_time=hparams['profile_infer']):
+            mel_denoised = self.model.infer_diffusion(mu=prior_outputs["mel_out"], n_timesteps=150, spk=spk_embed, temperature=hparams['temp'])
+            
+        self.preprare_vocoder(hparams)
+        # prior
+        prior_quant, _, _ = self.vocoder(prior_outputs['mel_out'].transpose(1, 2), None, 100000, vq=True, early_stop=-1)
+        prior_audio, _ = self.vocoder.inference(prior_quant)
+        sample['prior_audio'] = prior_audio
+    
+        # diffusion
+        denoised_quant, _, _ = self.vocoder(mel_denoised.transpose(1, 2), None, 100000, vq=True, early_stop=-1)
+        
+        
+        denoised_audio, _ = self.vocoder.inference(denoised_quant)
+        sample['denoised_audio'] = denoised_audio
+        
+        
+        # reference
+        ref_audio, _ = self.vocoder.inference(ref_mel.transpose(1, 2))
+        sample["ref_audio"] = ref_audio
+        
+        
+        sample['outputs'] = prior_outputs['mel_out']
+        # sample['pitch_pred'] = prior_outputs.get('pitch')
+        # sample['pitch'] = restore_pitch(sample['pitch'], uv if hparams['use_uv'] else None, hparams)
+        sample['utt_id'] = utt_id
+        return self.after_infer(sample)
+    
+    def in_context_inference(self, sample, batch_idx):
+        self.model.quantizer.eval()
+        utt_id = sample['utt_id']
+        
+        spk_embed = sample.get('spk_embed') if not hparams['use_spk_id'] else sample.get('spk_ids')
+        input = sample['src_tokens']
+        device = input.device
+        # print(input)
+        if hparams['profile_infer']:
+            if batch_idx % 10 == 0:
+                torch.cuda.empty_cache()
+            mel2ph = sample['mel2ph']
+            pitch = sample['pitch']
+            uv = sample['uv']
+        else:
+            mel2ph = None
+            pitch = None
+            uv = None
+            
+        # in-context learning
+        ref_pitch = None
+        ref_uv = None
+        
+        # hparams["infer_laoban"] = False # lack MFA, input
+        if hparams["infer_laoban"]:
+            import librosa
+            from usr_dir.codec.codec_encoder import CodecEncoder
+            
+            input_dir = '/blob/v-zeqianju/dataset/tts/Valle_demo'
+            ref_dir = '/blob/v-zeqianju/dataset/tts/Valle_demo'
+            old_sample = sample
+            for idx, ref_name in enumerate(os.listdir(ref_dir)):
+                if os.path.isdir(f'{ref_dir}/{ref_name}'):
+                    continue
+               
+                import pickle
+                from utils.text_encoder import NUM_RESERVED_TOKENS, UNK_ID, EOS_ID
+                ref_id = ref_name.replace('.wav','')
+                try:
+                    with open(f'{input_dir}/valle_infer_text/{ref_id}.phone_id', 'rb') as f:
+                        phone_id = torch.from_numpy(pickle.load(f))
+                except:
+                    print(f'load error {ref_id}, skip it')
+                    continue
+                if idx < 45:
+                    continue
+                # if ref_id=='00001': # insert silence mannually
+                #     # br3 punc. sil br0 4150 132 4153 4147
+                #     phone_id = [4152, 4147, 1554, 2073,  829,  633, 1901, 2279,  671, 4148,  813,  649,
+                #                 1554, 4148, 2923,  671,  649,  822, 4148, 1554,  649,  633, 3323, 2020,
+                #                 4148, 3945, 2218, 4148, 3056,  686,  633,  813, 3787, 2522, 4148,  652,
+                #                 1554, 4148, 1810,  486, 4150,  4153, 4147, 3400, 3333, 3715, 4148, 1554,  271,  813,
+                #                 4148, 1929, 2073, 2218,  633, 1901, 2279, 1554, 3715, 4150,  132, 4148,
+                #                 4153, 4147,    4]
+                #     phone_id = [i-3 for i in phone_id]
+                #     print(phone_id)
+                
+                phone_encoded = []
+                
+                phone_encoded.append(UNK_ID)
+                print(phone_id[0] + NUM_RESERVED_TOKENS)
+                for i in [4149, 4145, 4150]:
+                    # BOS, br0 ... ->  BOS br1 -sil- br0
+                    phone_encoded.append(NUM_RESERVED_TOKENS + i)
+                for i in phone_id[1:]:
+                    phone_encoded.append(NUM_RESERVED_TOKENS + i)
+                phone_encoded.append(EOS_ID)
+                
+                input = torch.LongTensor(phone_encoded).to(device)
+                if hparams["remove_bos"]:
+                    input = input[1:] 
+                print(input-NUM_RESERVED_TOKENS)
+                # exit()
+                input = input[None, ...]
+                ref_name = f'{ref_id}.wav'
+                ref_fn = os.path.join(ref_dir, ref_name)
+                wav_data, sr = librosa.load(ref_fn, sr=16000)
+                wav_data = np.pad(wav_data, (0, 200-len(wav_data) % 200))
+                
+                codec_enc = CodecEncoder()
+                codec_dec = CodecDecoder()
+                ckpt_path = '/blob/v-shenkai/checkpoints/tts/codec/chanpin_5w/v5/lambda_disc_1_commit_weight_0.25/checkpoint-440000.pt'
+                checkpoint = torch.load(ckpt_path, map_location='cpu')
+                codec_enc.load_state_dict(checkpoint["model"]['CodecEnc'])
+                codec_enc = codec_enc.eval().to(device)
+                codec_dec.load_state_dict(checkpoint["model"]['generator'])
+                codec_dec = codec_dec.eval().to(device)
+                wav_tensor = torch.from_numpy(wav_data).to(device)  
+                vq_emb = codec_enc(wav_tensor[None, None, :])
+                ref_mel, _, _ = codec_dec(vq_emb, None, 1000000, vq=True)
+                # print(ref_mel.shape) torch.Size([1, 256, 3192])
+                ref_mel = ref_mel.transpose(1, 2)
+                # ref_mel = ref_mel[:, :1000, :]
+                
+                utt_id = ['inc_'+ ref_id]
+
+                try:
+                    with open(f'{ref_dir}/data/{ref_id}.mel2ph', 'rb') as f:
+                        ref_mel2ph = torch.from_numpy(pickle.load(f)).to(device)
+                    with open(f'{ref_dir}/data/{ref_id}.phone_id', 'rb') as f:
+                        ref_phone_id = torch.from_numpy(pickle.load(f))
+                    with open(f'{ref_dir}/data/{ref_id}.f0', 'rb') as f:
+                        ref_f0 = pickle.load(f)
+                except:
+                    continue
+                # ref_mel2ph = torch.LongTensor(ref_mel2ph[:used]).to(device)
+                max_phone = max(ref_mel2ph.max().item(), hparams['max_input_tokens'])
+                phone_encoded = []
+                phone_encoded.append(UNK_ID)
+                for i in ref_phone_id:
+                    phone_encoded.append(NUM_RESERVED_TOKENS + i)
+                phone_encoded.append(EOS_ID)
+                ref_input = torch.LongTensor(phone_encoded[:max_phone]).to(device)
+                if hparams["remove_bos"]:
+                    ref_input = ref_input[1:]     
+                ref_input = ref_input[None, ...]
+                ref_mel2ph = ref_mel2ph[None, ...]   
+                ref_pitch, ref_uv = process_f0(ref_f0, hparams)
+                ref_pitch = ref_pitch[None, ...].to(device)
+                ref_uv = ref_uv[None, ...].to(device)
+                with utils.Timer('fs', print_time=hparams['profile_infer']):
+                    prior_outputs, spk_embed = self.model.infer_fs2_hack(src_tokens_ref=ref_input, src_tokens_in=input, mel2ph=ref_mel2ph,
+                                                                        spk_embed=None, ref_mels=ref_mel, pitch=ref_pitch, uv=ref_uv,
+                                                                        use_pred_pitch=True)
+                
+                print(prior_outputs.keys())
+                ref_mel = prior_outputs['ref_mels']
+                with utils.Timer('diffusion', print_time=hparams['profile_infer']):
+                    mel_denoised = self.model.infer_diffusion(mu=prior_outputs["mel_out"], n_timesteps=150, spk=spk_embed, temperature=hparams['temp'], ref_x=ref_mel)
+                    
+                self.preprare_vocoder(hparams)
+                # prior
+                prior_quant, _, _ = self.vocoder(prior_outputs['mel_out'].transpose(1, 2), None, 100000, vq=True, early_stop=-1)
+                prior_audio, _ = self.vocoder.inference(prior_quant)
+                sample['prior_audio'] = prior_audio
+            
+                # diffusion
+                denoised_quant, _, _ = self.vocoder(mel_denoised.transpose(1, 2), None, 100000, vq=True, early_stop=-1)
+                
+                
+                denoised_audio, _ = self.vocoder.inference(denoised_quant)
+                sample['denoised_audio'] = denoised_audio
+                
+                
+                # reference
+                ref_audio, _ = self.vocoder.inference(ref_mel.transpose(1, 2))
+                sample["ref_audio"] = ref_audio
+                
+                
+                sample['outputs'] = prior_outputs['mel_out']
+                sample['pitch_pred'] = prior_outputs.get('pitch')
+                # sample['pitch'] = restore_pitch(sample['pitch'], uv if hparams['use_uv'] else None, hparams)
+                sample['utt_id'] = utt_id
+                self.after_infer(sample)
+            exit()
+            
+            ref_id = '00044'
+            ref_name = f'{ref_id}.wav'
+            ref_fn = os.path.join(ref_dir, ref_name)
+            wav_data, sr = librosa.load(ref_fn, sr=16000)
+            wav_data = np.pad(wav_data, (0, 200-len(wav_data) % 200))
+            
+            codec_enc = CodecEncoder()
+            codec_dec = CodecDecoder()
+            ckpt_path = '/blob/v-shenkai/checkpoints/tts/codec/chanpin_5w/v5/lambda_disc_1_commit_weight_0.25/checkpoint-440000.pt'
+            checkpoint = torch.load(ckpt_path, map_location='cpu')
+            codec_enc.load_state_dict(checkpoint["model"]['CodecEnc'])
+            codec_enc = codec_enc.eval().to(device)
+            codec_dec.load_state_dict(checkpoint["model"]['generator'])
+            codec_dec = codec_dec.eval().to(device)
+            wav_tensor = torch.from_numpy(wav_data).to(device)  
+            vq_emb = codec_enc(wav_tensor[None, None, :])
+            ref_mel, _, _ = codec_dec(vq_emb, None, 1000000, vq=True)
+            # print(ref_mel.shape) torch.Size([1, 256, 3192])
+            ref_mel = ref_mel.transpose(1, 2)
+            ref_mel = ref_mel[:, :1000, :]
+            
+            utt_id = ['product_'+ ref_id + "_" + utt_id[0]]
+
+            import pickle
+            from utils.text_encoder import NUM_RESERVED_TOKENS, UNK_ID, EOS_ID
+            with open(f'{ref_dir}/data/{ref_id}.mel2ph', 'rb') as f:
+                ref_mel2ph = torch.from_numpy(pickle.load(f)).to(device)
+            with open(f'{ref_dir}/data/{ref_id}.phone_id', 'rb') as f:
+                ref_phone_id = torch.from_numpy(pickle.load(f))
+            with open(f'{ref_dir}/data/{ref_id}.f0', 'rb') as f:
+                ref_f0 = pickle.load(f)
+            # ref_mel2ph = torch.LongTensor(ref_mel2ph[:used]).to(device)
+            max_phone = max(ref_mel2ph.max().item(), hparams['max_input_tokens'])
+            phone_encoded = []
+            phone_encoded.append(UNK_ID)
+            for i in ref_phone_id:
+                phone_encoded.append(NUM_RESERVED_TOKENS + i)
+            phone_encoded.append(EOS_ID)
+            ref_input = torch.LongTensor(phone_encoded[:max_phone]).to(device)
+            # if hparams["remove_bos"]:
+            #     ref_input = ref_input[1:]     
+            ref_input = ref_input[None, ...]
+            ref_mel2ph = ref_mel2ph[None, ...]   
+            ref_pitch, ref_uv = process_f0(ref_f0, hparams)
+            ref_pitch = ref_pitch[None, ...].to(device)
+            ref_uv = ref_uv[None, ...].to(device)
+        else:
+            refs = sample['refs'][0]
+            print(refs)
+            if refs and refs[0]['utt_id'] != utt_id[0]:
+                # raise NotImplementedError()
+                ref = refs[0]
+                ref_utt_id = ref['utt_id']
+                used = hparams['max_frames']
+                # used = min(used, 1200)
+                utt_id = [f'inc_{used}_' + str(ref['spk_id'])]
+                print('ref spk id:', ref['spk_id'], 'utt_id:', ref['utt_id'])
+                code_dir = '/blob/v-zeqianju/dataset/tts/product_5w/full_code'
+                ref_code = torch.load(f'{code_dir}/{ref_utt_id}.code', map_location=device)
+                ref_code = ref_code.permute(1, 2, 0)  # C B T  -> B T C
+                ref_mel = self.model.convert_code_to_latent(ref_code)
+                ref_mel = ref_mel[:, :used, :]
+                import tarfile
+                import pickle
+                from utils.text_encoder import NUM_RESERVED_TOKENS, UNK_ID, EOS_ID
+                tar = ref['tar']
+                tar_obj = tarfile.open(tar, mode='r')
+                fn = ref['fn']
+                keys = ['duration', 'phone_id', 'speech', 'mel']
+                file_info = dict()
+                for info in tar_obj:
+                    try:
+                        if not info.isfile():
+                            continue
+                        for key in keys:
+                            if info.name == f'{fn}.{key}':
+                                if key == 'speaker_id':
+                                    value = int(info.name.split('.')[1].split('_')[0])
+                                else:
+                                    cur_f = tar_obj.extractfile(info)
+                                    value = pickle.load(cur_f)
+                                file_info[key] = value
+                                break
+                    except:
+                        continue
+                from datasets.tts.product.gen_fs2_product_full_wotrain import dur_to_mel2ph
+                from utils.preprocessor import get_pitch
+                ref_mel2ph = dur_to_mel2ph(file_info['duration'])
+                ref_mel2ph = torch.LongTensor(ref_mel2ph[:used]).to(device)
+                hparams["min_delta_l"] = 3
+                ref_f0, _ = get_pitch(file_info["speech"], file_info["mel"], hparams)
+                ref_pitch, ref_uv = process_f0(ref_f0, hparams)
+                ref_pitch = ref_pitch[None, ...]
+                ref_uv = ref_uv[None, ...]
+                # print(ref_pitch.shape, sample['pitch'].shape)
+                # print(ref_pitch, sample['pitch'])
+                # exit()
+                max_phone = max(ref_mel2ph.max().item(), hparams['max_input_tokens'])
+                phone_encoded = []
+                phone_encoded.append(UNK_ID)
+                for i in file_info['phone_id']:
+                    phone_encoded.append(NUM_RESERVED_TOKENS + i)
+                phone_encoded.append(EOS_ID)
+                ref_input = torch.LongTensor(phone_encoded[:max_phone]).to(device)
+                # if hparams["remove_bos"]:
+                #     ref_input = ref_input[1:]     
+                ref_input = ref_input[None, ...]
+                ref_mel2ph = ref_mel2ph[None, ...]   
+                # print(ref_code.shape, ref_mel.shape)
+                # print(ref_input.shape, ref_mel2ph.shape)
+                # print(sample['src_tokens'].shape, sample['mel2ph'].shape)
+                # exit()
+            else:
+
+                test_dataset = FastSpeechDataset(hparams['data_dir'], self.phone_encoder,
+                                                hparams['test_set_name'], hparams, shuffle=False)
+                print(len(test_dataset))
+                ref_sample = test_dataset.collater([test_dataset[9]])
+                
+                ref_input = sample['src_tokens'].to(device)
+                ref_mel = self.model.convert_code_to_latent(ref_sample['targets'].to(device))
+                ref_mel2ph = ref_sample['mel2ph'].to(device)
+                ref_pitch = ref_sample['pitch'].to(device)
+                ref_uv = ref_sample['uv'].to(device)
+                print(ref_mel.shape)
+            
+            
+        with utils.Timer('fs', print_time=hparams['profile_infer']):
+            prior_outputs, spk_embed = self.model.infer_fs2_hack(src_tokens_ref=ref_input, src_tokens_in=input, mel2ph=ref_mel2ph,
+                                                                 spk_embed=None, ref_mels=ref_mel, pitch=ref_pitch, uv=ref_uv,
+                                                                 use_pred_pitch=True)
+        
+        print(prior_outputs.keys())
+        ref_mel = prior_outputs['ref_mels']
+        with utils.Timer('diffusion', print_time=hparams['profile_infer']):
+            mel_denoised = self.model.infer_diffusion(mu=prior_outputs["mel_out"], n_timesteps=150, spk=spk_embed, temperature=1.2, ref_x=ref_mel)
+             
+        self.preprare_vocoder(hparams)
+        # prior
+        prior_quant, _, _ = self.vocoder(prior_outputs['mel_out'].transpose(1, 2), None, 100000, vq=True, early_stop=-1)
+        prior_audio, _ = self.vocoder.inference(prior_quant)
+        sample['prior_audio'] = prior_audio
+    
+        # diffusion
+        denoised_quant, _, _ = self.vocoder(mel_denoised.transpose(1, 2), None, 100000, vq=True, early_stop=-1)
+        
+        
+        denoised_audio, _ = self.vocoder.inference(denoised_quant)
+        sample['denoised_audio'] = denoised_audio
+        
+        
+        # reference
+        ref_audio, _ = self.vocoder.inference(ref_mel.transpose(1, 2))
+        sample["ref_audio"] = ref_audio
+        
+        
+        sample['outputs'] = prior_outputs['mel_out']
+        sample['pitch_pred'] = prior_outputs.get('pitch')
+        # sample['pitch'] = restore_pitch(sample['pitch'], uv if hparams['use_uv'] else None, hparams)
+        sample['utt_id'] = utt_id
+        return self.after_infer(sample)
+    
+    def preprare_vocoder(self, hparams):
+        if self.vocoder is None:
+            vocoder = CodecDecoder()
+            
+            vocoder.load_state_dict(torch.load(hparams["vocoder_ckpt"]))
+            _ = vocoder.cuda().eval()
+            self.vocoder = vocoder
+
+    def after_infer(self, predictions):
+        if self.saving_result_pool is None and not hparams['profile_infer']:
+            self.saving_result_pool = Pool(8)
+            self.saving_results_futures = []
+        # self.prepare_vocoder()
+        predictions = utils.unpack_dict_to_list(predictions)
+        t = tqdm(predictions)
+        for num_predictions, prediction in enumerate(t):
+            for k, v in prediction.items():
+                if type(v) is torch.Tensor:
+                    prediction[k] = v.cpu().numpy()
+
+            utt_id = prediction.get('utt_id')
+            text = prediction.get('text')
+            targets = self.remove_padding(prediction.get("targets"))
+            outputs = self.remove_padding(prediction["outputs"])
+            print("outputs shape:", outputs.shape)
+            
+            prior_audio = prediction["prior_audio"]
+            denoised_audio = prediction["denoised_audio"]
+            reference_audio = prediction["ref_audio"]
+
+            gen_dir = os.path.join(hparams['work_dir'],
+                                   f'generated_{self.trainer.global_step}_{hparams["gen_dir_name"]}_v2_tp{hparams["temp"]}'+ ('stoc' if hparams['stoc'] else '')+ ('_refnorm' if hparams['ref_norm'] else '')+('_inc' if hparams['in_context_infer'] else '' ) + '_valle_demo')
+            os.makedirs(gen_dir, exist_ok=True)
+
+            print(gen_dir)
+            # sf.write(f'{gen_dir}/prior_{os.path.basename(utt_id)}.wav', prior_audio[0], 16000, subtype='PCM_24')
+            
+            sf.write(f'{gen_dir}/denoised_{os.path.basename(utt_id)}.wav', denoised_audio[0], 16000, subtype='PCM_24')
+            
+            sf.write(f'{gen_dir}/ref_{os.path.basename(utt_id)}.wav', reference_audio[0], 16000, subtype='PCM_24')
+            # exit(0) 
+            # np.save(os.path.join(gen_dir, utt_id + ".npy"), outputs)
+            
+            # wav_pred = self.inv_spec(outputs, pitch_pred, noise_outputs)
+            # if not hparams['profile_infer']:
+            #     os.makedirs(gen_dir, exist_ok=True)
+            #     os.makedirs(f'{gen_dir}/wavs', exist_ok=True)
+            #     os.makedirs(f'{gen_dir}/spec_plot', exist_ok=True)
+            #     os.makedirs(f'{gen_dir}/pitch_plot', exist_ok=True)
+            #     self.saving_results_futures.append(
+            #         self.saving_result_pool.apply_async(self.save_result, args=[
+            #             wav_pred, outputs, f'P', utt_id, text, gen_dir, [pitch_pred, pitch_gt], noise_outputs]))
+
+            #     wav_gt = self.inv_spec(targets, pitch_gt, noise_outputs)
+            #     if targets is not None:
+            #         self.saving_results_futures.append(
+            #             self.saving_result_pool.apply_async(self.save_result, args=[
+            #                 wav_gt, targets, 'G', utt_id, text, gen_dir, pitch_gt, noise_outputs]))
+            #     t.set_description(
+            #         f"Pred_shape: {outputs.shape}, gt_shape: {targets.shape}")
+            # else:
+            #     if 'gen_wav_time' not in self.stats:
+            #         self.stats['gen_wav_time'] = 0
+            #     self.stats['gen_wav_time'] += len(wav_pred) / hparams['audio_sample_rate']
+            #     print('gen_wav_time: ', self.stats['gen_wav_time'])
+
+        return {}
+
+
+if __name__ == '__main__':
+    FastSpeech2Task.start()
