@@ -34,8 +34,8 @@ TEXT=/blob/v-shenkai/code/tts/fs2_fromyc/mm_lm_nat/raw_data/LJSpeech-1.1   # not
 # DATA_DIR=/blob/v-yuancwang/TTS_Data/mls_wmeta
 # DATA_DIR=/blob/v-yuancwang/TTS_Data/11lab_process
 # DATA_DIR=/blob/v-zeqianju/code/tts/fs2_fromyc/mm_lm_nat/data-bin/mls_wmeta
-DATA_DIR=/blob/v-yuancwang/ns2/data-bin/11lab_process
-# DATA_DIR=~/mls_wmeta
+# DATA_DIR=/blob/v-yuancwang/ns2/data-bin/11lab_process
+DATA_DIR=~/mls_wmeta
 
 use_new_refenc=True
 use_pitch_embed=True
@@ -78,7 +78,7 @@ SAVE_DIR=/blob/v-yuancwang/ns2/checkpoints/transformers/transformer_pre_fix_mask
 # /bin/rm -rf ${SAVE_DIR}
 
 mkdir -p ${SAVE_DIR}
-export CUDA_VISIBLE_DEVICES=0 #,1,2,3,4,5,6,7
+export CUDA_VISIBLE_DEVICES=0,1,2,3,4,5,6,7
 export NUM_WORKERS=10
 export NCCL_NSOCKS_PERTHREAD=20
 export NCCL_SOCKET_NTHREADS=10
