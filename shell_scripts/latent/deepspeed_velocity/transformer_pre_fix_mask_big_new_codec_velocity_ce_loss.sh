@@ -75,7 +75,7 @@ diffusion_type=velocity
 diff_velocity_weight=1
 
 # for transformer diffuser
-transformer_esitimator_arch='13 13 13 13 13 13 13 13 13 13 13 13 13 13 13 13 13 13 13 13'
+transformer_esitimator_arch='13 13 13 13 13 13 13 13 13 13 13 13 13 13 13 13'
 transformer_hidden=768
 diff_transformer_num_head=12
 
