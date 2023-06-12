@@ -59,8 +59,8 @@ class Diffusion(BaseModule):
         
         self.diffusion_loss_type = hparams["diffusion_loss_type"]
         
-        # self.spk_mlp = torch.nn.Sequential(torch.nn.Linear(hparams['hidden_size'], hparams['hidden_size'] * 4), Mish(),
-        #                                        torch.nn.Linear(hparams['hidden_size'] * 4, hparams['vqemb_size']))
+        self.spk_mlp = torch.nn.Sequential(torch.nn.Linear(hparams['hidden_size'], hparams['hidden_size'] * 4), Mish(),
+                                               torch.nn.Linear(hparams['hidden_size'] * 4, hparams['vqemb_size']))
         self.predictor_type = hparams["predictor_type"]
         if self.predictor_type == "wavnet":
             from .wavnet import WavNet
