@@ -101,7 +101,7 @@ python -m usr_dir.tasks.latent_diffusion_pl2 --config configs/tts/product/latent
                                             vocoder_ckpt=/blob/v-shenkai/checkpoints/tts/codec/chanpin_5w/v5/lambda_disc_1_commit_weight_0.25/infered_lj_2324000/generator_hop200.pt,\
                                             predictor_type=transformer_post_dualres_2_cat_fix_mask,\
                                             ref_left_pad=${ref_left_pad},\
-                                            transformer_esitimator_arch=${transformer_esitimator_arch}, dec_ffn_kernel_size=3, transformer_hidden=512,\
+                                            transformer_esitimator_arch=${transformer_esitimator_arch},dec_ffn_kernel_size=3,transformer_hidden=512,\
                                             use_ref_enc=${use_ref_enc},ref_enc_arch=${ref_enc_arch},skip_decoder=True,query_attn_type=independent_w_mha,\
                                             diff_attn_type=${diff_attn_type},diffusion_ca_per_layer=${diffusion_ca_per_layer},\
                                             ref_query_norm=${ref_query_norm},ref_query_tokens=${ref_query_tokens},predictor_use_cattention=${predictor_use_cattention},\
