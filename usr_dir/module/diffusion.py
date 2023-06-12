@@ -71,6 +71,10 @@ class Diffusion(BaseModule):
             from .transformer_pre import TransformerEstimator
             self.estimator = TransformerEstimator(arch=hparams["transformer_esitimator_arch"])
 
+        elif self.predictor_type == "transformer_post_dualres_2_cat_fix_mask":
+            from .transformer_post_dualres_2_cat_fix_mask import TransformerEstimator
+            self.estimator = TransformerEstimator(arch=hparams["transformer_esitimator_arch"])
+
         elif self.predictor_type == "transformer_post_dualres_cat_fix_mask":
             from .transformer_post_dualres_cat_fix_mask import TransformerEstimator
             self.estimator = TransformerEstimator(arch=hparams["transformer_esitimator_arch"])
