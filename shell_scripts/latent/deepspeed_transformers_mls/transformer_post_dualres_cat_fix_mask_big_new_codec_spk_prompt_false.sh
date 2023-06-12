@@ -88,7 +88,7 @@ export NCCL_SOCKET_NTHREADS=10
 # configs/tts/product/latent_diffusion_5wdata.yaml
 
 python -m usr_dir.tasks.latent_diffusion_pl2 --config configs/tts/product/latent_diffusion_5wdata.yaml --exp_name ${SAVE_DIR} --reset --hparams "data_dir=${DATA_DIR},\
-                                            raw_data_dir=${TEXT},max_tokens=4800,detach_mu=${detach_mu},detach_wavenet=${detach_wavenet},\
+                                            raw_data_dir=${TEXT},max_tokens=2400,detach_mu=${detach_mu},detach_wavenet=${detach_wavenet},\
                                             diffusion_mel_weight=${diffusion_mel_weight},diff_loss_noise_weight=${diff_loss_noise_weight},\
                                             vq_quantizer_weight=${vq_quantizer_weight},vq_dist_weight=${vq_dist_weight},dilation_cycle_length=${dilation_cycle_length},\
                                             pe_scale=${pe_scale},use_spk_embed=True,enc_layers=${enc_layers},dec_layers=${dec_layers},arch=${arch},\
@@ -98,7 +98,7 @@ python -m usr_dir.tasks.latent_diffusion_pl2 --config configs/tts/product/latent
                                             predictor_hidden=${predictor_hidden},spk_dropout=${spk_dropout},ref_random_clip=${ref_random_clip},dur_cln=${dur_cln},\
                                             pitch_cln=${pitch_cln},duration_layers=${duration_layers},pitch_layers=${pitch_layers},diffusion_from_prior=${diffusion_from_prior},\
                                             prior_weight=${prior_weight},predictor_use_res=${predictor_use_res},\
-                                            strategy=ddp,precision=16-mixed,accumulate_grad_batches=2,num_nodes=2,warmup_updates=30000,\
+                                            strategy=ddp,precision=16-mixed,accumulate_grad_batches=4,num_nodes=1,warmup_updates=30000,\
                                             lr=4e-4,max_frames=3000,max_input_tokens=600,use_random_segment_as_ref=True,\
                                             noise_factor=${noise_factor},load_opt=${load_opt},\
                                             vq_ckpt=/blob/v-shenkai/checkpoints/tts/codec/chanpin_5w/v5/lambda_disc_1_commit_weight_0.25/infered_lj_2324000/rvq_hop200.pt,\
