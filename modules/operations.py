@@ -6,7 +6,64 @@ import torch.onnx.operators
 import torch.nn.functional as F
 import utils
 from utils.hparams import hparams
+from einops import rearrange
+from einops.layers.torch import Rearrange
 
+class Swish(nn.Module):
+    def forward(self, x):
+        return x * x.sigmoid()
+
+class DepthWiseConv1d(nn.Module):
+    def __init__(self, chan_in, chan_out, kernel_size, padding):
+        super().__init__()
+        self.padding = padding
+        self.conv = nn.Conv1d(chan_in, chan_out, kernel_size, groups=chan_in)
+
+    def forward(self, x):
+        x = F.pad(x, self.padding)
+        return self.conv(x)
+
+def calc_same_padding(kernel_size):
+    pad = kernel_size // 2
+    return (pad, pad - (kernel_size + 1) % 2)
+
+class ConformerConvLayer(nn.Module):
+    def __init__(self, dim, causal=False, expansion_factor=2, kernel_size=31, dropout=0.):
+        super().__init__()
+
+        inner_dim = dim * expansion_factor
+        padding = calc_same_padding(kernel_size) if not causal else (kernel_size - 1, 0)
+
+        self.net = nn.Sequential(
+            Rearrange('n b c -> b c n'),
+            nn.Conv1d(dim, inner_dim * 2, 1),
+            nn.GLU(dim=1),
+            DepthWiseConv1d(inner_dim, inner_dim, kernel_size=kernel_size, padding=padding),
+            nn.BatchNorm1d(inner_dim),
+            Swish(),
+            nn.Conv1d(inner_dim, dim, 1),
+            Rearrange('b c n -> n b c'),
+            nn.Dropout(dropout)
+        )
+
+    def forward(self, x):
+        # x: (T, B, C)
+        return self.net(x)
+
+class ConformerFFNLayer(nn.Module):
+    def __init__(self, hidden_size, filter_size, dropout=0.):
+        super().__init__()
+        self.dropout = dropout
+        self.sequential = nn.Sequential(
+            Linear(hidden_size, filter_size),
+            Swish(),
+            nn.Dropout(self.dropout),
+            Linear(filter_size, hidden_size),
+            nn.Dropout(self.dropout)
+        )
+
+    def forward(self, x):
+        return self.sequential(x)
 
 class SelfAttention(nn.Module):
     def __init__(self, hid_dim, n_heads, dropout=0.1, gaussian_bias=False, gaussian_tao=None,

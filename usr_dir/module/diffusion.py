@@ -67,6 +67,14 @@ class Diffusion(BaseModule):
             
             self.estimator = WavNet(in_dims=n_feats)
 
+        elif self.predictor_type == "conformer_post_dualres_cat":
+            from .conformer_post_dualres_cat import TransformerEstimator
+            self.estimator = TransformerEstimator(arch=hparams["transformer_esitimator_arch"])
+
+        elif self.predictor_type == "conformer_pre":
+            from .conformer_pre import TransformerEstimator
+            self.estimator = TransformerEstimator(arch=hparams["transformer_esitimator_arch"])
+
         elif self.predictor_type == "transformer_pre":
             from .transformer_pre import TransformerEstimator
             self.estimator = TransformerEstimator(arch=hparams["transformer_esitimator_arch"])
