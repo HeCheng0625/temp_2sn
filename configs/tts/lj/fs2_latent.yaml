@@ -129,3 +129,5 @@ infer_style: "default"
 infer_timesteps: 150
 
 diff_transformer_num_head: 8
+
+diffusin_dropout: 0.2

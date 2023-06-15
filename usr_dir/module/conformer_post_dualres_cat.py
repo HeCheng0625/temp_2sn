@@ -111,7 +111,7 @@ class TransformerDecoder(nn.Module):
         if dropout is not None:
             self.dropout = dropout
         else:
-            self.dropout = hparams['dropout']
+            self.dropout = hparams['diffusin_dropout']
 
         if self.num_layers % 2 != 0:
             raise ValueError('num_layers must be even')

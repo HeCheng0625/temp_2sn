@@ -38,6 +38,7 @@ DATA_DIR=~/mls_wmeta
 
 use_new_refenc=True
 use_pitch_embed=True
+#use_pitch_embed=False
 predictor_hidden=${hidden_size}
 spk_dropout=0.0
 ref_random_clip=False
@@ -74,9 +75,11 @@ transformer_esitimator_arch='13 13 13 13 13 13 13 13 13 13 13 13'
 transformer_hidden=512
 diff_transformer_num_head=8
 
+diffusin_dropout=0.1
+
 # SAVE_DIR=/blob/v-zeqianju/code/tts/fs2_fromyc/mm_lm_nat/checkpoints/kai_srfixbug/${save_prefix}_refenc_dmu_${detach_mu}_dwn_${detach_wavenet}_dmelw_${diffusion_mel_weight}_dnoisew_${diff_loss_noise_weight}_vqweight_${vq_quantizer_weight}_vq_dist_weight_${vq_dist_weight}_dila_${dilation_cycle_length}_pe_scale_${pe_scale}_ref_query_tokens${ref_query_tokens}
 # SAVE_DIR=/blob/v-zeqianju/code/tts/fs2_fromyc/mm_lm_nat/checkpoints/kai_srfixbug/debug
-SAVE_DIR=/blob/v-yuancwang/ns2/checkpoints/transformers/conformer_post_dualres_cat_fix_mask_new_codec_spk_prompt_false_pitch
+SAVE_DIR=/blob/v-yuancwang/ns2/checkpoints/transformers/conformer_pre_fix_mask_new_codec_spk_prompt_false_drop0_1
 # /bin/rm -rf ${SAVE_DIR}
 
 mkdir -p ${SAVE_DIR}
@@ -86,8 +89,8 @@ export NCCL_NSOCKS_PERTHREAD=20
 export NCCL_SOCKET_NTHREADS=10
 # configs/tts/product/latent_diffusion_5wdata.yaml
 
-python -m usr_dir.tasks.latent_diffusion_pl2 --config configs/tts/product/latent_diffusion_5wdata.yaml --exp_name ${SAVE_DIR} --reset --hparams "data_dir=${DATA_DIR},\
-                                            raw_data_dir=${TEXT},max_tokens=4800,detach_mu=${detach_mu},detach_wavenet=${detach_wavenet},\
+/opt/conda/envs/control/bin/python -m usr_dir.tasks.latent_diffusion_pl2 --config configs/tts/product/latent_diffusion_5wdata.yaml --exp_name ${SAVE_DIR} --reset --hparams "data_dir=${DATA_DIR},\
+                                            raw_data_dir=${TEXT},max_tokens=4000,detach_mu=${detach_mu},detach_wavenet=${detach_wavenet},\
                                             diffusion_mel_weight=${diffusion_mel_weight},diff_loss_noise_weight=${diff_loss_noise_weight},\
                                             vq_quantizer_weight=${vq_quantizer_weight},vq_dist_weight=${vq_dist_weight},dilation_cycle_length=${dilation_cycle_length},\
                                             pe_scale=${pe_scale},use_spk_embed=True,enc_layers=${enc_layers},dec_layers=${dec_layers},arch=${arch},\
@@ -98,13 +101,13 @@ python -m usr_dir.tasks.latent_diffusion_pl2 --config configs/tts/product/latent
                                             pitch_cln=${pitch_cln},duration_layers=${duration_layers},pitch_layers=${pitch_layers},diffusion_from_prior=${diffusion_from_prior},\
                                             prior_weight=${prior_weight},predictor_use_res=${predictor_use_res},\
                                             strategy=ddp,precision=16-mixed,accumulate_grad_batches=4,num_nodes=1,warmup_updates=30000,\
-                                            lr=4e-4,max_frames=3000,max_input_tokens=600,use_random_segment_as_ref=True,\
+                                            lr=2e-4,max_frames=3000,max_input_tokens=600,use_random_segment_as_ref=True,\
                                             noise_factor=${noise_factor},load_opt=${load_opt},\
                                             vq_ckpt=/blob/v-shenkai/checkpoints/tts/codec/chanpin_5w/v5/lambda_disc_1_commit_weight_0.25/infered_lj_2324000/rvq_hop200.pt,\
                                             vocoder_ckpt=/blob/v-shenkai/checkpoints/tts/codec/chanpin_5w/v5/lambda_disc_1_commit_weight_0.25/infered_lj_2324000/generator_hop200.pt,\
-                                            predictor_type=conformer_post_dualres_cat,\
+                                            predictor_type=conformer_pre,diffusin_dropout=${diffusin_dropout},\
                                             ref_left_pad=${ref_left_pad},diff_transformer_num_head=${diff_transformer_num_head},\
-                                            transformer_esitimator_arch=${transformer_esitimator_arch},dec_ffn_kernel_size=3,transformer_hidden=${transformer_hidden},\
+                                            transformer_esitimator_arch=${transformer_esitimator_arch}, dec_ffn_kernel_size=3, transformer_hidden=${transformer_hidden},\
                                             use_ref_enc=${use_ref_enc},ref_enc_arch=${ref_enc_arch},skip_decoder=True,query_attn_type=independent_w_mha,\
                                             diff_attn_type=${diff_attn_type},diffusion_ca_per_layer=${diffusion_ca_per_layer},\
                                             ref_query_norm=${ref_query_norm},ref_query_tokens=${ref_query_tokens},predictor_use_cattention=${predictor_use_cattention},\
