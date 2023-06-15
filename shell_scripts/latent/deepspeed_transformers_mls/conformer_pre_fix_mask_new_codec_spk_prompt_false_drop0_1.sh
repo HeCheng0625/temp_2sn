@@ -75,7 +75,7 @@ transformer_esitimator_arch='13 13 13 13 13 13 13 13 13 13 13 13'
 transformer_hidden=512
 diff_transformer_num_head=8
 
-diffusin_dropout=0.1
+diffusion_dropout=0.1
 
 # SAVE_DIR=/blob/v-zeqianju/code/tts/fs2_fromyc/mm_lm_nat/checkpoints/kai_srfixbug/${save_prefix}_refenc_dmu_${detach_mu}_dwn_${detach_wavenet}_dmelw_${diffusion_mel_weight}_dnoisew_${diff_loss_noise_weight}_vqweight_${vq_quantizer_weight}_vq_dist_weight_${vq_dist_weight}_dila_${dilation_cycle_length}_pe_scale_${pe_scale}_ref_query_tokens${ref_query_tokens}
 # SAVE_DIR=/blob/v-zeqianju/code/tts/fs2_fromyc/mm_lm_nat/checkpoints/kai_srfixbug/debug
