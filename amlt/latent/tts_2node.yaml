@@ -1,4 +1,4 @@
-description: zhanka
+description: tts_exp
 
 # target:
 #   service: amlk8s
@@ -6,12 +6,11 @@ description: zhanka
 #   vc: resrchvc
 
 target:
-  service: amlk8s
-  name: itplabrr1cl1
-  vc: resrchvc
+  service: sing
+  name: spch-sing-tts-sc
 
 environment:
-  image: ustcscallion/pytorch:1.6.0-cuda10.1-cudnn7
+  image: chenfeikang/music:2022_7_7
 
 storage:
   blob:
@@ -58,15 +57,19 @@ storage:
 #     - name: epoch_id
 #       values: [3]
 
-# search:
 jobs:
-  - name: exp_{experiment_name:s}
-    sku: 32G8-V100
+  - name: tts_exp
+    sku: 2x32G8-V100-IB
     priority: high
+    process_count_per_node: 1
     command:
       - sudo apt-get install git -y
       - sudo chmod 777 -R /opt/conda
       - cd /home/aiscuser # cd /home/aiscuser
       - pwd
-      - bash /blob/v-shenkai/env_init_v2.sh
+      - bash /blob/v-shenkai/env_it_v2_sing.sh
+      - cp -r /blob/v-shenkai/code/tts/fs2_fromyc/mm_lm_nat/fast_speech2 .
+      - git checkout dev-chanpin
+      - cd fast_speech2
+      - ./install_env.sh
       - sleep 1000000000;
