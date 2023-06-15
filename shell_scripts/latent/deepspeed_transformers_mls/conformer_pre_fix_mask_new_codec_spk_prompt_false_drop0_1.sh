@@ -75,7 +75,7 @@ transformer_esitimator_arch='13 13 13 13 13 13 13 13 13 13 13 13'
 transformer_hidden=512
 diff_transformer_num_head=8
 
-diffusion_dropout=0.1
+diffusin_dropout=0.1
 
 # SAVE_DIR=/blob/v-zeqianju/code/tts/fs2_fromyc/mm_lm_nat/checkpoints/kai_srfixbug/${save_prefix}_refenc_dmu_${detach_mu}_dwn_${detach_wavenet}_dmelw_${diffusion_mel_weight}_dnoisew_${diff_loss_noise_weight}_vqweight_${vq_quantizer_weight}_vq_dist_weight_${vq_dist_weight}_dila_${dilation_cycle_length}_pe_scale_${pe_scale}_ref_query_tokens${ref_query_tokens}
 # SAVE_DIR=/blob/v-zeqianju/code/tts/fs2_fromyc/mm_lm_nat/checkpoints/kai_srfixbug/debug
@@ -105,7 +105,7 @@ export NCCL_SOCKET_NTHREADS=10
                                             noise_factor=${noise_factor},load_opt=${load_opt},\
                                             vq_ckpt=/blob/v-shenkai/checkpoints/tts/codec/chanpin_5w/v5/lambda_disc_1_commit_weight_0.25/infered_lj_2324000/rvq_hop200.pt,\
                                             vocoder_ckpt=/blob/v-shenkai/checkpoints/tts/codec/chanpin_5w/v5/lambda_disc_1_commit_weight_0.25/infered_lj_2324000/generator_hop200.pt,\
-                                            predictor_type=conformer_pre,diffusion_dropout=${diffusion_dropout},\
+                                            predictor_type=conformer_pre,diffusin_dropout=${diffusin_dropout},\
                                             ref_left_pad=${ref_left_pad},diff_transformer_num_head=${diff_transformer_num_head},\
                                             transformer_esitimator_arch=${transformer_esitimator_arch}, dec_ffn_kernel_size=3, transformer_hidden=${transformer_hidden},\
                                             use_ref_enc=${use_ref_enc},ref_enc_arch=${ref_enc_arch},skip_decoder=True,query_attn_type=independent_w_mha,\
