@@ -126,7 +126,7 @@ class TransformerDecoder(nn.Module):
         if dropout is not None:
             self.dropout = dropout
         else:
-            self.dropout = hparams['dropout']
+            self.dropout = hparams['diffusion_dropout']
         # self.max_source_positions = DEFAULT_MAX_TARGET_POSITIONS
         # self.padding_idx = 0
         # self.pos_embed_alpha = nn.Parameter(torch.Tensor([1]))
