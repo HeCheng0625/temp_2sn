@@ -59,7 +59,7 @@ predictor_ca_per_layer=3
 use_spk_prompt=False
 ref_left_pad=False
 
-ref_query_tokens=32
+ref_query_tokens=0
 diff_attn_type=cln
 ref_query_norm=True
 
